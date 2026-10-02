@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Decor &amp; Living — Timeless African Craft</title>
+
+    <!--
+═══════════════════════════════════════════════════════════════════
+  🔌 BACKEND DEVELOPER QUICK MAP
+═══════════════════════════════════════════════════════════════════
+  This file is a fully working FRONT-END prototype.
+  All content is static HTML + one JSON block at the bottom.
+
+  TO CONNECT TO DJANGO:
+  ─────────────────────
+  1. Wrap the product grid cards in:
+        {% for product in products %} … {% endfor %}
+     Each <article> is ONE row in the Product table.
+
+  2. Replace the JSON block at the bottom with:
+        {% for product in products %}
+          { "id": "{{ product.id }}",
+            "name": "{{ product.name|escapejs }}",
+            "gallery": [
+              {% for img in product.images.all %}"{{ img.image.url }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ], … }
+        {% endfor %}
+
+  3. Every image should have a model field:
+        ProductImage(product FK, image, order)
+     with related_name="images".
+
+  That's it. No JS changes required.
+═══════════════════════════════════════════════════════════════════
+-->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.55;
+        }
+
+        .be-note {
+            display: none;
+        }
+
+        body.show-markers .be-note {
+            display: block;
+            background: #e11d48;
+            color: #fff;
+            font: 700 11px/1.4 ui-monospace, monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            width: fit-content;
+            letter-spacing: .03em;
+        }
+
+        body.show-markers [data-be] {
+            outline: 2px dashed #e11d48 !important;
+            outline-offset: 3px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+
+    <div id="header-root"></div>
+    <!-- HERO -->
+    <section class="h-[60vh] min-h-[480px] py-5" data-be="Hero">
+        <div class="be-note mx-auto mb-2 w-[min(100%-40px,1240px)]">🔌 EDIT: hero.eyebrow, hero.title, hero.subtitle,
+            hero.image, hero.primary_cta_label/url, hero.secondary_cta_label/url, hero.stat_1..3_value/label,
+            hero.float_card_*</div>
+        <div class="w-[min(100%-40px,1240px)] mx-auto h-full">
+            <div
+                class="relative overflow-hidden rounded-[28px] bg-espresso text-ivory h-full grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] shadow-2xl isolate">
+                <div class="absolute inset-0 z-[1] pointer-events-none"
+                    style="background:radial-gradient(60% 70% at 8% 10%,rgba(169,138,99,.38),transparent 60%),radial-gradient(50% 60% at 92% 90%,rgba(207,195,179,.18),transparent 60%)">
+                </div>
+                <div class="absolute inset-0 z-[2] pointer-events-none"
+                    style="background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,transparent 18%,transparent 74%,rgba(0,0,0,.52) 100%)">
+                </div>
+
+                <div class="relative z-[3] flex flex-col justify-center gap-3 px-6 md:px-12 py-7 md:py-10">
+                    <span
+                        class="inline-flex items-center gap-2 self-start text-[.68rem] font-bold tracking-[.16em] uppercase px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15">
+                        <i class="w-1.5 h-1.5 rounded-full bg-bronze"></i>
+                        New Collection · 2026
+                    </span>
+
+                    <h1 class="font-serif font-semibold leading-[1.1] text-[clamp(1.8rem,3.6vw,2.9rem)]">
+                        Warm Your Home.<br>
+                        Celebrate <em class="not-italic text-bronze">Heritage</em>.
+                    </h1>
+
+                    <p class="max-w-[46ch] text-ivory/70 text-[.94rem]">
+                        Handcrafted seating, vibrant fabrics and timeless décor — every piece tells a story of African
+                        artistry.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2.5 mt-0.5">
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold hover:-translate-y-0.5 transition">
+                            Shop the Collection
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ivory/30 text-ivory text-[.86rem] font-semibold hover:bg-ivory/10 transition">
+                            Explore Lookbook
+                        </a>
+                    </div>
+
+                    <div class="hidden sm:flex gap-7 mt-2 pt-3.5 border-t border-ivory/15">
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">150+</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Handmade Pieces</span>
+                        </div>
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">100%</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Artisan Crafted</span>
+                        </div>
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">Free</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Design Advice</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative overflow-hidden order-first md:order-last h-[38vh] min-h-[220px] md:h-auto md:min-h-0">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80"
+                        alt="" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#211C18]/85 md:hidden"></div>
+                    <div class="absolute inset-0 hidden md:block"
+                        style="background:linear-gradient(100deg,#211C18 0%,rgba(33,28,24,.55) 30%,transparent 66%)">
+                    </div>
+
+                    <div
+                        class="absolute z-[4] left-5 bottom-5 bg-ivory/95 text-espresso rounded-[18px] px-4 py-3 flex items-center gap-3 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=200&q=80"
+                            alt="" class="w-[42px] h-[42px] rounded-[10px] object-cover" />
+                        <div>
+                            <small
+                                class="block text-[.66rem] tracking-[.09em] uppercase text-bronze font-semibold">Featured</small>
+                            <strong class="text-[.9rem] font-serif font-semibold">Ankara Accent Chair</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST MARQUEE -->
+    <div class="border-y border-sand bg-linen overflow-hidden py-4" data-be="Trust items">
+        <div class="be-note mx-auto mb-2 w-[min(100%-40px,1240px)]">🔌 LOOP: trust_items (text, order)</div>
+        <div
+            class="flex gap-14 px-6 text-[.76rem] font-semibold tracking-[.14em] uppercase text-espresso/60 whitespace-nowrap">
+            <span>◆ Free shipping over $150</span>
+            <span>◆ Handcrafted by artisans</span>
+            <span>◆ 30-day returns</span>
+            <span>◆ Sustainable materials</span>
+            <span>◆ Custom orders welcome</span>
+        </div>
+    </div>
+
+    <!-- CATALOG -->
+    <section id="catalog" class="w-[min(100%-40px,1240px)] mx-auto pt-16 pb-16" data-be="Catalog">
+        <div class="be-note">🔌 EDIT: catalog.title, catalog.subtitle &nbsp;|&nbsp; LOOP: categories</div>
+
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-7">
+            <div>
+                <h2 class="font-serif font-semibold text-[clamp(1.8rem,3.4vw,2.6rem)]">Decor to Live With</h2>
+                <p class="mt-2 text-espresso/60 text-[.95rem] max-w-[52ch]">
+                    Seating, textiles and lighting — handcrafted pieces that bring warmth and heritage to every corner
+                    of your home.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2.5" id="filters">
+                <button type="button" data-cat="all"
+                    class="cat-chip px-4 py-2 rounded-full border bg-espresso border-espresso text-ivory text-[.82rem] font-semibold transition">All
+                    Pieces</button>
+                <button type="button" data-cat="chairs"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Chairs
+                    &amp; Stools</button>
+                <button type="button" data-cat="curtains"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Curtains</button>
+                <button type="button" data-cat="table-mats"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Table
+                    Mats</button>
+                <button type="button" data-cat="pillows"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Pillowcases</button>
+                <button type="button" data-cat="wall-art"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Wall
+                    Art</button>
+                <button type="button" data-cat="lampshades"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Lampshades</button>
+                <button type="button" data-cat="rugs"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Rugs</button>
+            </div>
+        </div>
+
+        <div class="be-note">🔌 LOOP: products — wrap each &lt;article&gt; in {% for product in products %} … {% endfor
+            %}</div>
+
+        <!-- ============ PRODUCT GRID ============ -->
+        <div id="productGrid" class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(258px,1fr))]">
+
+            <!-- ============================================================
+         PRODUCT TEMPLATE — copy this block for each new product.
+         Backend: wrap in {% for product in products %}.
+         Fields you'd replace:
+           data-id   → {{ product.id }}
+           data-cat  → {{ product.category.slug }}
+           src       → {{ product.image.url }}
+           name      → {{ product.name }}
+           price     → ${{ product.price_min }} – ${{ product.price_max }}
+           description → {{ product.short_description }}
+         ============================================================ -->
+
+            <!-- 1. Ankara Accent Chair -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_001" data-cat="chairs">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Best
+                        Seller</span>
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80"
+                        alt="Ankara Accent Chair"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Chairs &amp;
+                        Stools</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_001">Ankara Accent Chair</h3>
+                    <p class="text-[.82rem] text-espresso/60">A statement bedside chair upholstered in vibrant Ankara
+                        fabric, set on solid acacia wood.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$289.00 – $389.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_001"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_001"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Kente Print Curtain Panel -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_002" data-cat="curtains">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-espresso">Custom
+                        Size</span>
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80"
+                        alt="Kente Print Curtain Panel"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Curtains &amp;
+                        Fabric</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_002">Kente Print Curtain Panel</h3>
+                    <p class="text-[.82rem] text-espresso/60">Floor-length statement panel in authentic Kente print,
+                        fully lined for privacy and light control.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$149.00 – $249.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_002"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_002"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Woven Sisal Placemat Set -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_003" data-cat="table-mats">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-espresso">Set
+                        of 6</span>
+                    <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5e8a?auto=format&fit=crop&w=800&q=80"
+                        alt="Woven Sisal Placemat Set"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Table Mats</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_003">Woven Sisal Placemat Set</h3>
+                    <p class="text-[.82rem] text-espresso/60">Set of six handwoven sisal placemats — durable, washable
+                        and perfect for everyday dining.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$39.00 – $59.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_003"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_003"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4. Kanga Print Pillowcase -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_004" data-cat="pillows">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80"
+                        alt="Kanga Print Pillowcase"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Kanga Pillowcases</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_004">Kanga Print Pillowcase</h3>
+                    <p class="text-[.82rem] text-espresso/60">Vibrant Kanga-print pillowcase with hidden zip closure,
+                        custom-made to fit 50×70 cm inserts.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$29.00 – $45.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_004"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_004"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5. Woven Wall Hanging -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_005" data-cat="wall-art">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-espresso">Feature</span>
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80"
+                        alt="Woven Wall Hanging"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Wall Hangings</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_005">Woven Wall Hanging</h3>
+                    <p class="text-[.82rem] text-espresso/60">Large handwoven raffia wall hanging with bronze and ivory
+                        accents — a stunning focal point.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$129.00 – $189.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_005"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_005"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6. Raffia Woven Lampshade -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_006" data-cat="lampshades">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-espresso">Warm
+                        Glow</span>
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                        alt="Raffia Woven Lampshade"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Lampshades</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_006">Raffia Woven Lampshade</h3>
+                    <p class="text-[.82rem] text-espresso/60">Handwoven raffia lampshade casting a soft, warm glow —
+                        perfect for bedside or reading corners.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$89.00 – $149.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_006"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_006"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 7. Round Seagrass Rug -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_007" data-cat="rugs">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Best
+                        Seller</span>
+                    <img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=800&q=80"
+                        alt="Round Seagrass Rug"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Sisal &amp; Seagrass
+                        Rugs</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_007">Round Seagrass Rug</h3>
+                    <p class="text-[.82rem] text-espresso/60">Handwoven round seagrass rug with a subtle bronze spiral —
+                        adds warmth and texture to any room.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$149.00 – $229.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_007"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_007"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso text-ivory pt-14 pb-9" data-be="Footer">
+        <div class="be-note mx-auto mb-2 w-[min(100%-40px,1240px)]">🔌 EDIT: site.footer_tagline / copyright /
+            legal_links &nbsp;|&nbsp; LOOP: footer_columns</div>
+        <div class="w-[min(100%-40px,1240px)] mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-9">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-[34px] h-[34px] rounded-[10px] grid place-items-center bg-bronze text-ivory font-logo text-[20px]">H</span>
+                        <span class="font-serif font-semibold text-[1.05rem]">Home Decor &amp; Living</span>
+                    </div>
+                    <p class="text-ivory/60 text-[.86rem] max-w-[34ch]">
+                        Handcrafted décor rooted in African tradition — made to be lived with and loved.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-[.72rem] tracking-wider uppercase text-bronze mb-3.5 font-semibold">Shop</h5>
+                    <ul class="grid gap-2.5 text-[.88rem] text-ivory/75">
+                        <li><a href="#" class="hover:text-bronze transition">Seating</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Curtains</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Pillows</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Rugs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[.72rem] tracking-wider uppercase text-bronze mb-3.5 font-semibold">Support</h5>
+                    <ul class="grid gap-2.5 text-[.88rem] text-ivory/75">
+                        <li><a href="#" class="hover:text-bronze transition">Shipping</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Returns</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Care Guide</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[.72rem] tracking-wider uppercase text-bronze mb-3.5 font-semibold">Company</h5>
+                    <ul class="grid gap-2.5 text-[.88rem] text-ivory/75">
+                        <li><a href="#" class="hover:text-bronze transition">Our Story</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Artisans</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-bronze transition">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-10 pt-5 border-t border-ivory/10 flex flex-wrap justify-between gap-4 text-[.8rem] text-ivory/50">
+                <span>© 2026 Home Decor &amp; Living. All rights reserved.</span>
+                <span>Privacy · Terms · Cookies</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT VIEWER -->
+    <div id="viewer" role="dialog" aria-modal="true"
+        class="fixed inset-0 z-[110] bg-espresso/60 backdrop-blur p-0 md:p-6 hidden place-items-center">
+        <div
+            class="relative bg-ivory w-full h-[100svh] md:h-[min(860px,92svh)] md:w-[min(1160px,100%)] md:rounded-[28px] overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-[1.04fr_.96fr] overflow-y-auto md:overflow-hidden">
+            <button type="button" id="viewerClose" aria-label="Close"
+                class="absolute top-3 right-3 md:top-4 md:right-4 z-20 w-10 h-10 rounded-full border-2 border-espresso/25 bg-ivory grid place-items-center hover:bg-espresso hover:text-ivory transition">✕</button>
+
+            <div class="md:bg-linen md:p-6 flex flex-col gap-3.5">
+                <div
+                    class="relative bg-ivory md:rounded-[18px] md:overflow-hidden h-[30svh] min-h-[190px] md:h-auto md:aspect-square shrink-0">
+                    <img id="galleryMain" src="" alt="" class="w-full h-full object-cover" />
+                    <span id="galleryCount"
+                        class="absolute top-3 left-3 z-10 bg-espresso/75 text-ivory text-[.7rem] font-semibold px-3 py-1 rounded-full">1
+                        / 10</span>
+                    <button type="button" id="galleryPrev"
+                        class="absolute top-1/2 -translate-y-1/2 left-2.5 z-10 w-10 h-10 rounded-full bg-ivory/90 grid place-items-center hover:bg-espresso hover:text-ivory transition">‹</button>
+                    <button type="button" id="galleryNext"
+                        class="absolute top-1/2 -translate-y-1/2 right-2.5 z-10 w-10 h-10 rounded-full bg-ivory/90 grid place-items-center hover:bg-espresso hover:text-ivory transition">›</button>
+                </div>
+                <!-- Thumbs strip — scrolls horizontally on mobile, 5-col grid on desktop -->
+                <div id="galleryThumbs" class="flex md:grid md:grid-cols-5 gap-2 px-3 md:px-0 overflow-x-auto shrink-0">
+                </div>
+            </div>
+
+            <div id="viewerInfo" class="p-4 md:p-8 md:overflow-y-auto flex flex-col gap-3"></div>
+        </div>
+    </div>
+
+    <div id="toast"
+        class="fixed left-1/2 bottom-7 -translate-x-1/2 translate-y-[140%] bg-espresso text-ivory px-6 py-3 rounded-full text-[.85rem] font-medium z-[120] transition-transform duration-400">
+    </div>
+
+    <!--
+═══════════════════════════════════════════════════════════════════
+  🔌 PRODUCT DATA — 10 IMAGES PER PRODUCT
+═══════════════════════════════════════════════════════════════════
+
+  This JSON block supplies the viewer with:
+    • gallery — array of 10 image URLs (shown in the lightbox)
+    • specs   — key/value spec table
+    • features — bullet list of highlights
+
+  The card HTML above already has everything else (name, price, main image).
+
+  ─── DJANGO REPLACEMENT ───────────────────────────────────────────
+
+  Replace the entire block with:
+
+    <script type="application/json" id="products-json">
+    [
+      {% for product in products %}
+      {
+        "id": "{{ product.id }}",
+        "name": "{{ product.name|escapejs }}",
+        "category": "{{ product.category.name|escapejs }}",
+        "priceMin": {{ product.price_min }},
+        "priceMax": {{ product.price_max }},
+        "description": "{{ product.description|escapejs }}",
+        "gallery": [
+          {% for img in product.images.all %}"{{ img.image.url }}"{% if not forloop.last %},{% endif %}{% endfor %}
+        ],
+        "specs": {
+          "Material": "{{ product.material|escapejs }}",
+          "Dimensions": "{{ product.dimensions|escapejs }}",
+          "Care": "{{ product.care|escapejs }}",
+          "Origin": "{{ product.origin|escapejs }}",
+          "Finish": "{{ product.finish|escapejs }}",
+          "Warranty": "{{ product.warranty|escapejs }}"
+        },
+        "features": [
+          {% for f in product.features.all %}"{{ f.text|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+        ]
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+    </script>
+
+  Required models:
+    class ProductImage(models.Model):
+        product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
+        image   = models.ImageField(upload_to="products/")
+        order   = models.PositiveIntegerField(default=0)
+        class Meta: ordering = ["order"]
+
+  Then in admin, upload 10 images per product — done.
+═══════════════════════════════════════════════════════════════════
+-->
+    <script type="application/json" id="products-json">
+[
+  {
+    "id": "p_001", "name": "Ankara Accent Chair", "category": "Chairs & Stools",
+    "priceMin": 289.00, "priceMax": 389.00,
+    "description": "A statement bedside chair upholstered in vibrant Ankara fabric, set on a solid acacia wood frame with a curved backrest.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Ankara fabric + solid acacia", "Dimensions": "72 × 68 × 85 cm", "Care": "Spot clean only", "Origin": "Handcrafted in Tanzania", "Finish": "Natural varnish", "Warranty": "2-year warranty" },
+    "features": ["Hand-selected Ankara fabric panels", "Solid acacia wood frame", "High-density foam seating", "Reinforced joinery"]
+  },
+  {
+    "id": "p_002", "name": "Kente Print Curtain Panel", "category": "Curtains & Fabric",
+    "priceMin": 149.00, "priceMax": 249.00,
+    "description": "Floor-length statement curtain panel in authentic Kente print, fully lined for privacy and light control.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton Kente print", "Dimensions": "140 × 260 cm", "Care": "Dry clean only", "Origin": "Made in Tanzania", "Finish": "Fully lined", "Warranty": "1-year warranty" },
+    "features": ["Fully lined for privacy", "Custom sizing available", "Pencil-pleat header"]
+  },
+  {
+    "id": "p_003", "name": "Woven Sisal Placemat Set", "category": "Table Mats",
+    "priceMin": 39.00, "priceMax": 59.00,
+    "description": "Set of six handwoven sisal placemats with a natural earthy tone — durable, washable and perfect for everyday dining.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1602874801006-e26c4c5b5e8a?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1584346133934-a3afd2a33c4c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Handwoven sisal", "Dimensions": "38 cm diameter", "Care": "Wipe clean", "Origin": "Handcrafted in Tanzania", "Finish": "Natural", "Warranty": "6-month warranty" },
+    "features": ["Set of 6 placemats", "Handwoven by local artisans", "Heat resistant to 90°C"]
+  },
+  {
+    "id": "p_004", "name": "Kanga Print Pillowcase", "category": "Kanga Pillowcases",
+    "priceMin": 29.00, "priceMax": 45.00,
+    "description": "Vibrant Kanga-print pillowcase with hidden zip closure, custom-made to fit standard 50×70 cm inserts.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton Kanga", "Dimensions": "50 × 70 cm", "Care": "Machine wash 30°C", "Origin": "Made in Tanzania", "Finish": "Hidden zip", "Warranty": "6-month warranty" },
+    "features": ["Authentic Kanga print", "Hidden zip closure", "Fade-resistant dye"]
+  },
+  {
+    "id": "p_005", "name": "Woven Wall Hanging", "category": "Wall Hangings",
+    "priceMin": 129.00, "priceMax": 189.00,
+    "description": "Large handwoven raffia wall hanging in natural tones with bronze and ivory accents — a stunning focal point.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Raffia + wool", "Dimensions": "110 × 60 cm", "Care": "Dust with soft brush", "Origin": "Handwoven in Tanzania", "Finish": "Hanging loop included", "Warranty": "1-year warranty" },
+    "features": ["Handwoven raffia base", "Bronze and ivory accents", "Ready to hang"]
+  },
+  {
+    "id": "p_006", "name": "Raffia Woven Lampshade", "category": "Lampshades",
+    "priceMin": 89.00, "priceMax": 149.00,
+    "description": "Handwoven raffia lampshade that casts a soft, warm glow — perfect for bedside tables and reading corners.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Handwoven raffia", "Dimensions": "35 cm × 28 cm", "Care": "Dust gently", "Origin": "Handwoven in Tanzania", "Finish": "Natural", "Warranty": "1-year warranty" },
+    "features": ["Handwoven raffia", "Fits standard E27 socket", "Soft, warm diffusion"]
+  },
+  {
+    "id": "p_007", "name": "Round Seagrass Rug", "category": "Sisal & Seagrass Rugs",
+    "priceMin": 149.00, "priceMax": 229.00,
+    "description": "Handwoven round seagrass rug with a subtle bronze spiral — adds warmth and texture to any living space.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Handwoven seagrass", "Dimensions": "180 cm diameter", "Care": "Vacuum, rotate", "Origin": "Handwoven in Tanzania", "Finish": "Natural + bronze accents", "Warranty": "2-year warranty" },
+    "features": ["Handwoven seagrass", "Subtle bronze spiral", "Reversible design"]
+  }
+]
+</script>
+
+    <script>
+        /* ================================================================
+           🔌 JAVASCRIPT — DO NOT EDIT unless changing behaviour.
+           Reads the JSON above, drives the viewer.
+           ================================================================ */
+
+        const PRODUCTS = JSON.parse(document.getElementById("products-json").textContent);
+
+        let cart = 0;
+        let currentProductId = null;
+        let currentImageIndex = 0;
+
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+        const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const usd = n => "$" + Number(n).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const priceRange = p => `${usd(p.priceMin)} – ${usd(p.priceMax)}`;
+
+        function toast(msg) {
+            const t = $("#toast");
+            t.textContent = msg;
+            t.classList.remove("translate-y-[140%]");
+            clearTimeout(t._t);
+            t._t = setTimeout(() => t.classList.add("translate-y-[140%]"), 2200);
+        }
+
+        /* Filter chips */
+        $$(".cat-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                const cat = chip.dataset.cat;
+                $$(".cat-chip").forEach(c => {
+                    const on = c === chip;
+                    c.classList.toggle("bg-espresso", on);
+                    c.classList.toggle("border-espresso", on);
+                    c.classList.toggle("text-ivory", on);
+                    c.classList.toggle("bg-ivory", !on);
+                    c.classList.toggle("border-sand", !on);
+                    c.classList.toggle("text-espresso/70", !on);
+                });
+                $$(".product-card").forEach(card => {
+                    card.style.display = (cat === "all" || card.dataset.cat === cat) ? "" : "none";
+                });
+            });
+        });
+
+        /* Add to cart + open viewer */
+        document.addEventListener("click", e => {
+            const add = e.target.closest(".add-btn");
+            if (add) {
+                cart++;
+                $("#cartCount").textContent = cart;
+                toast("Added to cart ✓");
+                return;
+            }
+
+            const view = e.target.closest(".view-btn");
+            if (view) { openViewer(view.dataset.id); }
+        });
+
+        function openViewer(id) {
+            const p = PRODUCTS.find(x => String(x.id) === String(id));
+            if (!p) return;
+            currentProductId = id;
+            currentImageIndex = 0;
+            renderViewer(p);
+
+            const v = $("#viewer");
+            v.classList.remove("hidden");
+            v.classList.add("grid");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeViewer() {
+            $("#viewer").classList.add("hidden");
+            $("#viewer").classList.remove("grid");
+            document.body.style.overflow = "";
+            currentProductId = null;
+        }
+
+        function renderViewer(p) {
+            const g = (p.gallery && p.gallery.length) ? p.gallery : [];
+
+            /* -------- THUMBS: 10 images, 5 per row on desktop, horizontal scroll on mobile -------- */
+            $("#galleryThumbs").innerHTML = g.map((u, i) => `
+    <img src="${u}" data-thumb="${i}" alt="" loading="lazy"
+      class="w-14 h-14 md:w-full md:h-auto md:aspect-square object-cover rounded-lg cursor-pointer border-2 transition shrink-0
+             ${i === 0 ? "border-bronze opacity-100" : "border-transparent opacity-70 hover:opacity-100"}" />
+  `).join("");
+
+            const specRows = Object.entries(p.specs || {})
+                .filter(([, v]) => v)
+                .map(([k, v]) => `
+      <div class="bg-ivory px-3 py-2.5">
+        <span class="block text-[.6rem] tracking-wider uppercase text-espresso/50 mb-0.5">${esc(k)}</span>
+        <b class="text-[.82rem] font-semibold text-espresso">${esc(v)}</b>
+      </div>`).join("");
+
+            $("#viewerInfo").innerHTML = `
+    <span class="text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full bg-linen text-bronze self-start">${esc(p.category)}</span>
+
+    <h2 class="font-serif font-semibold text-[clamp(1.25rem,2.5vw,2rem)] pr-10">${esc(p.name)}</h2>
+
+    <div class="px-4 py-3 rounded-[14px] bg-linen border border-sand">
+      <b class="font-serif font-semibold text-[1.3rem] text-espresso">${priceRange(p)}</b>
+    </div>
+
+    <p class="text-[.9rem] text-espresso/70 leading-relaxed">${esc(p.description)}</p>
+
+    ${specRows ? `
+      <div>
+        <div class="text-[.68rem] tracking-wider uppercase text-espresso/50 mb-2 font-semibold">Specifications</div>
+        <div class="grid grid-cols-2 gap-px bg-sand border border-sand rounded-[14px] overflow-hidden">${specRows}</div>
+      </div>` : ""}
+
+    ${p.features?.length ? `
+      <div>
+        <div class="text-[.68rem] tracking-wider uppercase text-espresso/50 mb-2 font-semibold">Highlights</div>
+        <ul class="grid gap-2">
+          ${p.features.map(f => `
+            <li class="flex gap-2.5 text-[.84rem] text-espresso/80">
+              <span class="shrink-0 w-[18px] h-[18px] rounded-full bg-linen text-bronze text-[.66rem] font-extrabold grid place-items-center mt-0.5">✓</span>
+              ${esc(f)}
+            </li>`).join("")}
+        </ul>
+      </div>` : ""}
+
+    <div class="flex flex-wrap gap-3 mt-auto pt-2">
+      <button type="button" id="viewerAddBtn"
+        class="flex-1 min-w-[140px] px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold hover:bg-espresso transition">
+        Add to Cart
+      </button>
+      <button type="button" id="viewerCloseBtn"
+        class="flex-1 min-w-[140px] px-5 py-3 rounded-full border-2 border-espresso text-espresso text-[.86rem] font-semibold hover:bg-espresso hover:text-ivory transition">
+        Close
+      </button>
+    </div>
+  `;
+
+            setImage(0);
+
+            $("#viewerAddBtn").onclick = ev => { ev.stopPropagation(); cart++; $("#cartCount").textContent = cart; toast("Added to cart ✓"); };
+            $("#viewerCloseBtn").onclick = ev => { ev.stopPropagation(); closeViewer(); };
+        }
+
+        function setImage(i) {
+            const p = PRODUCTS.find(x => String(x.id) === String(currentProductId));
+            if (!p) return;
+            const g = p.gallery || [];
+            if (!g.length) return;
+            currentImageIndex = (i + g.length) % g.length;
+
+            $("#galleryMain").src = g[currentImageIndex];
+            $("#galleryCount").textContent = `${currentImageIndex + 1} / ${g.length}`;
+
+            $$("#galleryThumbs img").forEach((t, idx) => {
+                const on = idx === currentImageIndex;
+                t.classList.toggle("border-bronze", on);
+                t.classList.toggle("border-transparent", !on);
+                t.classList.toggle("opacity-100", on);
+                t.classList.toggle("opacity-70", !on);
+            });
+        }
+
+        $("#viewerClose").addEventListener("click", closeViewer);
+        $("#galleryPrev").addEventListener("click", () => setImage(currentImageIndex - 1));
+        $("#galleryNext").addEventListener("click", () => setImage(currentImageIndex + 1));
+        $("#galleryThumbs").addEventListener("click", e => {
+            const t = e.target.closest("[data-thumb]");
+            if (t) setImage(Number(t.dataset.thumb));
+        });
+        $("#viewer").addEventListener("click", e => {
+            if (e.target.id === "viewer") closeViewer();
+        });
+        document.addEventListener("keydown", e => {
+            if ($("#viewer").classList.contains("hidden")) return;
+            if (e.key === "Escape") closeViewer();
+            if (e.key === "ArrowRight") setImage(currentImageIndex + 1);
+            if (e.key === "ArrowLeft") setImage(currentImageIndex - 1);
+        });
+
+        $("#markerToggle").addEventListener("click", () => {
+            document.body.classList.toggle("show-markers");
+            const on = document.body.classList.contains("show-markers");
+            $("#markerToggleText").textContent = on ? "Hide Backend Markers" : "Show Backend Markers";
+        });
+    </script>
+
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

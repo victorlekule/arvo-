@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ — Arvo Styles | How Can We Help?</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { ivory: '#F6F1E8', espresso: '#211C18', sand: '#CFC3B3', bronze: '#A98A63', linen: '#E9E1D5' },
+                    fontFamily: { logo: ['"Great Vibes"', 'cursive'], sans: ['Poppins', 'sans-serif'], serif: ['"Playfair Display"', 'serif'] }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #A98A63;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1.5px;
+            background: #A98A63;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeUp {
+            animation: fadeUp .8s cubic-bezier(.22, .61, .36, 1) backwards;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1.02)
+            }
+
+            100% {
+                transform: scale(1.14) translate(-1.5%, -1%)
+            }
+        }
+
+        .animate-kenburns {
+            animation: kenburns 26s ease-in-out infinite alternate;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .animate-fadeUp,
+            .animate-kenburns {
+                animation: none !important;
+            }
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+
+    <div id="header-root"></div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-[72px] bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1920&q=80" alt=""
+                class="w-full h-full object-cover animate-kenburns will-change-transform" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black"></div>
+            <div class="absolute inset-0"
+                style="background: radial-gradient(circle at 20% 40%, rgba(169,138,99,.20), transparent 55%);"></div>
+        </div>
+        <div class="relative z-10 w-full max-w-[900px] mx-auto px-6 md:px-10 text-center py-16">
+            <span class="section-eyebrow mb-6 justify-center animate-fadeUp" style="animation-delay:.05s">Help
+                Center</span>
+            <h1 class="font-serif font-bold text-ivory leading-[1.05] tracking-[-.02em] mb-6 animate-fadeUp text-[clamp(2.2rem,5vw,3.8rem)]"
+                style="animation-delay:.15s">
+                How Can We <em class="not-italic text-bronze">Help?</em>
+            </h1>
+            <p class="text-ivory/70 text-base md:text-lg leading-relaxed max-w-[58ch] mx-auto animate-fadeUp"
+                style="animation-delay:.3s">
+                Browse the most asked questions below. If you still can't find what you need,
+                our team responds within 24 hours.
+            </p>
+        </div>
+    </section>
+
+    <!-- SEARCH + CATEGORIES -->
+    <section class="relative py-14 md:py-16 bg-ivory border-b border-espresso/10">
+        <div class="w-full max-w-[900px] mx-auto px-5 sm:px-8">
+            <!-- Search -->
+            <div class="relative mb-8">
+                <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-espresso/40 pointer-events-none"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m20 20-3.5-3.5" />
+                </svg>
+                <input type="text" id="faq-search" placeholder="Search questions…" class="w-full pl-14 pr-5 py-4 rounded-full bg-white border border-espresso/10
+                    text-espresso text-sm placeholder:text-espresso/40
+                    outline-none transition
+                    focus:border-bronze focus:ring-4 focus:ring-bronze/15" />
+            </div>
+            <!-- Categories -->
+            <div class="flex flex-wrap justify-center gap-2">
+                <button data-faq-cat="all"
+                    class="faq-chip px-4 py-2 rounded-full bg-espresso text-ivory text-[12.5px] font-semibold transition">All</button>
+                <button data-faq-cat="orders"
+                    class="faq-chip px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Orders
+                    &amp; Payments</button>
+                <button data-faq-cat="shipping"
+                    class="faq-chip px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Shipping</button>
+                <button data-faq-cat="returns"
+                    class="faq-chip px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Returns</button>
+                <button data-faq-cat="bespoke"
+                    class="faq-chip px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Bespoke</button>
+                <button data-faq-cat="products"
+                    class="faq-chip px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Products
+                    &amp; Care</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ LIST -->
+    <section class="relative py-20 md:py-24 bg-ivory">
+        <div class="w-full max-w-[900px] mx-auto px-5 sm:px-8">
+
+            <!-- ORDERS -->
+            <div class="faq-group mb-14" data-cat="orders">
+                <h2 class="flex items-center gap-3 font-serif font-semibold text-espresso text-xl md:text-2xl mb-6">
+                    <span class="w-1.5 h-6 bg-bronze rounded-full"></span>
+                    Orders &amp; Payments
+                </h2>
+
+                <div class="grid gap-3">
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How do I place an order?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How do I
+                                place an order?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Simply browse our shop, add items to your cart, and proceed to checkout. You'll receive an
+                            instant confirmation email with your order number. We accept Visa, Mastercard, PayPal and
+                            M-Pesa.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="What payment methods do you accept?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">What payment
+                                methods do you accept?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            We accept Visa, Mastercard, American Express, PayPal, Apple Pay, and M-Pesa. All
+                            transactions are SSL-encrypted and processed through PCI-compliant providers.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="Can I cancel or change my order?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">Can I cancel
+                                or change my order?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Yes — if your order hasn't been shipped yet. Contact us within 12 hours of placing your
+                            order and we'll happily adjust or cancel it. Once dispatched, standard returns apply.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- SHIPPING -->
+            <div class="faq-group mb-14" data-cat="shipping">
+                <h2 class="flex items-center gap-3 font-serif font-semibold text-espresso text-xl md:text-2xl mb-6">
+                    <span class="w-1.5 h-6 bg-bronze rounded-full"></span>
+                    Shipping &amp; Delivery
+                </h2>
+
+                <div class="grid gap-3">
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="Do you ship worldwide?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">Do you ship
+                                worldwide?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Yes — we ship to 24 countries. Tracked delivery is available at checkout. Shipping is free
+                            on orders over $150. Duties and taxes are calculated at checkout for most destinations.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How long does delivery take?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How long does
+                                delivery take?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Domestic (Tanzania): 2–4 business days. Regional (East Africa): 5–8 days. International:
+                            7–14 days for stock items. Bespoke pieces add 10–14 days for production.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="Can I track my order?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">Can I track
+                                my order?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Yes — as soon as your order ships you'll receive a tracking link by email. You can also log
+                            into your Arvo account anytime to see live updates.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- RETURNS -->
+            <div class="faq-group mb-14" data-cat="returns">
+                <h2 class="flex items-center gap-3 font-serif font-semibold text-espresso text-xl md:text-2xl mb-6">
+                    <span class="w-1.5 h-6 bg-bronze rounded-full"></span>
+                    Returns &amp; Exchanges
+                </h2>
+
+                <div class="grid gap-3">
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="What is your return policy?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">What is your
+                                return policy?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Stock items can be returned within 30 days in original, unused condition for a full refund.
+                            Bespoke and custom-made pieces are final sale. See our full Refund Policy for complete
+                            details.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How do I start a return?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How do I
+                                start a return?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Email <a href="mailto:support@arvostyles.com"
+                                class="text-bronze hover:underline">support@arvostyles.com</a> with your order number.
+                            We'll send a prepaid return label and step-by-step instructions within 24 hours.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- BESPOKE -->
+            <div class="faq-group mb-14" data-cat="bespoke">
+                <h2 class="flex items-center gap-3 font-serif font-semibold text-espresso text-xl md:text-2xl mb-6">
+                    <span class="w-1.5 h-6 bg-bronze rounded-full"></span>
+                    Bespoke &amp; Custom Orders
+                </h2>
+
+                <div class="grid gap-3">
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How does the bespoke process work?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How does the
+                                bespoke process work?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Every bespoke piece begins with a virtual or in-person fitting. We discuss fabric, fit, and
+                            details, then send you a quote and timeline. 50% deposit confirms your order; balance due at
+                            dispatch.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How long does a bespoke order take?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How long does
+                                a bespoke order take?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Most bespoke pieces are delivered within 14–21 days. Rush orders can sometimes be arranged —
+                            just tell us your deadline when you book.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="Do you offer corporate and bulk orders?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">Do you offer
+                                corporate and bulk orders?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Absolutely. We offer corporate gifting and wholesale pricing from 10 pieces upward —
+                            including custom branding, packaging and delivery logistics. Contact us for a quote.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div class="faq-group" data-cat="products">
+                <h2 class="flex items-center gap-3 font-serif font-semibold text-espresso text-xl md:text-2xl mb-6">
+                    <span class="w-1.5 h-6 bg-bronze rounded-full"></span>
+                    Products &amp; Care
+                </h2>
+
+                <div class="grid gap-3">
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How do I care for handcrafted leather?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How do I care
+                                for handcrafted leather?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Keep leather away from prolonged moisture and direct heat. Condition every 3–4 months with a
+                            natural leather balm. Store in the dust bag we provide when not in use.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="How do I clean woven textiles?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">How do I
+                                clean woven textiles?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Sisal and seagrass rugs: vacuum weekly, rotate every 3 months, spot-clean with a damp cloth.
+                            Kitenge and batiki garments: cool hand-wash, line-dry in shade.
+                        </p>
+                    </details>
+
+                    <details
+                        class="faq-item group p-5 md:p-6 rounded-2xl bg-white border border-espresso/10 hover:border-bronze/40 open:border-bronze/50 open:bg-white transition-all duration-300"
+                        data-q="Are your materials ethically sourced?">
+                        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                            <span class="font-serif font-semibold text-espresso text-base md:text-lg pr-2">Are your
+                                materials ethically sourced?</span>
+                            <span
+                                class="shrink-0 w-8 h-8 rounded-full bg-bronze/15 text-bronze grid place-items-center group-open:bg-bronze group-open:text-white transition-colors">
+                                <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-45"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    stroke-linecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-espresso/65 text-[14.5px] leading-relaxed">
+                            Yes. Every material we use is either certified fair-trade or sourced directly from small
+                            artisan communities we've personally visited. We publish our full materials list on request.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STILL NEED HELP -->
+    <section class="relative py-24 md:py-28 bg-black border-y border-white/10 overflow-hidden">
+        <div class="pointer-events-none absolute inset-0"
+            style="background: radial-gradient(ellipse at center, rgba(169,138,99,.14), transparent 60%);"></div>
+        <div class="relative w-full max-w-[900px] mx-auto px-6 md:px-10 text-center">
+            <span class="section-eyebrow mb-6 justify-center">Still Need Help?</span>
+            <h2
+                class="font-serif font-bold text-ivory leading-[1.1] tracking-[-.02em] mb-6 text-[clamp(1.8rem,4vw,2.8rem)]">
+                We're one message away.
+            </h2>
+            <p class="text-ivory/60 text-base leading-relaxed max-w-[52ch] mx-auto mb-10">
+                Can't find the answer? Our team replies to every message within 24 hours — no bots, no scripts.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="contact.html"
+                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-bronze text-white text-sm font-semibold shadow-[0_12px_32px_-10px_rgba(169,138,99,.7)] hover:bg-[#977B54] hover:-translate-y-0.5 transition">
+                    Contact Us
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+                <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/25 text-ivory text-sm font-semibold hover:bg-white/5 hover:border-white/50 transition">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+
+    <!-- FAQ SEARCH + FILTER -->
+    <script>
+        (function () {
+            const chips = document.querySelectorAll('.faq-chip');
+            const groups = document.querySelectorAll('.faq-group');
+            const items = document.querySelectorAll('.faq-item');
+            const searchInput = document.getElementById('faq-search');
+
+            let activeCat = 'all';
+            let searchTerm = '';
+
+            function applyFilter() {
+                groups.forEach(g => {
+                    const catMatch = activeCat === 'all' || g.dataset.cat === activeCat;
+                    let visibleItems = 0;
+                    g.querySelectorAll('.faq-item').forEach(item => {
+                        const q = (item.dataset.q || '').toLowerCase();
+                        const text = item.textContent.toLowerCase();
+                        const match = !searchTerm || q.includes(searchTerm) || text.includes(searchTerm);
+                        item.style.display = match ? '' : 'none';
+                        if (match) visibleItems++;
+                    });
+                    g.style.display = (catMatch && visibleItems > 0) ? '' : 'none';
+                });
+            }
+
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    activeCat = chip.dataset.faqCat;
+                    chips.forEach(c => {
+                        const on = c === chip;
+                        c.classList.toggle('bg-espresso', on);
+                        c.classList.toggle('text-ivory', on);
+                        c.classList.toggle('border-espresso', on);
+                        c.classList.toggle('bg-white', !on);
+                        c.classList.toggle('border-espresso/10', !on);
+                        c.classList.toggle('text-espresso/70', !on);
+                    });
+                    applyFilter();
+                });
+            });
+
+            searchInput.addEventListener('input', e => {
+                searchTerm = e.target.value.trim().toLowerCase();
+                applyFilter();
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

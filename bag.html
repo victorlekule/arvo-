@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BAGS &amp; CARRY — Carry Bold. Carry Smart.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.55;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1.02) translate(0, 0)
+            }
+
+            100% {
+                transform: scale(1.12) translate(-1.6%, -1.2%)
+            }
+        }
+
+        @keyframes floaty {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        @keyframes slide {
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 100% 0
+            }
+
+            100% {
+                background-position: 0 0
+            }
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px)
+            }
+        }
+
+        .animate-kenburns {
+            animation: kenburns 22s ease-in-out infinite alternate;
+        }
+
+        .animate-floaty {
+            animation: floaty 5s ease-in-out infinite;
+        }
+
+        .animate-slide {
+            animation: slide 26s linear infinite;
+        }
+
+        .animate-shine {
+            animation: shine 1.3s infinite;
+        }
+
+        .animate-rise {
+            animation: rise .5s cubic-bezier(.22, .61, .36, 1) backwards;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #E9E1D5 25%, #CFC3B3 37%, #E9E1D5 63%);
+            background-size: 400% 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .animate-kenburns,
+            .animate-floaty,
+            .animate-slide,
+            .animate-shine,
+            .animate-rise {
+                animation: none !important;
+            }
+        }
+    </style>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+
+    <div id="header-root"></div>
+
+    <!-- ================= HERO ================= -->
+    <section class="h-[60vh] min-h-[480px] py-5">
+        <div class="w-[min(100%-40px,1240px)] mx-auto h-full">
+            <div
+                class="relative overflow-hidden rounded-[28px] bg-espresso text-ivory h-full grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] shadow-[0_28px_60px_-24px_rgba(33,28,24,.35)] isolate">
+                <div class="absolute inset-0 z-[1] pointer-events-none"
+                    style="background:radial-gradient(60% 70% at 8% 10%,rgba(169,138,99,.35),transparent 60%),radial-gradient(50% 60% at 92% 90%,rgba(207,195,179,.15),transparent 60%)">
+                </div>
+                <div class="absolute inset-0 z-[2] pointer-events-none"
+                    style="background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,transparent 18%,transparent 74%,rgba(0,0,0,.52) 100%),radial-gradient(140% 120% at 50% 50%,transparent 44%,rgba(0,0,0,.38) 100%)">
+                </div>
+
+                <div class="relative z-[3] flex flex-col justify-center gap-3 px-6 md:px-12 py-7 md:py-10">
+                    <span
+                        class="inline-flex items-center gap-2 self-start text-[.68rem] font-bold tracking-[.16em] uppercase px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur">
+                        <i class="w-1.5 h-1.5 rounded-full bg-bronze shadow-[0_0_0_3px_rgba(169,138,99,.35)]"></i>
+                        <span data-bind="hero.eyebrow">New Season · 2026</span>
+                    </span>
+                    <h1 class="font-serif font-semibold tracking-[-.02em] whitespace-pre-line leading-[1.1] text-[clamp(1.8rem,3.6vw,2.9rem)]"
+                        data-bind="hero.title">Carry Bold.
+                        Carry <em class="not-italic text-bronze">Smart</em>.</h1>
+                    <p class="max-w-[46ch] text-ivory/70 text-[.94rem] line-clamp-3 m-0" data-bind="hero.subtitle">
+                        Everyday bags engineered for real life — full-grain leather, water-resistant canvas and smart
+                        compartments that keep up with your day.</p>
+                    <div class="flex flex-wrap gap-2.5 mt-0.5">
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold shadow-[0_10px_26px_-10px_rgba(169,138,99,.9)] hover:-translate-y-0.5 transition">
+                            <span data-bind="hero.primaryCta.label">Shop the Collection</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ivory/30 text-ivory text-[.86rem] font-semibold hover:bg-ivory/10 hover:border-ivory/50 transition"
+                            data-bind="hero.secondaryCta.label">Explore Lookbook</a>
+                    </div>
+                    <div id="heroStats" class="hidden sm:flex gap-7 mt-2 pt-3.5 border-t border-ivory/15"></div>
+                </div>
+
+                <div
+                    class="relative overflow-hidden order-first md:order-last h-[38vh] min-h-[220px] md:h-auto md:min-h-0">
+                    <img id="heroImage" src="" alt="Featured bag"
+                        class="w-full h-full object-cover animate-kenburns will-change-transform" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#211C18]/85 md:[background:linear-gradient(100deg,#211C18_0%,rgba(33,28,24,.55)_30%,transparent_66%)]">
+                    </div>
+                    <div
+                        class="absolute z-[4] left-5 bottom-5 md:left-6 md:bottom-6 bg-ivory/95 text-espresso rounded-[18px] px-4 py-3 flex items-center gap-3 shadow-[0_12px_32px_-12px_rgba(33,28,24,.25)] backdrop-blur animate-floaty">
+                        <img id="heroFloatImg" src="" alt="" class="w-[42px] h-[42px] rounded-[10px] object-cover" />
+                        <div>
+                            <small id="heroFloatLabel"
+                                class="block text-[.66rem] tracking-[.09em] uppercase text-bronze font-semibold">Bestseller</small>
+                            <strong id="heroFloatTitle" class="text-[.9rem] font-serif font-semibold">—</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TRUST BAR ================= -->
+    <div class="border-y border-sand bg-linen overflow-hidden">
+        <div id="trustTrack" class="flex gap-14 py-4 animate-slide w-max"></div>
+    </div>
+
+    <!-- ================= CATALOG ================= -->
+    <section id="catalog" class="w-[min(100%-40px,1240px)] mx-auto pt-16 md:pt-[76px] pb-16">
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-7">
+            <div>
+                <h2 class="font-serif font-semibold tracking-tight text-[clamp(1.8rem,3.4vw,2.6rem)]">Crafted to Carry
+                </h2>
+                <p class="mt-2 text-espresso/60 text-[.95rem] max-w-[52ch]">Premium materials, thoughtful compartments,
+                    and timeless design — built for every part of your day.</p>
+            </div>
+            <div id="filters" class="flex flex-wrap gap-2.5"></div>
+        </div>
+        <div id="productGrid" class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(258px,1fr))]"></div>
+    </section>
+
+
+
+    <!-- ================= PRODUCT VIEWER ================= -->
+    <div id="viewer" role="dialog" aria-modal="true" aria-hidden="true"
+        class="fixed inset-0 z-[110] bg-espresso/60 backdrop-blur-[7px] p-0 md:p-6 hidden place-items-center opacity-0 transition-opacity duration-300">
+        <div id="viewerPanel"
+            class="relative bg-ivory w-full h-[100svh] md:h-[min(860px,92svh)] md:w-[min(1160px,100%)] md:rounded-[28px] overflow-hidden shadow-[0_28px_60px_-24px_rgba(33,28,24,.4)] grid grid-cols-1 md:grid-cols-[1.04fr_.96fr] overflow-y-auto md:overflow-hidden">
+
+            <button type="button" id="viewerClose" aria-label="Close"
+                class="absolute top-3 right-3 md:top-4 md:right-4 z-[20] w-10 h-10 rounded-full border-2 border-espresso/25 bg-ivory/95 grid place-items-center text-[15px] hover:bg-espresso hover:text-ivory hover:border-espresso transition">
+                ✕
+            </button>
+
+            <div class="md:bg-linen md:p-[22px] md:flex md:flex-col md:gap-3.5 md:overflow-y-auto md:h-full">
+                <div
+                    class="relative bg-ivory md:rounded-[18px] md:overflow-hidden h-[30svh] min-h-[190px] md:h-auto md:aspect-square md:min-h-0 shrink-0">
+                    <img id="galleryMain" src="" alt="" class="w-full h-full object-cover" />
+                    <span id="galleryCount"
+                        class="absolute top-3 left-3 z-[2] bg-espresso/75 text-ivory text-[.7rem] font-semibold px-3 py-1 rounded-full backdrop-blur">1
+                        / 10</span>
+                    <button type="button" id="galleryPrev" aria-label="Previous"
+                        class="absolute top-1/2 -translate-y-1/2 left-2.5 z-[2] w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-full bg-ivory/90 backdrop-blur text-espresso text-xl leading-none grid place-items-center hover:bg-espresso hover:text-ivory transition">‹</button>
+                    <button type="button" id="galleryNext" aria-label="Next"
+                        class="absolute top-1/2 -translate-y-1/2 right-2.5 z-[2] w-[38px] h-[38px] md:w-[42px] md:h-[42px] rounded-full bg-ivory/90 backdrop-blur text-espresso text-xl leading-none grid place-items-center hover:bg-espresso hover:text-ivory transition">›</button>
+                </div>
+
+                <div id="galleryThumbs"
+                    class="flex md:grid md:grid-cols-5 gap-2 md:gap-2.5 px-3 md:px-0 py-2.5 md:py-0 overflow-x-auto md:overflow-visible no-scrollbar shrink-0">
+                </div>
+            </div>
+
+            <div id="viewerInfo"
+                class="p-4 md:p-[clamp(24px,3vw,38px)] md:overflow-y-auto flex flex-col gap-3 md:gap-4"></div>
+        </div>
+    </div>
+
+    <div id="toast"
+        class="fixed left-1/2 bottom-7 -translate-x-1/2 translate-y-[140%] bg-espresso text-ivory px-6 py-3 rounded-full text-[.85rem] font-medium z-[120] transition-transform duration-[400ms] ease-[cubic-bezier(.22,.61,.36,1)] shadow-[0_28px_60px_-24px_rgba(33,28,24,.35)]">
+    </div>
+
+    <script>
+        /* ================================================================
+           A. IMAGE POOL
+           ================================================================ */
+        const POOL = [
+            "1584917865442-de89df76afd3", "1548036328-c9fa89d128fa", "1590874103328-eac38a683ce7",
+            "1553062407-98eeb64c6a62", "1622560480605-d83c853bc5c3", "1566150905458-1bf1fc113f0d",
+            "1591561954557-26941169b49e", "1581605405669-fcdf81165afa", "1547949003-9792a18a2601",
+            "1594223274512-ad4803739b7c", "1491637639811-60e2756cc1c7", "1548863227-3af567fc3b27"
+        ];
+        const IMG = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1100&q=80`;
+        const galleryFor = (offset, n = 10) =>
+            Array.from({ length: n }, (_, i) => IMG(POOL[(offset + i) % POOL.length]));
+
+        /* ================================================================
+           B. DATA MODEL — your API contract
+           ================================================================ */
+        const DEFAULT_DATA = {
+            meta: { currency: "TSh ", currencyCode: "TZS", locale: "en-US" },
+            hero: {
+                eyebrow: "New Season · 2026",
+                title: "Carry Bold.\nCarry *Smart*.",
+                subtitle: "Everyday bags engineered for real life — full-grain leather, water-resistant canvas and smart compartments that keep up with your day.",
+                image: IMG(POOL[0]),
+                primaryCta: { label: "Shop the Collection", href: "#catalog" },
+                secondaryCta: { label: "Explore Lookbook", href: "#catalog" },
+                stats: [
+                    { value: "240+", label: "Styles" },
+                    { value: "48h", label: "Free Delivery" },
+                    { value: "4.9★", label: "12k Reviews" }
+                ],
+                floatCard: { image: IMG(POOL[1]), label: "Bestseller", title: "The Weekender Tote" }
+            },
+            trust: [
+                "Free shipping over TSh 75,000", "2-year warranty", "30-day returns",
+                "Full-grain leather", "Carbon-neutral delivery", "Secure checkout"
+            ],
+            categories: [
+                { id: "all", label: "All Bags" },
+                { id: "tote", label: "Totes" },
+                { id: "backpack", label: "Backpacks" },
+                { id: "crossbody", label: "Crossbody" },
+                { id: "travel", label: "Travel" },
+                { id: "laptop", label: "Laptop" }
+            ],
+            products: [
+                {
+                    id: "p_001", name: "The Weekender Tote", category: "tote", priceMin: 7888, priceMax: 9888,
+                    badge: "Best Seller", badgeType: "sale", sku: "BC-WT-001",
+                    description: 'Full-grain leather tote with padded 15" laptop sleeve and magnetic quick-access top.',
+                    image: IMG(POOL[0]), gallery: galleryFor(0),
+                    specs: { material: "Full-grain leather", dimensions: "42 × 32 × 14 cm", weight: "1.1 kg", warranty: "2 years", capacity: "18 L", lining: "Cotton twill" },
+                    features: ['Padded 15" laptop compartment', 'Magnetic quick-access top closure', 'Two internal zip pockets', 'Reinforced leather base', 'Detachable shoulder strap']
+                },
+                {
+                    id: "p_002", name: "Ridge Daypack 22L", category: "backpack", priceMin: 6888, priceMax: 8488,
+                    badge: "New", badgeType: "new", sku: "BC-RD-022",
+                    description: "Water-resistant recycled canvas, ventilated back panel and a hidden anti-theft pocket.",
+                    image: IMG(POOL[3]), gallery: galleryFor(3),
+                    specs: { material: "Recycled 600D canvas", dimensions: "48 × 30 × 18 cm", weight: "0.9 kg", warranty: "2 years", capacity: "22 L", lining: "Recycled polyester" },
+                    features: ["Water-resistant coated shell", "Ventilated airflow back panel", "Hidden anti-theft rear pocket", 'Padded 16" laptop sleeve', "Side bottle pockets"]
+                },
+                {
+                    id: "p_003", name: "Marlo Crossbody", category: "crossbody", priceMin: 3888, priceMax: 4888,
+                    badge: "Popular", badgeType: "sale", sku: "BC-MR-003",
+                    description: "Compact pebbled-leather crossbody with adjustable strap and card-slot interior.",
+                    image: IMG(POOL[4]), gallery: galleryFor(4),
+                    specs: { material: "Pebbled leather", dimensions: "24 × 17 × 8 cm", weight: "0.5 kg", warranty: "2 years", capacity: "4 L", lining: "Microfibre" },
+                    features: ["Adjustable 140 cm strap", "Six interior card slots", "Hidden back slip pocket", "Gold-tone hardware", "Dust bag included"]
+                },
+                {
+                    id: "p_004", name: "Atlas Travel Duffel", category: "travel", priceMin: 12888, priceMax: 16888,
+                    badge: "Cabin Size", badgeType: "", sku: "BC-AT-045",
+                    description: "45L cabin-friendly duffel with shoe compartment, compression straps and trolley sleeve.",
+                    image: IMG(POOL[5]), gallery: galleryFor(5),
+                    specs: { material: "Waxed canvas + leather trim", dimensions: "55 × 32 × 28 cm", weight: "1.6 kg", warranty: "3 years", capacity: "45 L", lining: "Waterproof nylon" },
+                    features: ["Ventilated shoe compartment", "Trolley pass-through sleeve", "Four compression straps", "Lockable two-way zippers", "Detachable padded strap"]
+                },
+                {
+                    id: "p_005", name: "Executive Laptop Brief", category: "laptop", priceMin: 9888, priceMax: 12888,
+                    badge: "Pro", badgeType: "sale", sku: "BC-EX-016",
+                    description: 'Slim structured brief with 16" padded compartment and TSA-friendly front organiser.',
+                    image: IMG(POOL[6]), gallery: galleryFor(6),
+                    specs: { material: "Saffiano leather", dimensions: "40 × 29 × 11 cm", weight: "1.2 kg", warranty: "2 years", capacity: "12 L", lining: "Anti-scratch twill" },
+                    features: ['Fits 16" laptops', "TSA-friendly lay-flat design", "Front organiser panel", "Detachable luggage strap", "Padded top handle"]
+                },
+                {
+                    id: "p_006", name: "Nomad Roll-Top", category: "backpack", priceMin: 6888, priceMax: 8888,
+                    badge: "", badgeType: "", sku: "BC-NM-020",
+                    description: "Expandable roll-top with waxed canvas shell and weatherproof YKK zippers.",
+                    image: IMG(POOL[7]), gallery: galleryFor(7),
+                    specs: { material: "Waxed canvas", dimensions: "52 × 30 × 17 cm", weight: "1.0 kg", warranty: "2 years", capacity: "20–28 L", lining: "Coated polyester" },
+                    features: ["Expandable roll-top closure", "Weatherproof YKK zippers", "Quick-access side zip", "Padded laptop sleeve", "Reflective rear loop"]
+                },
+                {
+                    id: "p_007", name: "Solstice Shoulder Bag", category: "crossbody", priceMin: 4888, priceMax: 6888,
+                    badge: "Soft Suede", badgeType: "sale", sku: "BC-SL-007",
+                    description: "Soft suede shoulder bag with magnetic closure and detachable woven strap.",
+                    image: IMG(POOL[8]), gallery: galleryFor(8),
+                    specs: { material: "Italian suede", dimensions: "28 × 20 × 9 cm", weight: "0.6 kg", warranty: "2 years", capacity: "6 L", lining: "Cotton canvas" },
+                    features: ["Detachable woven strap", "Magnetic flap closure", "Interior zip pocket", "Protective suede spray", "Dust bag included"]
+                },
+                {
+                    id: "p_008", name: "Harbor Canvas Tote", category: "tote", priceMin: 2888, priceMax: 3888,
+                    badge: "New", badgeType: "new", sku: "BC-HB-008",
+                    description: "Heavyweight 18oz cotton canvas, internal zip pocket and reinforced base panel.",
+                    image: IMG(POOL[9]), gallery: galleryFor(9),
+                    specs: { material: "18oz cotton canvas", dimensions: "40 × 36 × 13 cm", weight: "0.7 kg", warranty: "2 years", capacity: "16 L", lining: "Unlined" },
+                    features: ["Reinforced base panel", "Internal zip pocket", "Two slip pockets", "Reinforced shoulder straps", "Machine washable"]
+                }
+            ]
+        };
+
+        /* ================================================================
+           C. STATE
+           ================================================================ */
+        let DATA = structuredClone(DEFAULT_DATA);
+        let activeFilter = "all";
+        let cart = 0;
+        let currentProductId = null;
+        let currentImageIndex = 0;
+
+        /* ================================================================
+           D. HELPERS
+           ================================================================ */
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+        const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const num = n => Number(n || 0).toLocaleString(DATA.meta.locale);
+        const priceRange = p => `${DATA.meta.currency}${num(p.priceMin)} – ${num(p.priceMax)}`;
+        const catLabel = id => DATA.categories.find(c => c.id === id)?.label || id;
+
+        function toast(msg) {
+            const t = $("#toast");
+            t.textContent = msg;
+            t.classList.remove("translate-y-[140%]");
+            clearTimeout(t._t);
+            t._t = setTimeout(() => t.classList.add("translate-y-[140%]"), 2200);
+        }
+
+        /* ================================================================
+           E. RENDER — HERO
+           ================================================================ */
+        function renderHero() {
+            const h = DATA.hero;
+            $('[data-bind="hero.eyebrow"]').textContent = h.eyebrow;
+            $('[data-bind="hero.title"]').innerHTML =
+                esc(h.title).replace(/\*(.+?)\*/g, '<em class="not-italic text-bronze">$1</em>').replace(/\n/g, "<br>");
+            $('[data-bind="hero.subtitle"]').textContent = h.subtitle;
+
+            const p = $('[data-bind="hero.primaryCta.label"]');
+            p.textContent = h.primaryCta.label;
+            p.closest("a").setAttribute("href", h.primaryCta.href);
+
+            const s = $('[data-bind="hero.secondaryCta.label"]');
+            s.textContent = h.secondaryCta.label;
+            s.closest("a").setAttribute("href", h.secondaryCta.href);
+
+            $("#heroImage").src = h.image;
+            $("#heroFloatImg").src = h.floatCard.image;
+            $("#heroFloatLabel").textContent = h.floatCard.label;
+            $("#heroFloatTitle").textContent = h.floatCard.title;
+
+            $("#heroStats").innerHTML = h.stats.map(st => `
+    <div>
+      <b class="block font-serif font-semibold text-[1.2rem]">${esc(st.value)}</b>
+      <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">${esc(st.label)}</span>
+    </div>`).join("");
+        }
+
+        /* ================================================================
+           F. RENDER — TRUST / FILTERS / GRID
+           ================================================================ */
+        function renderTrust() {
+            const items = DATA.trust.map(t => `
+    <span class="text-[.76rem] font-semibold tracking-[.14em] uppercase text-espresso/60 whitespace-nowrap inline-flex items-center gap-2.5">
+      <span class="text-bronze text-[.6rem]">◆</span>${esc(t)}
+    </span>`).join("");
+            $("#trustTrack").innerHTML = items + items;
+        }
+
+        function renderFilters() {
+            $("#filters").innerHTML = DATA.categories.map(c => `
+    <button type="button" data-cat="${esc(c.id)}"
+      class="px-[18px] py-[9px] rounded-full border text-[.84rem] font-semibold transition
+        ${c.id === activeFilter
+                    ? "bg-espresso border-espresso text-ivory"
+                    : "bg-ivory border-sand text-espresso/70 hover:border-espresso hover:text-espresso hover:-translate-y-px"}">
+      ${esc(c.label)}
+    </button>`).join("");
+        }
+
+        const EYE_SVG = `
+  <svg class="w-[15px] h-[15px] shrink-0 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>`;
+
+        function productCard(p, i) {
+            const badgeCls = p.badgeType === "sale" ? "bg-bronze" : p.badgeType === "new" ? "bg-espresso" : "bg-espresso";
+
+            return `
+  <article class="animate-rise bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-12px_rgba(33,28,24,.22)] hover:border-bronze/50"
+           style="animation-delay:${i * 45}ms" data-id="${esc(p.id)}">
+    <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+      ${p.badge ? `<span class="absolute top-3 left-3 z-[2] text-[.66rem] font-bold tracking-[.09em] uppercase px-2.5 py-1.5 rounded-full text-ivory ${badgeCls} pointer-events-none">${esc(p.badge)}</span>` : ""}
+      <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"
+           class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+           onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(140deg,#E9E1D5,#CFC3B3)'" />
+    </div>
+
+    <div class="p-4 md:px-[18px] md:py-[17px] flex flex-col gap-2.5 flex-1">
+      <span class="text-[.66rem] font-bold tracking-[.14em] uppercase text-bronze">${esc(catLabel(p.category))}</span>
+      <h3 class="font-serif font-semibold text-[1.08rem] tracking-[-.01em] cursor-pointer hover:text-bronze transition" data-view="${esc(p.id)}">${esc(p.name)}</h3>
+      <p class="text-[.82rem] text-espresso/60 line-clamp-2">${esc(p.description)}</p>
+
+      <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+        <b class="font-serif font-semibold text-base tracking-[-.02em] tabular-nums text-espresso">${priceRange(p)}</b>
+
+        <div class="flex items-center gap-2">
+          <button type="button" data-view="${esc(p.id)}"
+            class="flex-1 inline-flex items-center justify-center gap-2 h-[42px] px-4 rounded-full border-2 border-espresso/40 bg-ivory text-espresso text-[.78rem] font-semibold transition hover:border-espresso hover:bg-linen active:scale-[.97]">
+            ${EYE_SVG}
+            <span class="pointer-events-none">View</span>
+          </button>
+          <button type="button" data-add="${esc(p.id)}"
+            class="w-[42px] h-[42px] rounded-full border-0 grid place-items-center transition bg-espresso text-ivory hover:bg-bronze hover:rotate-90">
+            <svg class="pointer-events-none" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>`;
+        }
+
+        function renderGrid() {
+            const grid = $("#productGrid");
+
+            if (!grid.dataset.painted) {
+                grid.innerHTML = Array.from({ length: 8 }, () => `
+      <div class="bg-ivory border border-sand rounded-[18px] overflow-hidden">
+        <div class="aspect-[4/5] skeleton animate-shine"></div>
+        <div class="h-[11px] my-4 mx-[18px] rounded-md skeleton animate-shine w-[70%]"></div>
+        <div class="h-[11px] my-4 mx-[18px] rounded-md skeleton animate-shine w-[45%]"></div>
+      </div>`).join("");
+                grid.dataset.painted = "1";
+                requestAnimationFrame(() => setTimeout(renderGrid, 260));
+                return;
+            }
+
+            const list = activeFilter === "all"
+                ? DATA.products
+                : DATA.products.filter(p => p.category === activeFilter);
+
+            grid.innerHTML = list.length
+                ? list.map(productCard).join("")
+                : `<div class="col-span-full text-center py-16 text-espresso/50"><h3 class="font-serif text-xl mb-1">Nothing here yet</h3><p>Try another category.</p></div>`;
+        }
+
+        function renderAll() {
+            renderHero();
+            renderTrust();
+            renderFilters();
+            renderGrid();
+        }
+
+        /* ================================================================
+           G. PRODUCT VIEWER
+           ================================================================ */
+        function openViewer(id) {
+            const p = DATA.products.find(x => x.id === id);
+            if (!p) return;
+            currentProductId = id;
+            currentImageIndex = 0;
+            renderViewer();
+
+            const v = $("#viewer");
+            v.classList.remove("hidden");
+            v.classList.add("grid", "is-open");
+            v.setAttribute("aria-hidden", "false");
+            requestAnimationFrame(() => v.classList.remove("opacity-0"));
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeViewer() {
+            const v = $("#viewer");
+            v.classList.add("opacity-0");
+            v.classList.remove("is-open");
+            v.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            currentProductId = null;
+            setTimeout(() => {
+                v.classList.add("hidden");
+                v.classList.remove("grid");
+            }, 300);
+        }
+
+        function renderViewer() {
+            const p = DATA.products.find(x => x.id === currentProductId);
+            if (!p) return;
+            const g = (p.gallery && p.gallery.length) ? p.gallery : [p.image];
+
+            $("#galleryThumbs").innerHTML = g.map((u, i) => `
+    <img src="${esc(u)}" data-thumb="${i}" alt="${esc(p.name)} photo ${i + 1}" loading="lazy"
+      class="w-14 h-14 md:w-full md:h-auto md:aspect-square object-cover rounded-lg cursor-pointer border-2 transition shrink-0
+             ${i === 0 ? "border-bronze opacity-100" : "border-transparent opacity-70 hover:opacity-100"}"
+      onerror="this.style.background='#E9E1D5';this.removeAttribute('src')" />
+  `).join("");
+
+            const specs = p.specs || {};
+            const specRows = Object.entries(specs)
+                .filter(([, v]) => v)
+                .map(([k, v]) => `
+      <div class="bg-ivory px-2.5 py-2 md:px-3.5 md:py-3">
+        <span class="block text-[.6rem] md:text-[.66rem] tracking-[.08em] md:tracking-[.1em] uppercase text-espresso/50 mb-0.5 leading-tight">${esc(k)}</span>
+        <b class="text-[.78rem] md:text-[.86rem] font-semibold leading-tight text-espresso">${esc(v)}</b>
+      </div>`).join("");
+
+            $("#viewerInfo").innerHTML = `
+    <div class="flex gap-2 flex-wrap">
+      <span class="text-[.66rem] font-bold tracking-[.1em] uppercase px-2.5 py-1.5 rounded-full bg-linen text-bronze">${esc(catLabel(p.category))}</span>
+      ${p.badge ? `<span class="text-[.66rem] font-bold tracking-[.1em] uppercase px-2.5 py-1.5 rounded-full bg-linen text-bronze">${esc(p.badge)}</span>` : ""}
+    </div>
+
+    <h2 class="font-serif font-semibold tracking-[-.02em] text-[clamp(1.25rem,2.5vw,2rem)] pr-10">${esc(p.name)}</h2>
+
+    <div class="flex items-baseline gap-3 flex-wrap px-4 py-3 rounded-[14px] bg-linen border border-sand">
+      <b class="font-serif font-semibold text-[1.3rem] md:text-[1.6rem] tracking-[-.02em] text-espresso">${priceRange(p)}</b>
+    </div>
+
+    <p class="text-[.88rem] md:text-[.92rem] text-espresso/70 leading-relaxed">${esc(p.description)}</p>
+
+    ${specRows ? `
+      <div>
+        <div class="text-[.68rem] tracking-[.12em] uppercase text-espresso/50 mb-2 font-semibold">Specifications</div>
+        <div class="grid grid-cols-2 gap-px bg-sand border border-sand rounded-[14px] overflow-hidden">${specRows}</div>
+      </div>` : ""}
+
+    ${p.features?.length ? `
+      <div>
+        <div class="text-[.68rem] tracking-[.12em] uppercase text-espresso/50 mb-2 font-semibold">Key features</div>
+        <ul class="grid gap-2">
+          ${p.features.map(f => `
+            <li class="flex gap-2.5 text-[.84rem] text-espresso/80">
+              <span class="shrink-0 w-[18px] h-[18px] rounded-full bg-linen text-bronze text-[.66rem] font-extrabold grid place-items-center mt-0.5">✓</span>
+              ${esc(f)}
+            </li>`).join("")}
+        </ul>
+      </div>` : ""}
+
+    <div class="flex flex-wrap gap-3 mt-auto pt-2">
+      <button type="button" id="viewerAddBtn"
+        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold shadow-[0_10px_26px_-10px_rgba(169,138,99,.9)] hover:-translate-y-0.5 transition">
+        Add to Cart
+      </button>
+      <button type="button" id="viewerCloseBtn"
+        class="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border-2 border-espresso bg-transparent text-espresso text-[.86rem] font-semibold transition hover:bg-espresso hover:text-ivory">
+        Close
+      </button>
+    </div>
+  `;
+
+            setImage(currentImageIndex);
+
+            const addBtn = $("#viewerAddBtn");
+            if (addBtn) {
+                addBtn.onclick = (ev) => {
+                    ev.stopPropagation();
+                    cart++;
+                    $("#cartCount").textContent = cart;
+                    toast("Added to cart ✓");
+                };
+            }
+            const closeBtn = $("#viewerCloseBtn");
+            if (closeBtn) {
+                closeBtn.onclick = (ev) => { ev.stopPropagation(); closeViewer(); };
+            }
+        }
+
+        function setImage(i) {
+            const p = DATA.products.find(x => x.id === currentProductId);
+            if (!p) return;
+            const g = (p.gallery && p.gallery.length) ? p.gallery : [p.image];
+            currentImageIndex = (i + g.length) % g.length;
+
+            $("#galleryMain").src = g[currentImageIndex];
+            $("#galleryMain").alt = `${p.name} — photo ${currentImageIndex + 1}`;
+            $("#galleryCount").textContent = `${currentImageIndex + 1} / ${g.length}`;
+
+            $$("#galleryThumbs img").forEach((t, idx) => {
+                const on = idx === currentImageIndex;
+                t.classList.toggle("border-bronze", on);
+                t.classList.toggle("border-transparent", !on);
+                t.classList.toggle("opacity-100", on);
+                t.classList.toggle("opacity-70", !on);
+            });
+        }
+
+        /* ================================================================
+           H. VIEWER CONTROLS
+           ================================================================ */
+        $("#viewerClose").addEventListener("click", closeViewer);
+        $("#galleryPrev").addEventListener("click", () => setImage(currentImageIndex - 1));
+        $("#galleryNext").addEventListener("click", () => setImage(currentImageIndex + 1));
+
+        $("#galleryThumbs").addEventListener("click", e => {
+            const t = e.target.closest("[data-thumb]");
+            if (t) setImage(Number(t.dataset.thumb));
+        });
+
+        $("#viewer").addEventListener("click", e => {
+            if (e.target.id === "viewer") closeViewer();
+        });
+
+        document.addEventListener("keydown", e => {
+            if (!$("#viewer").classList.contains("is-open")) return;
+            if (e.key === "Escape") closeViewer();
+            if (e.key === "ArrowRight") setImage(currentImageIndex + 1);
+            if (e.key === "ArrowLeft") setImage(currentImageIndex - 1);
+        });
+
+        /* ================================================================
+           I. GLOBAL CLICK HANDLER
+           ================================================================ */
+        document.addEventListener("click", e => {
+            const chip = e.target.closest("[data-cat]");
+            if (chip) { activeFilter = chip.dataset.cat; renderFilters(); renderGrid(); return; }
+
+            const view = e.target.closest("[data-view]");
+            if (view) { openViewer(view.dataset.view); return; }
+
+            const a = e.target.closest("[data-add]");
+            if (a) {
+                cart++;
+                $("#cartCount").textContent = cart;
+                toast("Added to cart ✓");
+            }
+        });
+
+        /* ================================================================
+           J. BOOT
+           ================================================================ */
+        renderAll();
+
+        /* ================================================================
+           K. HOW TO CONNECT YOUR BACKEND
+        
+           (async () => {
+             try {
+               const res  = await fetch("https://your-api.com/api/bags-carry");
+               const json = await res.json();
+               DATA = { ...structuredClone(DEFAULT_DATA), ...json };
+               renderAll();
+             } catch (err) {
+               console.warn("API unavailable — using default data.", err);
+             }
+           })();
+           ================================================================ */
+    </script>
+
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

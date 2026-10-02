@@ -1,0 +1,3539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arvo Stile - Exquisite Timeless Appeal</title>
+
+    <!-- Google Fonts: Great Vibes (Logo), Poppins (Body), Playfair Display (Luxury Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="antialiased bg-arvoLight font-sans overflow-x-hidden">
+
+    <!-- The Header will be injected here by JavaScript -->
+    <div id="header-root"></div>
+
+    <!-- HERO SECTION EXAMPLE (Using Playfair Display to fit the screen) -->
+
+
+    <!-- ===== ONLY THE ANIMATION MECHANICS LIVE HERE ===== -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%
+        }
+
+        /* fine grain — premium print feel */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .028;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ---- arch silhouette (perfect semicircular dome) ---- */
+        .arch {
+            border-radius: 50% 50% 0 0 / 52.63% 52.63% 0 0
+        }
+
+        /* ---- slide cross-fade + slow ken-burns zoom ---- */
+        .slide {
+            opacity: 0;
+            transform: scale(1.08);
+            transition: opacity 1s cubic-bezier(.2, .8, .2, 1), transform 9s linear;
+            will-change: opacity, transform;
+        }
+
+        .slide.is-active {
+            opacity: 1;
+            transform: scale(1)
+        }
+
+        /* ---- soft bottom vignette only — image stays clear ---- */
+        .showcase-stage::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(to top,
+                    rgba(33, 28, 24, .55) 0%,
+                    rgba(33, 28, 24, .10) 22%,
+                    transparent 44%);
+        }
+
+        /* ---- HERO BACKGROUND — full-opacity image + directional overlay ---- */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url("picha/hero.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        /* overlay: protects text on the left, lets the image show on the right */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg,
+                    rgba(246, 241, 232, 0.97) 0%,
+                    rgba(246, 241, 232, 0.92) 30%,
+                    rgba(246, 241, 232, 0.62) 60%,
+                    rgba(246, 241, 232, 0.22) 100%);
+        }
+
+        /* ---- TEXT SHADOW — makes hero copy crisp over any background ---- */
+        .hero-copy .text-shadow-safe,
+        .hero-copy h1,
+        .hero-copy h1 *,
+        .hero-copy p,
+        .hero-copy .micro-line,
+        .hero-copy .trust-line {
+            text-shadow:
+                0 1px 2px rgba(246, 241, 232, 0.95),
+                0 2px 10px rgba(246, 241, 232, 0.85),
+                0 4px 24px rgba(246, 241, 232, 0.65);
+        }
+
+        /* ---- text swap ---- */
+        @keyframes swapIn {
+            from {
+                opacity: 0;
+                transform: translateY(13px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .info-text.swap {
+            animation: swapIn .62s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        /* ---- entrance ---- */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(26px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .rise {
+            animation: rise .95s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        /* ---- a11y ---- */
+        @media (prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+
+    <!-- ================= HERO ================= -->
+    <main>
+        <!-- full-width section · bg fills whole viewport -->
+        <section class="relative w-full overflow-hidden" aria-labelledby="hero-title">
+
+            <!-- background image — fills entire hero section -->
+            <div class="hero-bg" aria-hidden="true"></div>
+
+            <!-- ambient glow -->
+            <div
+                class="pointer-events-none absolute -top-[10%] -right-[5%] w-[55vw] h-[55vw] max-w-[760px] max-h-[760px] blur-[20px] bg-[radial-gradient(circle,rgba(169,138,99,.18),transparent_65%)] z-[1]">
+            </div>
+
+            <!-- inner content (constrained, centered) -->
+            <div class="relative z-[2] max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
+                <div
+                    class="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-20 items-center pt-4 sm:pt-6 lg:pt-10 pb-8 sm:pb-12 lg:pb-20 lg:min-h-[78vh]">
+
+                    <!-- ================= COPY ================= -->
+                    <div class="hero-copy">
+
+                        <span
+                            class="rise text-shadow-safe inline-flex items-center gap-2 rounded-full border border-sand bg-ivory/70 backdrop-blur-md pl-[.4rem] pr-3.5 py-1 sm:py-[.4rem] text-[.6rem] sm:text-[.68rem] tracking-[.15em] uppercase text-bronze"
+                            style="animation-delay:.05s">
+                            <span
+                                class="w-[20px] h-[20px] sm:w-[22px] sm:h-[22px] rounded-full bg-bronze text-ivory grid place-items-center text-[.55rem] sm:text-[.58rem]">✦</span>
+                            Handmade in Tanzania
+                        </span>
+
+                        <h1 id="hero-title"
+                            class="rise font-serif font-normal text-[clamp(2rem,5.6vw,5rem)] leading-[1] sm:leading-[.97] tracking-[-.03em] mt-4 mb-3 sm:mt-6 sm:mb-5 text-espresso"
+                            style="animation-delay:.16s">
+                            <span class="block">Timeless African</span>
+                            <span class="block">Artistry,
+                                <em
+                                    class="italic font-light text-bronze relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[.05em] after:h-[.07em] after:bg-current after:opacity-25 after:rounded-full">Reimagined</em>
+                            </span>
+                        </h1>
+
+                        <p class="rise text-shadow-safe text-[.92rem] sm:text-[1rem] lg:text-[1.1rem] leading-[1.55] sm:leading-[1.68] text-bronze max-w-[52ch]"
+                            style="animation-delay:.27s">
+                            Handwoven baskets, kitenge &amp; batiki wear, and statement home pieces —
+                            crafted by East African artisans and delivered to your door, anywhere in the world.
+                        </p>
+
+                        <!-- CTAs — one horizontal line, compact on mobile -->
+                        <div class="rise flex flex-nowrap gap-2 sm:gap-3 mt-5 mb-4 sm:mt-8 sm:mb-7"
+                            style="animation-delay:.38s">
+
+                            <a href="#collection"
+                                class="group/btn relative isolate overflow-hidden inline-flex items-center justify-center gap-1.5 sm:gap-2.5 rounded-full bg-espresso text-ivory px-3 py-2.5 sm:px-6 sm:py-3 lg:px-7 lg:py-[1.05rem] text-[11px] sm:text-[13px] lg:text-[.875rem] font-medium shadow-[0_12px_30px_-14px_rgba(33,28,24,.75)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_42px_-16px_rgba(169,138,99,.7)] whitespace-nowrap flex-1">
+                                <span class="relative z-10">Discover More</span>
+                                <svg class="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1 shrink-0"
+                                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                                <span
+                                    class="absolute inset-0 z-0 bg-bronze translate-y-full transition-transform duration-500 ease-[cubic-bezier(.65,0,.35,1)] group-hover/btn:translate-y-0"></span>
+                            </a>
+
+                            <a href="https://wa.me/255766535376"
+                                class="group/btn2 inline-flex items-center justify-center gap-1.5 sm:gap-2.5 rounded-full border border-sand px-3 py-2.5 sm:px-6 sm:py-3 lg:px-7 lg:py-[1.05rem] text-[11px] sm:text-[13px] lg:text-[.875rem] font-medium text-espresso transition-all duration-300 hover:bg-espresso hover:text-ivory hover:border-espresso hover:-translate-y-0.5 whitespace-nowrap flex-1">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                                    class="shrink-0">
+                                    <path
+                                        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.97c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z" />
+                                </svg>
+                                <span>Need Custom Made</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust -->
+                        <div class="rise trust-line text-shadow-safe flex items-center gap-3 sm:gap-4 flex-wrap"
+                            style="animation-delay:.49s">
+                            <div class="flex" aria-hidden="true">
+                                <i
+                                    class="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-ivory shadow-[0_2px_8px_rgba(33,28,24,.15)] bg-gradient-to-br from-[#A98A63] to-[#6E5A3E]"></i>
+                                <i
+                                    class="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-ivory shadow-[0_2px_8px_rgba(33,28,24,.15)] bg-gradient-to-br from-[#CFC3B3] to-[#8C7A6B] -ml-[10px]"></i>
+                                <i
+                                    class="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-ivory shadow-[0_2px_8px_rgba(33,28,24,.15)] bg-gradient-to-br from-[#211C18] to-[#0F0C0A] -ml-[10px]"></i>
+                                <i
+                                    class="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full border-2 border-ivory shadow-[0_2px_8px_rgba(33,28,24,.15)] bg-gradient-to-br from-[#E9E1D5] to-[#CFC3B3] -ml-[10px]"></i>
+                            </div>
+                            <div>
+                                <div class="text-bronze text-[.68rem] sm:text-[.72rem] tracking-[.14em] leading-none"
+                                    aria-hidden="true">★★★★★</div>
+                                <p class="text-[.74rem] sm:text-[.79rem] text-bronze mt-[.28rem]"><b
+                                        class="text-espresso font-semibold">4.9</b> ·
+                                    1,200+ happy customers in 30+ countries</p>
+                            </div>
+                        </div>
+
+                        <!-- Micro features -->
+                        <div class="rise micro-line text-shadow-safe flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-[.45rem] mt-4 sm:mt-[1.9rem] pt-4 sm:pt-6 border-t border-sand"
+                            style="animation-delay:.60s">
+                            <span
+                                class="inline-flex items-center gap-[.4rem] text-[.7rem] sm:text-[.74rem] tracking-[.05em] text-bronze">
+                                <svg class="text-bronze shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                                    <path d="M12 3v18M5 10l7-7 7 7" />
+                                </svg>
+                                Artisan-made
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-[.4rem] text-[.7rem] sm:text-[.74rem] tracking-[.05em] text-bronze">
+                                <svg class="text-bronze shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18" />
+                                </svg>
+                                Worldwide shipping
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-[.4rem] text-[.7rem] sm:text-[.74rem] tracking-[.05em] text-bronze">
+                                <svg class="text-bronze shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                Chat-to-order
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- ================================================================
+             PRODUCT SHOWCASE
+             25 products · 5 categories interleaved · 8s rotation
+             Pattern: Bags → Home → Apparel → Accessories → Bespoke → repeat
+             ================================================================ -->
+                    <div id="showcase"
+                        class="group relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[470px] justify-self-center lg:justify-self-end drop-shadow-[0_34px_52px_rgba(33,28,24,.30)] mt-2 sm:mt-0"
+                        role="region" aria-roledescription="carousel" aria-label="Featured Arvo Stile products">
+
+                        <!-- ---------- IMAGE STAGE ---------- -->
+                        <div class="showcase-stage relative aspect-[1/0.95] overflow-hidden arch bg-espresso">
+
+                            <!-- 01 · BAGS & CARRY -->
+                            <div class="slide is-active absolute inset-0" data-cat="Bags &amp; Carry"
+                                data-name="Everyday Tote Bag"
+                                data-desc="Spacious, durable fabric tote designed for daily essentials — combining everyday utility with vibrant African prints."
+                                data-chip="Bestseller">
+                                <img src="picha/hero2.jpg" alt="Everyday tote bag in African print"
+                                    class="w-full h-full object-cover" fetchpriority="high">
+                            </div>
+
+                            <!-- 02 · HOME & LIVING -->
+                            <div class="slide absolute inset-0" data-cat="Home &amp; Living"
+                                data-name="Ankara Lined Seagrass Basket"
+                                data-desc="Premium seagrass basket crafted externally with natural fibers and lined internally with vibrant Ankara material."
+                                data-chip="Signature">
+                                <img src="picha/hero.jpg" alt="Ankara lined seagrass basket"
+                                    class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 03 · APPAREL -->
+                            <div class="slide absolute inset-0" data-cat="Apparel" data-name="Kitenge Wrap Blouse"
+                                data-desc="Tailored statement wrap blouse featuring vibrant kitenge print — perfect for office wear or a casual outing."
+                                data-chip="Statement">
+                                <img src="picha/hero2.jpg" alt="Kitenge wrap blouse" class="w-full h-full object-cover"
+                                    loading="lazy">
+                            </div>
+
+                            <!-- 04 · ACCESSORIES -->
+                            <div class="slide absolute inset-0" data-cat="Accessories" data-name="Beaded Wall Hanging"
+                                data-desc="Hand-beaded wall art in earthy tones — a striking, one-of-a-kind accent for any wall."
+                                data-chip="One-of-a-kind">
+                                <img src="picha/hero.jpg" alt="Beaded wall hanging" class="w-full h-full object-cover"
+                                    loading="lazy">
+                            </div>
+
+                            <!-- 05 · BESPOKE -->
+                            <div class="slide absolute inset-0" data-cat="Bespoke" data-name="Kikoi Throw Blanket"
+                                data-desc="Custom-woven kikoi cotton throw with fringed edges — made to order in your preferred tones."
+                                data-chip="Made to Order">
+                                <img src="picha/hero2.jpg" alt="Kikoi throw blanket" class="w-full h-full object-cover"
+                                    loading="lazy">
+                            </div>
+
+                            <!-- 06 · BAGS & CARRY -->
+                            <div class="slide absolute inset-0" data-cat="Bags &amp; Carry"
+                                data-name="Fabric Laptop Bag"
+                                data-desc="Professional, protective laptop carrier styled with distinct African fabric accents."
+                                data-chip="Workwear">
+                                <img src="picha/hero.jpg" alt="African fabric laptop bag"
+                                    class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 07 · HOME & LIVING -->
+                            <div class="slide absolute inset-0" data-cat="Home &amp; Living"
+                                data-name="Handwoven Kapu Basket"
+                                data-desc="Eco-friendly natural fiber basket — versatile for storage, home organization, or decor."
+                                data-chip="Artisan Made">
+                                <img src="picha/hero2.jpg" alt="Handwoven kapu basket"
+                                    class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 08 · APPAREL -->
+                            <div class="slide absolute inset-0" data-cat="Apparel" data-name="Statement Kimono Duster"
+                                data-desc="Versatile, lightweight layering piece that instantly adds drama and luxury to any basic outfit."
+                                data-chip="Layer It">
+                                <img src="https://loremflickr.com/900/1000/kimono,african,fashion,duster/all?lock=18"
+                                    alt="Statement kimono duster" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 09 · ACCESSORIES -->
+                            <div class="slide absolute inset-0" data-cat="Accessories" data-name="Sisal Table Runner"
+                                data-desc="Handcrafted table runner bringing elegance and culture to your dining experience."
+                                data-chip="Tabletop">
+                                <img src="https://loremflickr.com/900/1000/table,runner,woven,sisal/all?lock=19"
+                                    alt="Sisal table runner" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 10 · BESPOKE -->
+                            <div class="slide absolute inset-0" data-cat="Bespoke" data-name="Handwoven Baby Bassinet"
+                                data-desc="Safe, cozy, artisan-crafted bassinet available in distinct pentagon or zigzag patterns."
+                                data-chip="Newborn">
+                                <img src="https://loremflickr.com/900/1000/baby,bassinet,woven,african/all?lock=20"
+                                    alt="Handwoven baby bassinet" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 11 · BAGS & CARRY -->
+                            <div class="slide absolute inset-0" data-cat="Bags &amp; Carry"
+                                data-name="Market Day Shoulder Bag"
+                                data-desc="Sturdy shoulder bag with plenty of pockets — built for busy market mornings and everyday carry."
+                                data-chip="Practical">
+                                <img src="https://loremflickr.com/900/1000/shoulder,bag,african,woven/all?lock=21"
+                                    alt="Market day shoulder bag" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 12 · HOME & LIVING -->
+                            <div class="slide absolute inset-0" data-cat="Home &amp; Living" data-name="Comfort Pet Bed"
+                                data-desc="Sustainable, cozy pet resting bed designed to blend seamlessly with your home decor."
+                                data-chip="Cosy">
+                                <img src="https://loremflickr.com/900/1000/pet,bed,dog,woven/all?lock=22"
+                                    alt="Handmade comfort pet bed" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 13 · APPAREL -->
+                            <div class="slide absolute inset-0" data-cat="Apparel" data-name="Ankara Bomber Jacket"
+                                data-desc="Structured jacket accented with kitenge or batiki — designed for the modern professional."
+                                data-chip="Executive">
+                                <img src="https://loremflickr.com/900/1000/african,jacket,fashion,bomber/all?lock=23"
+                                    alt="Ankara bomber jacket" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 14 · ACCESSORIES -->
+                            <div class="slide absolute inset-0" data-cat="Accessories" data-name="Handwoven Fruit Bowl"
+                                data-desc="Shallow woven bowl for fruit, bread, or décor — a warm, organic touch for kitchen or dining table."
+                                data-chip="Kitchen">
+                                <img src="https://loremflickr.com/900/1000/woven,bowl,basket,fruit/all?lock=24"
+                                    alt="Handwoven fruit bowl" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 15 · BESPOKE -->
+                            <div class="slide absolute inset-0" data-cat="Bespoke" data-name="Bespoke Batiki Midi Dress"
+                                data-desc="Elegantly structured midi dress in premium viscose cotton batiki — made to your measurements for a perfect fit."
+                                data-chip="Signature">
+                                <img src="https://loremflickr.com/900/1000/african,dress,midi,batiki/all?lock=25"
+                                    alt="Bespoke batiki midi dress" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 16 · BAGS & CARRY -->
+                            <div class="slide absolute inset-0" data-cat="Bags &amp; Carry"
+                                data-name="Kitenge Crossbody Bag"
+                                data-desc="Compact crossbody in durable kitenge fabric — fits phone, wallet and keys, hands-free and stylish."
+                                data-chip="Hands-free">
+                                <img src="https://loremflickr.com/900/1000/crossbody,bag,kitenge,african/all?lock=26"
+                                    alt="Kitenge crossbody bag" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 17 · HOME & LIVING -->
+                            <div class="slide absolute inset-0" data-cat="Home &amp; Living" data-name="Sisal Floor Mat"
+                                data-desc="Natural, eco-friendly floor covering that adds earthy texture and durability to your floors."
+                                data-chip="Eco Friendly">
+                                <img src="https://loremflickr.com/900/1000/sisal,mat,woven,rug/all?lock=27"
+                                    alt="Handwoven sisal floor mat" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 18 · APPAREL -->
+                            <div class="slide absolute inset-0" data-cat="Apparel" data-name="Batiki Beach Cover-Up"
+                                data-desc="Lightweight batiki cotton cover-up — effortless style from poolside to sunset dinner."
+                                data-chip="Vacation">
+                                <img src="https://loremflickr.com/900/1000/beach,coverup,batiki,fashion/all?lock=28"
+                                    alt="Batiki beach cover-up" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 19 · ACCESSORIES -->
+                            <div class="slide absolute inset-0" data-cat="Accessories" data-name="Kanga Pillowcase"
+                                data-desc="Vibrant, comfortable cushion cover custom-made from authentic kanga print — soft and durable."
+                                data-chip="Custom Made">
+                                <img src="https://loremflickr.com/900/1000/pillow,african,fabric,cushion/all?lock=29"
+                                    alt="Kanga print pillowcase" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 20 · BESPOKE -->
+                            <div class="slide absolute inset-0" data-cat="Bespoke" data-name="Matching Co-ord Set"
+                                data-desc="Effortless matching two-piece set crafted from premium viscose cotton batiki — made to order for a bold, cohesive look."
+                                data-chip="Made to Order">
+                                <img src="https://loremflickr.com/900/1000/african,fashion,coord,set/all?lock=30"
+                                    alt="Matching co-ord set in batiki" class="w-full h-full object-cover"
+                                    loading="lazy">
+                            </div>
+
+                            <!-- 21 · BAGS & CARRY -->
+                            <div class="slide absolute inset-0" data-cat="Bags &amp; Carry" data-name="Clutch Bag"
+                                data-desc="Sleek, elegant evening and daytime clutch featuring bold cultural textures — ready to elevate any look."
+                                data-chip="Evening">
+                                <img src="https://loremflickr.com/900/1000/clutch,bag,african,textile/all?lock=31"
+                                    alt="African print clutch bag" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 22 · HOME & LIVING -->
+                            <div class="slide absolute inset-0" data-cat="Home &amp; Living"
+                                data-name="Handcrafted Lampshade"
+                                data-desc="Artisanal lighting accent designed to cast a warm, culturally rich glow in any room."
+                                data-chip="Handmade">
+                                <img src="https://loremflickr.com/900/1000/lampshade,woven,handmade/all?lock=32"
+                                    alt="Handcrafted woven lampshade" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 23 · APPAREL -->
+                            <div class="slide absolute inset-0" data-cat="Apparel" data-name="Batiki Shorts"
+                                data-desc="Stylish, relaxed-fit shorts designed for warm-weather ease, casual outings, and chic vacation wear."
+                                data-chip="Warm Weather">
+                                <img src="https://loremflickr.com/900/1000/shorts,african,fashion,batiki/all?lock=33"
+                                    alt="Batiki shorts" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 24 · ACCESSORIES -->
+                            <div class="slide absolute inset-0" data-cat="Accessories" data-name="Traditional Hand Fan"
+                                data-desc="Beautiful, functional handwoven fan — perfect for warm days or cultural styling."
+                                data-chip="Heritage">
+                                <img src="https://loremflickr.com/900/1000/hand,fan,woven,african/all?lock=34"
+                                    alt="Traditional handwoven fan" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- 25 · BESPOKE -->
+                            <div class="slide absolute inset-0" data-cat="Bespoke" data-name="Executive Blazer"
+                                data-desc="Tailored structured blazer accented with kitenge or batiki lapels — designed for the modern professional."
+                                data-chip="Executive">
+                                <img src="https://loremflickr.com/900/1000/blazer,african,fashion,tailored/all?lock=35"
+                                    alt="Executive kitenge blazer" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+
+                            <!-- overlay labels -->
+                            <span data-info="chip"
+                                class="absolute z-[3] left-4 sm:left-5 bottom-[12px] sm:bottom-[15px] inline-flex items-center gap-1.5 rounded-full bg-ivory/95 backdrop-blur px-2.5 sm:px-3 py-[.36rem] sm:py-[.42rem] text-[.55rem] sm:text-[.58rem] font-semibold tracking-[.15em] uppercase text-espresso transition-all duration-300">
+                                Bestseller
+                            </span>
+                            <span data-info="counter"
+                                class="absolute z-[3] right-4 sm:right-5 bottom-[12px] sm:bottom-[15px] font-serif text-[.72rem] sm:text-[.8rem] tracking-[.06em] text-ivory/90">
+                                01 / 25
+                            </span>
+                        </div>
+
+                        <!-- ---------- INFO PANEL ---------- -->
+                        <div
+                            class="relative z-[3] bg-ivory rounded-b-[24px] sm:rounded-b-[28px] px-4 sm:px-6 pt-4 sm:pt-6 pb-4 sm:pb-5 border border-sand border-t-0">
+
+                            <div class="info-text">
+                                <p data-info="cat"
+                                    class="text-[.55rem] sm:text-[.6rem] font-semibold tracking-[.17em] uppercase text-bronze mb-1.5 sm:mb-2">
+                                    Bags
+                                    &amp; Carry</p>
+                                <h3 data-info="name"
+                                    class="font-serif font-medium text-[1rem] sm:text-[clamp(1.12rem,1.5vw,1.32rem)] leading-[1.22] tracking-[-.018em] text-espresso">
+                                    Everyday Tote Bag</h3>
+                                <p data-info="desc"
+                                    class="text-[.78rem] sm:text-[.83rem] leading-[1.55] sm:leading-[1.6] text-bronze/85 mt-1.5 sm:mt-2 min-h-[3.6em] sm:min-h-[3.9em]">
+                                    Spacious, durable fabric tote designed for daily essentials — combining everyday
+                                    utility with vibrant African prints.</p>
+                            </div>
+
+                            <div class="flex items-center gap-2 sm:gap-2.5 mt-3 sm:mt-5">
+                                <!-- DYNAMIC CATEGORY CTA -->
+                                <a id="cta-category"
+                                    href="https://wa.me/255766535376?text=Hi%20Arvo%20Stile%2C%20I%27d%20like%20to%20order%20from%20Bags%20%26%20Carry."
+                                    class="flex-1 inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-espresso text-ivory px-3 sm:px-4 py-2.5 sm:py-[.85rem] text-[.68rem] sm:text-[.78rem] font-semibold tracking-[.12em] uppercase whitespace-nowrap transition-all duration-300 hover:bg-bronze hover:-translate-y-0.5">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true" class="shrink-0">
+                                        <path
+                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.97c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z" />
+                                    </svg>
+                                    <span data-info="cta-text">BAGS &amp; CARRY</span>
+                                </a>
+
+                                <button type="button" data-nav="prev" aria-label="Previous product"
+                                    class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full border border-sand grid place-items-center text-espresso transition-all duration-300 hover:bg-espresso hover:text-ivory hover:border-espresso active:scale-95">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M15 18l-6-6 6-6" />
+                                    </svg>
+                                </button>
+                                <button type="button" data-nav="next" aria-label="Next product"
+                                    class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full border border-sand grid place-items-center text-espresso transition-all duration-300 hover:bg-espresso hover:text-ivory hover:border-espresso active:scale-95">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        aria-hidden="true">
+                                        <path d="M9 6l6 6-6 6" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= SHOWCASE SCRIPT ================= -->
+    <script>
+        (function () {
+            var showcase = document.getElementById('showcase');
+            if (!showcase) return;
+
+            var slides = Array.prototype.slice.call(showcase.querySelectorAll('.slide'));
+            var infoText = showcase.querySelector('.info-text');
+            var elCat = showcase.querySelector('[data-info="cat"]');
+            var elName = showcase.querySelector('[data-info="name"]');
+            var elDesc = showcase.querySelector('[data-info="desc"]');
+            var elChip = showcase.querySelector('[data-info="chip"]');
+            var elCount = showcase.querySelector('[data-info="counter"]');
+            var elCtaText = showcase.querySelector('[data-info="cta-text"]');
+            var elCta = document.getElementById('cta-category');
+            var btnPrev = showcase.querySelector('[data-nav="prev"]');
+            var btnNext = showcase.querySelector('[data-nav="next"]');
+
+            var WA_NUMBER = '255766535376';
+            var DURATION = 8000;
+            var total = slides.length;
+
+            var idx = 0;
+            var timer = null;
+            var startedAt = 0;
+            var remaining = DURATION;
+            var paused = false;
+
+            function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+            /* ---------------- RENDER ---------------- */
+            function render(n) {
+                idx = ((n % total) + total) % total;
+
+                slides.forEach(function (s, k) {
+                    s.classList.toggle('is-active', k === idx);
+                });
+
+                var d = slides[idx].dataset;
+                elCat.textContent = d.cat || '';
+                elName.textContent = d.name || '';
+                elDesc.textContent = d.desc || '';
+                elCount.textContent = pad(idx + 1) + ' / ' + pad(total);
+
+                /* dynamic category CTA */
+                var cat = (d.cat || '').toUpperCase();
+                if (elCtaText) elCtaText.textContent = cat;
+                if (elCta) {
+                    var msg = encodeURIComponent('Hi Arvo Stile, I would like to order from ' + (d.cat || '') + '.');
+                    elCta.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + msg);
+                }
+
+                if (d.chip) {
+                    elChip.textContent = d.chip;
+                    elChip.classList.remove('opacity-0', 'scale-90');
+                } else {
+                    elChip.classList.add('opacity-0', 'scale-90');
+                }
+
+                infoText.classList.remove('swap');
+                void infoText.offsetWidth;
+                infoText.classList.add('swap');
+            }
+
+            /* ---------------- TIMING ---------------- */
+            function schedule(ms) {
+                clearTimeout(timer);
+                startedAt = Date.now();
+                timer = setTimeout(tick, ms);
+            }
+            function tick() { goTo(idx + 1); }
+
+            function goTo(n) {
+                remaining = DURATION;
+                render(n);
+                if (!paused) schedule(DURATION);
+            }
+
+            function pause() {
+                if (paused) return;
+                paused = true;
+                clearTimeout(timer);
+                remaining = Math.max(500, remaining - (Date.now() - startedAt));
+            }
+            function resume() {
+                if (!paused) return;
+                paused = false;
+                schedule(remaining);
+            }
+
+            /* ---------------- CONTROLS ---------------- */
+            if (btnPrev) btnPrev.addEventListener('click', function () { goTo(idx - 1); });
+            if (btnNext) btnNext.addEventListener('click', function () { goTo(idx + 1); });
+
+            showcase.addEventListener('mouseenter', pause);
+            showcase.addEventListener('mouseleave', resume);
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) { pause(); } else { resume(); }
+            });
+
+            /* swipe */
+            var sx = 0, sy = 0;
+            showcase.addEventListener('touchstart', function (e) {
+                sx = e.touches[0].clientX;
+                sy = e.touches[0].clientY;
+            }, { passive: true });
+
+            showcase.addEventListener('touchend', function (e) {
+                var dx = e.changedTouches[0].clientX - sx;
+                var dy = e.changedTouches[0].clientY - sy;
+                if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+                    goTo(idx + (dx < 0 ? 1 : -1));
+                }
+            }, { passive: true });
+
+            /* ---------------- INIT ---------------- */
+            render(0);
+            schedule(DURATION);
+        })();
+    </script>
+
+    <!-- ================= ABOUT · THE ARVO STILE SIGNATURE ================= -->
+    <style>
+        /* ---- slide track ---- */
+        .arvo-track {
+            transition: transform 900ms cubic-bezier(.22, 1, .36, 1);
+            will-change: transform;
+        }
+
+        .arvo-no-transition {
+            transition: none !important;
+        }
+
+        /* each slide locks to exactly one viewport width */
+        .arvo-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ---- hide scrollbars on the mobile value scroller ---- */
+        .no-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .arvo-track {
+                transition-duration: 1ms;
+            }
+        }
+    </style>
+
+    <section id="about" class="relative w-full overflow-hidden bg-espresso py-16 sm:py-24 lg:py-36">
+
+        <!-- ambient bronze glow -->
+        <div
+            class="pointer-events-none absolute -top-48 right-[-10%] h-[38rem] w-[38rem] rounded-full bg-bronze/10 blur-[150px]">
+        </div>
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/50 to-transparent">
+        </div>
+
+        <div class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+
+            <!-- ============ EDITORIAL MARKER ============ -->
+            <div class="flex items-center gap-5 mb-10 sm:mb-12 lg:mb-20">
+                <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">01</span>
+                <span class="h-px flex-1 bg-ivory/15"></span>
+                <span class="text-[.6rem] tracking-[.34em] uppercase text-ivory/40 font-medium">The Arvo Stile
+                    Signature</span>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-20 items-center">
+
+                <!-- ============ LEFT · IMAGE GALLERY ============ -->
+                <div class="lg:col-span-5 w-full min-w-0">
+                    <div id="arvo-gallery"
+                        class="relative select-none mx-auto w-full max-w-[24rem] sm:max-w-[28rem] lg:max-w-none"
+                        role="group" aria-roledescription="carousel" aria-label="Arvo Stile craft gallery">
+
+                        <figure class="group relative m-0">
+
+                            <!-- offset bronze frame · stays INSIDE the container on mobile -->
+                            <div class="pointer-events-none absolute inset-0 border border-bronze/30
+                                    translate-x-2 translate-y-2
+                                    transition-transform duration-700
+                                    group-hover:translate-x-1 group-hover:translate-y-1
+                                    lg:-inset-4 lg:translate-x-7 lg:translate-y-7
+                                    lg:group-hover:translate-x-5 lg:group-hover:translate-y-5"></div>
+
+                            <!-- sliding viewport · 4:5 matches the source images -->
+                            <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+
+                                <div id="arvo-track"
+                                    class="arvo-track flex h-full w-full cursor-grab active:cursor-grabbing [touch-action:pan-y]"
+                                    aria-live="polite">
+
+                                    <!-- 01 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/1.jpg" alt="Handwoven African textile detail" draggable="false"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 02 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/2.jpg" alt="Kente cloth weaving detail" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 03 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/3.jpg" alt="Bogolan mudcloth pattern" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 04 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/4.jpg" alt="Handwoven raffia basket" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 05 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/5.jpg" alt="Indigo dyed fabric" draggable="false" loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 06 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/6.jpg" alt="Threads on a traditional loom" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 07 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/7.jpg" alt="Handcrafted beadwork detail" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 08 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/8.jpg" alt="Handmade clay pottery" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 09 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/1.jpg" alt="Textile weave pattern detail" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+                                    <!-- 10 -->
+                                    <div class="arvo-slide relative h-full overflow-hidden">
+                                        <img src="picha/about.jpg" alt="Artisan hands at work" draggable="false"
+                                            loading="lazy"
+                                            class="h-full w-full object-cover object-center pointer-events-none select-none">
+                                    </div>
+
+                                </div>
+
+                                <!-- depth gradient -->
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/75 via-espresso/10 to-transparent">
+                                </div>
+
+                                <!-- counter -->
+                                <div
+                                    class="pointer-events-none absolute top-4 right-4 sm:top-5 sm:right-5 flex items-baseline gap-1.5">
+                                    <span id="arvo-current"
+                                        class="font-serif text-[1.05rem] leading-none text-ivory">01</span>
+                                    <span class="text-[.58rem] tracking-[.2em] text-ivory/50">/ 10</span>
+                                </div>
+
+                            </div>
+
+                            <!-- solid bronze badge -->
+                            <figcaption class="absolute bottom-0 left-0 bg-bronze px-6 py-4">
+                                <p
+                                    class="text-[.58rem] tracking-[.3em] uppercase text-espresso font-semibold leading-tight">
+                                    Handmade</p>
+                                <p
+                                    class="text-[.58rem] tracking-[.3em] uppercase text-espresso/70 font-medium leading-tight mt-1">
+                                    In Tanzania</p>
+                            </figcaption>
+
+                        </figure>
+
+                        <!-- dots removed -->
+
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT · COPY ============ -->
+                <div class="lg:col-span-7 min-w-0">
+
+                    <!-- eyebrow -->
+                    <div class="flex items-center gap-4 mb-6 sm:mb-7">
+                        <span class="h-px w-10 bg-bronze"></span>
+                        <p class="text-[.62rem] sm:text-[.68rem] tracking-[.32em] uppercase text-bronze font-medium">
+                            A New Expression
+                        </p>
+                    </div>
+
+                    <!-- heading -->
+                    <h2
+                        class="font-serif font-normal text-[clamp(2.2rem,5.4vw,4.4rem)] leading-[0.98] tracking-[-.035em] text-ivory mb-7 sm:mb-8">
+                        A new expression of <em class="italic font-light text-bronze">heritage</em>
+                    </h2>
+
+                    <!-- paragraph -->
+                    <p
+                        class="text-[1rem] sm:text-[1.08rem] leading-[1.75] text-ivory/65 font-light max-w-[56ch] mb-10 sm:mb-12">
+                        Arvo Stile brings together the richness of heritage with the clarity of contemporary
+                        design. Each piece is thoughtfully considered to balance culture, character and modern
+                        sophistication — creating a style that feels rooted, yet unmistakably of the present.
+                    </p>
+
+                    <!-- ============ 3 VALUES ============ -->
+                    <div id="values-scroller" class="no-scrollbar flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth
+                            -mx-6 px-6 pb-1 mb-5
+                            sm:mx-0 sm:px-0 sm:pb-0 sm:mb-12 sm:gap-0
+                            sm:grid sm:grid-cols-3 sm:overflow-visible
+                            sm:border-y sm:border-ivory/12 sm:divide-x sm:divide-ivory/12">
+
+                        <div class="group snap-center shrink-0 w-[78%] sm:w-auto
+                                border border-ivory/12 bg-ivory/[0.03] sm:bg-transparent sm:border-0
+                                p-7 sm:px-6 sm:py-8 sm:first:pl-0 sm:last:pr-0">
+                            <span
+                                class="block font-serif text-[2.4rem] leading-none text-bronze/40 mb-5 transition-colors duration-500 group-hover:text-bronze">01</span>
+                            <h3 class="text-[.64rem] tracking-[.26em] uppercase text-ivory font-semibold mb-3">Rooted in
+                                Heritage</h3>
+                            <p class="text-[.84rem] leading-[1.65] text-ivory/50 font-light">
+                                Influenced by the textures, stories and visual language of African culture.
+                            </p>
+                        </div>
+
+                        <div class="group snap-center shrink-0 w-[78%] sm:w-auto
+                                border border-ivory/12 bg-ivory/[0.03] sm:bg-transparent sm:border-0
+                                p-7 sm:px-6 sm:py-8 sm:first:pl-0 sm:last:pr-0">
+                            <span
+                                class="block font-serif text-[2.4rem] leading-none text-bronze/40 mb-5 transition-colors duration-500 group-hover:text-bronze">02</span>
+                            <h3 class="text-[.64rem] tracking-[.26em] uppercase text-ivory font-semibold mb-3">Refined
+                                for Now</h3>
+                            <p class="text-[.84rem] leading-[1.65] text-ivory/50 font-light">
+                                Contemporary silhouettes and thoughtful details designed for modern living.
+                            </p>
+                        </div>
+
+                        <div class="group snap-center shrink-0 w-[78%] sm:w-auto
+                                border border-ivory/12 bg-ivory/[0.03] sm:bg-transparent sm:border-0
+                                p-7 sm:px-6 sm:py-8 sm:first:pl-0 sm:last:pr-0">
+                            <span
+                                class="block font-serif text-[2.4rem] leading-none text-bronze/40 mb-5 transition-colors duration-500 group-hover:text-bronze">03</span>
+                            <h3 class="text-[.64rem] tracking-[.26em] uppercase text-ivory font-semibold mb-3">Made to
+                                Resonate</h3>
+                            <p class="text-[.84rem] leading-[1.65] text-ivory/50 font-light">
+                                Pieces created to carry character, meaning and a lasting sense of style.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- mobile-only dots -->
+                    <div id="values-dots" class="sm:hidden flex items-center justify-center gap-2 mb-10"></div>
+
+                    <!-- ============ CTA ============ -->
+                    <a href="#collection"
+                        class="group relative inline-flex items-center gap-4 overflow-hidden bg-bronze px-9 py-4.5 transition-colors duration-500 hover:bg-ivory">
+
+                        <span
+                            class="relative z-10 text-[.68rem] sm:text-[.74rem] tracking-[.3em] uppercase text-espresso font-semibold">
+                            Explore the Edit
+                        </span>
+                        <span
+                            class="relative z-10 text-espresso transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        /* ============================================================
+           ARVO STILE · ABOUT SECTION INTERACTIONS
+           ============================================================ */
+        (function () {
+            'use strict';
+
+            var DURATION = 8000;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ------------------------------------------------------------
+               1 · IMAGE GALLERY — autoplay + drag / swipe (pixel-based)
+               ------------------------------------------------------------ */
+            (function imageGallery() {
+                var gallery = document.getElementById('arvo-gallery');
+                var track = document.getElementById('arvo-track');
+                var currentEl = document.getElementById('arvo-current');
+                if (!gallery || !track) return;
+
+                var slides = Array.prototype.slice.call(track.children);
+                var total = slides.length;
+                var index = 0;
+
+                var playing = false;
+                var dragging = false;
+                var lockAxis = null;
+                var startX = 0;
+                var startY = 0;
+                var deltaX = 0;
+                var timer = null;
+                var visible = false;
+                var resizeRaf = null;
+
+                /* ---- rendering (pixel-based, so slides always sit flush) ---- */
+                function render(offset) {
+                    var o = offset || 0;
+                    var w = track.clientWidth;
+                    track.style.transform = 'translate3d(' + ((-index * w) + o) + 'px, 0, 0)';
+                }
+
+                function syncCounter() {
+                    if (currentEl) {
+                        currentEl.textContent = String(index + 1).padStart(2, '0');
+                    }
+                }
+
+                /* ---- navigation ---- */
+                function goTo(i) {
+                    index = ((i % total) + total) % total;
+                    render();
+                    syncCounter();
+                    scheduleNext();
+                }
+
+                /* ---- autoplay ---- */
+                function scheduleNext() {
+                    clearInterval(timer);
+                    timer = null;
+                    if (!playing || reducedMotion) return;
+                    timer = setInterval(function () { goTo(index + 1); }, DURATION);
+                }
+
+                function play() {
+                    if (playing || reducedMotion) return;
+                    playing = true;
+                    scheduleNext();
+                }
+
+                function stop() {
+                    playing = false;
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+                /* ---- pointer / touch dragging ---- */
+                function onDown(e) {
+                    if (e.pointerType === 'mouse' && e.button !== 0) return;
+                    dragging = true;
+                    lockAxis = null;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    deltaX = 0;
+                    track.classList.add('arvo-no-transition');
+                    try { track.setPointerCapture(e.pointerId); } catch (err) { }
+                    stop();
+                }
+
+                function onMove(e) {
+                    if (!dragging) return;
+
+                    var dx = e.clientX - startX;
+                    var dy = e.clientY - startY;
+
+                    if (lockAxis === null) {
+                        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+                        lockAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+                    }
+                    if (lockAxis !== 'x') return;   // vertical → let the page scroll
+
+                    if (e.cancelable) e.preventDefault();
+
+                    var d = dx;
+                    // rubber-band resistance at both ends
+                    if ((index === 0 && dx > 0) || (index === total - 1 && dx < 0)) d = dx * 0.32;
+
+                    deltaX = d;
+                    render(d);
+                }
+
+                function onUp(e) {
+                    if (!dragging) return;
+                    dragging = false;
+                    track.classList.remove('arvo-no-transition');
+                    try { track.releasePointerCapture(e.pointerId); } catch (err) { }
+
+                    var cancelled = (e.type === 'pointercancel') || lockAxis === 'y';
+                    var threshold = Math.max(40, Math.min(110, track.clientWidth * 0.16));
+                    var target = index;
+
+                    if (!cancelled) {
+                        if (deltaX <= -threshold) target = index + 1;
+                        else if (deltaX >= threshold) target = index - 1;
+                    }
+
+                    deltaX = 0;
+                    goTo(target);
+                    if (visible) play();
+                }
+
+                track.addEventListener('pointerdown', onDown);
+                track.addEventListener('pointermove', onMove);
+                track.addEventListener('pointerup', onUp);
+                track.addEventListener('pointercancel', onUp);
+                track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+                /* ---- realign on resize / orientation change ---- */
+                function realign() {
+                    if (!dragging) render();
+                }
+                window.addEventListener('resize', function () {
+                    if (resizeRaf) return;
+                    resizeRaf = requestAnimationFrame(function () {
+                        resizeRaf = null;
+                        realign();
+                    });
+                });
+                window.addEventListener('orientationchange', function () {
+                    setTimeout(realign, 120);
+                });
+                if ('ResizeObserver' in window) {
+                    new ResizeObserver(realign).observe(track);
+                }
+
+                /* ---- only autoplay while in view ---- */
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            visible = entry.isIntersecting;
+                            if (visible && !dragging) play();
+                            else stop();
+                        });
+                    }, { threshold: 0.3 }).observe(gallery);
+                } else {
+                    visible = true;
+                    play();
+                }
+
+                /* ---- keyboard ---- */
+                gallery.setAttribute('tabindex', '0');
+                gallery.addEventListener('keydown', function (e) {
+                    if (e.key === 'ArrowRight') { goTo(index + 1); play(); }
+                    if (e.key === 'ArrowLeft') { goTo(index - 1); play(); }
+                });
+
+                /* ---- init ---- */
+                requestAnimationFrame(function () {
+                    render();
+                    syncCounter();
+                });
+            })();
+
+            /* ------------------------------------------------------------
+               2 · VALUES — mobile swipe carousel with dots + 8s autoplay
+               ------------------------------------------------------------ */
+            (function valuesCarousel() {
+                var scroller = document.getElementById('values-scroller');
+                var dotsWrap = document.getElementById('values-dots');
+                if (!scroller || !dotsWrap) return;
+
+                var cards = Array.prototype.slice.call(scroller.children);
+                var dots = [];
+                var active = -1;
+                var raf = null;
+
+                var autoTimer = null;
+                var userPause = null;      // pause autoplay briefly after manual swipe
+                var isMobile = window.matchMedia('(max-width: 639px)').matches;
+                var visible = false;
+
+                /* ---- build mobile dots ---- */
+                cards.forEach(function (_, i) {
+                    var b = document.createElement('button');
+                    b.type = 'button';
+                    b.setAttribute('aria-label', 'Go to value ' + (i + 1));
+                    b.className = 'h-1.5 w-1.5 rounded-full bg-ivory/20 transition-all duration-500';
+                    b.addEventListener('click', function () {
+                        scrollToCard(i);
+                        pauseThenResume();
+                    });
+                    dotsWrap.appendChild(b);
+                    dots.push(b);
+                });
+
+                function setActive(i) {
+                    if (i === active) return;
+                    active = i;
+                    dots.forEach(function (d, k) {
+                        var on = k === i;
+                        d.classList.toggle('bg-bronze', on);
+                        d.classList.toggle('bg-ivory/20', !on);
+                        d.classList.toggle('w-6', on);
+                        d.classList.toggle('w-1.5', !on);
+                    });
+                }
+
+                function scrollToCard(i) {
+                    var sRect = scroller.getBoundingClientRect();
+                    var cRect = cards[i].getBoundingClientRect();
+                    var currentLeft = cRect.left - sRect.left + scroller.scrollLeft;
+                    var target = currentLeft - (scroller.clientWidth - cards[i].offsetWidth) / 2;
+                    scroller.scrollTo({ left: target, behavior: 'smooth' });
+                }
+
+                function update() {
+                    var sRect = scroller.getBoundingClientRect();
+                    var center = scroller.clientWidth / 2;
+                    var closest = 0;
+                    var min = Infinity;
+
+                    cards.forEach(function (card, i) {
+                        var r = card.getBoundingClientRect();
+                        var cardCenter = (r.left - sRect.left) + r.width / 2;
+                        var dist = Math.abs(cardCenter - center);
+                        if (dist < min) { min = dist; closest = i; }
+                    });
+
+                    setActive(closest);
+                }
+
+                /* ---- autoplay every 8s on mobile ---- */
+                function nextCard() {
+                    if (!isMobile) return;
+                    var next = ((active + 1) % cards.length + cards.length) % cards.length;
+                    scrollToCard(next);
+                }
+
+                function startAuto() {
+                    stopAuto();
+                    if (!isMobile || reducedMotion) return;
+                    autoTimer = setInterval(nextCard, DURATION);
+                }
+
+                function stopAuto() {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+
+                function pauseThenResume() {
+                    stopAuto();
+                    clearTimeout(userPause);
+                    userPause = setTimeout(function () {
+                        if (visible) startAuto();
+                    }, 6000);
+                }
+
+                scroller.addEventListener('scroll', function () {
+                    if (raf) return;
+                    raf = requestAnimationFrame(function () {
+                        raf = null;
+                        update();
+                    });
+                }, { passive: true });
+
+                /* pause autoplay while the user is touching/swiping */
+                scroller.addEventListener('pointerdown', function () {
+                    stopAuto();
+                    clearTimeout(userPause);
+                }, { passive: true });
+
+                scroller.addEventListener('pointerup', function () {
+                    pauseThenResume();
+                }, { passive: true });
+
+                scroller.addEventListener('pointercancel', function () {
+                    pauseThenResume();
+                }, { passive: true });
+
+                /* ---- only run autoplay while in view ---- */
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            visible = entry.isIntersecting;
+                            if (visible) startAuto();
+                            else stopAuto();
+                        });
+                    }, { threshold: 0.3 }).observe(scroller);
+                } else {
+                    visible = true;
+                    startAuto();
+                }
+
+                /* ---- re-evaluate on breakpoint change ---- */
+                window.addEventListener('resize', function () {
+                    var nowMobile = window.matchMedia('(max-width: 639px)').matches;
+                    if (nowMobile !== isMobile) {
+                        isMobile = nowMobile;
+                        if (isMobile && visible) startAuto();
+                        else stopAuto();
+                    }
+                });
+
+                setActive(0);
+            })();
+
+        })();
+    </script>
+
+
+
+
+
+    <!-- ================= 02 · THE ARVO WORLD ================= -->
+    <section id="arvo-world" class="relative w-full overflow-hidden bg-ivory">
+
+        <!-- top hairline -->
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/40 to-transparent">
+        </div>
+
+        <!-- ============ HEADER ============ -->
+        <header
+            class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-28 lg:pt-36 pb-16 sm:pb-20 lg:pb-24">
+
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+
+                <div class="lg:col-span-7">
+                    <div class="flex items-center gap-5 mb-10">
+                        <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">02</span>
+                        <span class="h-px flex-1 bg-espresso/15"></span>
+                        <span class="text-[.6rem] tracking-[.34em] uppercase text-espresso/40 font-medium">The Arvo
+                            World</span>
+                    </div>
+
+                    <h2
+                        class="font-serif font-normal text-[clamp(2.4rem,6vw,5.2rem)] leading-[0.96] tracking-[-.04em] text-espresso">
+                        One heritage.<br>
+                        <em class="italic font-light text-bronze">Four expressions.</em>
+                    </h2>
+                </div>
+
+                <div class="lg:col-span-5 lg:pb-3">
+                    <p class="text-[1rem] sm:text-[1.06rem] leading-[1.75] text-espresso/60 font-light max-w-[44ch]">
+                        Arvo Stile is not a single category — it is a way of living with craft.
+                        The brand unfolds into four expressions, each rooted in the same heritage
+                        and shaped by the same hands.
+                    </p>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ============ EDITORIAL GRID ============ -->
+        <div class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pb-20 sm:pb-28 lg:pb-36">
+
+            <div class="grid lg:grid-cols-12 gap-y-16 sm:gap-y-20 lg:gap-x-8 lg:gap-y-24">
+
+                <!-- ———————————————————————————————————————— -->
+                <!-- 01 · WEAR -->
+                <!-- ———————————————————————————————————————— -->
+                <article class="lg:col-span-7 lg:row-start-1">
+                    <div class="group">
+
+                        <a href="/collections/wear"
+                            class="arvo-card-gallery relative block aspect-[5/4] w-full overflow-hidden bg-linen">
+
+                            <img data-gallery-slide src="picha/1.jpg" alt="Kitenge womenswear" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/4.jpg" alt="Batiki shirts" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/7.jpg" alt="Kitenge dresses" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/hero.jpg" alt="Batiki fabric detail" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/6.jpg" alt="African print fashion" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent">
+                            </div>
+
+                            <div class="absolute top-6 left-6 flex items-center gap-3">
+                                <span class="h-px w-8 bg-ivory/70"></span>
+                                <span class="text-[.56rem] tracking-[.34em] uppercase text-ivory/90 font-semibold">01 ·
+                                    Wear</span>
+                            </div>
+
+                            <div class="arvo-gallery-dots absolute top-6 right-6 flex items-center gap-1.5"></div>
+
+                        </a>
+
+                        <div class="mt-8 flex items-start gap-6 sm:gap-8">
+
+                            <span
+                                class="shrink-0 font-serif text-[2.6rem] sm:text-[3rem] leading-[.85] text-bronze/60">01</span>
+
+                            <div class="min-w-0 flex-1">
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Kitenge &amp; Batiki Apparel
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1] tracking-[-.03em] text-espresso mb-5">
+                                    Wear
+                                </h3>
+
+                                <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[48ch] mb-6">
+                                    Tailored heritage for the modern wardrobe — dresses, shirts,
+                                    blouses, co-ords, kimonos and blazers cut from premium viscose
+                                    cotton batiki and vibrant kitenge.
+                                </p>
+
+                                <ul
+                                    class="flex flex-wrap items-center gap-y-2 mb-7 text-[.68rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Dresses</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Shirts</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Co-ords</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Kimonos</li>
+                                    <li class="pr-0 mr-0">Blazers</li>
+                                </ul>
+
+                                <!-- inline pill button -->
+                                <a href="/collections/wear"
+                                    class="group/btn inline-flex items-center gap-3 bg-espresso px-6 py-3 transition-colors duration-500 hover:bg-bronze">
+                                    <span
+                                        class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-ivory transition-colors duration-500 group-hover/btn:text-espresso">
+                                        Explore More
+                                    </span>
+                                    <span
+                                        class="text-bronze transition-all duration-300 group-hover/btn:text-espresso group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- ———————————————————————————————————————— -->
+                <!-- 02 · CARRY -->
+                <!-- ———————————————————————————————————————— -->
+                <article class="lg:col-span-5 lg:row-start-1 lg:mt-24">
+                    <div class="group">
+
+                        <a href="/collections/carry"
+                            class="arvo-card-gallery relative block aspect-[4/5] w-full overflow-hidden bg-linen">
+
+                            <img data-gallery-slide src="picha/5.jpg" alt="Handmade fabric tote" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/7.jpg" alt="African print handbag" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/about.jpg" alt="Fabric laptop bag" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/hero.jpg" alt="Crossbody sling bag" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/3.jpg" alt="Heritage backpack" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent">
+                            </div>
+
+                            <div class="absolute top-6 left-6 flex items-center gap-3">
+                                <span class="h-px w-8 bg-ivory/70"></span>
+                                <span class="text-[.56rem] tracking-[.34em] uppercase text-ivory/90 font-semibold">02 ·
+                                    Carry</span>
+                            </div>
+
+                            <div class="arvo-gallery-dots absolute top-6 right-6 flex items-center gap-1.5"></div>
+
+                        </a>
+
+                        <div class="mt-8 flex items-start gap-5 sm:gap-6">
+
+                            <span
+                                class="shrink-0 font-serif text-[2.2rem] sm:text-[2.6rem] leading-[.85] text-bronze/60">02</span>
+
+                            <div class="min-w-0 flex-1">
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Bags &amp; Everyday Carry
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1] tracking-[-.03em] text-espresso mb-5">
+                                    Carry
+                                </h3>
+
+                                <p class="text-[.94rem] leading-[1.75] text-espresso/60 font-light max-w-[42ch] mb-6">
+                                    Utility dressed in heritage — totes, handbags, laptop bags,
+                                    crossbody slings, backpacks and clutches built for daily life.
+                                </p>
+
+                                <ul
+                                    class="flex flex-wrap items-center gap-y-2 mb-7 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Totes</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Handbags</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Laptop Bags</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Crossbody</li>
+                                    <li class="pr-0 mr-0">Backpacks</li>
+                                </ul>
+
+                                <a href="/collections/carry"
+                                    class="group/btn inline-flex items-center gap-3 bg-espresso px-6 py-3 transition-colors duration-500 hover:bg-bronze">
+                                    <span
+                                        class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-ivory transition-colors duration-500 group-hover/btn:text-espresso">
+                                        Explore More
+                                    </span>
+                                    <span
+                                        class="text-bronze transition-all duration-300 group-hover/btn:text-espresso group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- ———————————————————————————————————————— -->
+                <!-- 03 · LIVE -->
+                <!-- ———————————————————————————————————————— -->
+                <article class="lg:col-span-5 lg:row-start-2">
+                    <div class="group">
+
+                        <a href="/collections/live"
+                            class="arvo-card-gallery relative block aspect-[4/5] w-full overflow-hidden bg-linen">
+
+                            <img data-gallery-slide src="picha/1.jpg" alt="Woven basket interior" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/2.jpg" alt="Seagrass rug" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/4.jpg" alt="Handcrafted lampshade" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/6.jpg" alt="Kanga cushion" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/8.jpg" alt="African fabric curtain" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent">
+                            </div>
+
+                            <div class="absolute top-6 left-6 flex items-center gap-3">
+                                <span class="h-px w-8 bg-ivory/70"></span>
+                                <span class="text-[.56rem] tracking-[.34em] uppercase text-ivory/90 font-semibold">03 ·
+                                    Live</span>
+                            </div>
+
+                            <div class="arvo-gallery-dots absolute top-6 right-6 flex items-center gap-1.5"></div>
+
+                        </a>
+
+                        <div class="mt-8 flex items-start gap-5 sm:gap-6">
+
+                            <span
+                                class="shrink-0 font-serif text-[2.2rem] sm:text-[2.6rem] leading-[.85] text-bronze/60">03</span>
+
+                            <div class="min-w-0 flex-1">
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Home &amp; Interior
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1] tracking-[-.03em] text-espresso mb-5">
+                                    Live
+                                </h3>
+
+                                <p class="text-[.94rem] leading-[1.75] text-espresso/60 font-light max-w-[42ch] mb-6">
+                                    Handwoven warmth for every room — baskets, rugs, lampshades,
+                                    cushions, curtains and accent seating shaped by artisan hands.
+                                </p>
+
+                                <ul
+                                    class="flex flex-wrap items-center gap-y-2 mb-7 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Baskets</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Rugs</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Lampshades</li>
+                                    <li class="pr-3 mr-3 border-r border-espresso/15">Cushions</li>
+                                    <li class="pr-0 mr-0">Curtains</li>
+                                </ul>
+
+                                <a href="/collections/live"
+                                    class="group/btn inline-flex items-center gap-3 bg-espresso px-6 py-3 transition-colors duration-500 hover:bg-bronze">
+                                    <span
+                                        class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-ivory transition-colors duration-500 group-hover/btn:text-espresso">
+                                        Explore More
+                                    </span>
+                                    <span
+                                        class="text-bronze transition-all duration-300 group-hover/btn:text-espresso group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </article>
+
+                <!-- ———————————————————————————————————————— -->
+                <!-- 04 · GIFT -->
+                <!-- ———————————————————————————————————————— -->
+                <article class="lg:col-span-7 lg:row-start-2 lg:mt-24">
+                    <div class="group">
+
+                        <a href="/collections/gift"
+                            class="arvo-card-gallery relative block aspect-[5/4] w-full overflow-hidden bg-linen">
+
+                            <img data-gallery-slide src="picha/1.jpg" alt="Fabric notebook" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-100 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/2.jpg" alt="Woven hand fan" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/3.jpg" alt="Handwoven key holder" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/4.jpg" alt="Keepsake basket" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+                            <img data-gallery-slide src="picha/5.jpg" alt="African souvenir" loading="lazy"
+                                draggable="false"
+                                class="arvo-gallery-slide absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-[1200ms] ease-out">
+
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent">
+                            </div>
+
+                            <div class="absolute top-6 left-6 flex items-center gap-3">
+                                <span class="h-px w-8 bg-ivory/70"></span>
+                                <span class="text-[.56rem] tracking-[.34em] uppercase text-ivory/90 font-semibold">04 ·
+                                    Gift</span>
+                            </div>
+
+                            <div class="arvo-gallery-dots absolute top-6 right-6 flex items-center gap-1.5"></div>
+
+                        </a>
+
+                        <div class="mt-8 flex items-start gap-6 sm:gap-8">
+
+                            <span
+                                class="shrink-0 font-serif text-[2.6rem] sm:text-[3rem] leading-[.85] text-bronze/60">04</span>
+
+                            <div class="min-w-0 flex-1">
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Objects with Meaning
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1] tracking-[-.03em] text-espresso mb-5">
+                                    Gift
+                                </h3>
+
+                                <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[48ch] mb-6">
+                                    Small pieces, deep meaning — notebooks, fans, key holders,
+                                    keepsake baskets and souvenirs made to be given, kept and
+                                    remembered.
+                                </p>
+
+                                <ul
+                                    class="flex flex-wrap items-center gap-y-2 mb-7 text-[.68rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Notebooks</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Hand Fans</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Key Holders</li>
+                                    <li class="pr-4 mr-4 border-r border-espresso/15">Keepsakes</li>
+                                    <li class="pr-0 mr-0">Souvenirs</li>
+                                </ul>
+
+                                <a href="/collections/gift"
+                                    class="group/btn inline-flex items-center gap-3 bg-espresso px-6 py-3 transition-colors duration-500 hover:bg-bronze">
+                                    <span
+                                        class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-ivory transition-colors duration-500 group-hover/btn:text-espresso">
+                                        Explore More
+                                    </span>
+                                    <span
+                                        class="text-bronze transition-all duration-300 group-hover/btn:text-espresso group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <script>
+        /* ============================================================
+           ARVO WORLD — 5-image crossfade galleries
+           ============================================================ */
+        (function () {
+            'use strict';
+
+            var galleries = document.querySelectorAll('.arvo-card-gallery');
+            if (!galleries.length) return;
+
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var INTERVAL = 4000;
+
+            galleries.forEach(function (gallery, gi) {
+
+                var slides = gallery.querySelectorAll('.arvo-gallery-slide');
+                var dotWrap = gallery.querySelector('.arvo-gallery-dots');
+                if (slides.length < 2) return;
+
+                var index = 0;
+                var timer = null;
+                var visible = false;
+                var dots = [];
+
+                if (dotWrap) {
+                    slides.forEach(function (_, i) {
+                        var d = document.createElement('span');
+                        d.className = 'h-1 w-1 rounded-full transition-all duration-500 ' +
+                            (i === 0 ? 'bg-bronze w-4' : 'bg-ivory/40');
+                        dotWrap.appendChild(d);
+                        dots.push(d);
+                    });
+                }
+
+                function syncDots() {
+                    dots.forEach(function (d, i) {
+                        var on = i === index;
+                        d.classList.toggle('bg-bronze', on);
+                        d.classList.toggle('bg-ivory/40', !on);
+                        d.classList.toggle('w-4', on);
+                        d.classList.toggle('w-1', !on);
+                    });
+                }
+
+                function goTo(i) {
+                    slides[index].classList.replace('opacity-100', 'opacity-0');
+                    index = i % slides.length;
+                    slides[index].classList.replace('opacity-0', 'opacity-100');
+                    syncDots();
+                }
+
+                function next() { goTo(index + 1); }
+
+                function start() {
+                    if (timer || reducedMotion) return;
+                    timer = setInterval(next, INTERVAL);
+                }
+
+                function stop() {
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            visible = entry.isIntersecting;
+                            if (visible) start();
+                            else stop();
+                        });
+                    }, { threshold: 0.25 }).observe(gallery);
+                } else {
+                    visible = true;
+                    start();
+                }
+
+                gallery.addEventListener('mouseenter', stop);
+                gallery.addEventListener('mouseleave', function () { if (visible) start(); });
+
+                if (!reducedMotion && gi > 0) {
+                    setTimeout(function () {
+                        if (visible) next();
+                    }, gi * 900);
+                }
+            });
+
+        })();
+    </script>
+
+
+
+    <!-- ================= 03 · THE COLLECTIONS ================= -->
+    <style>
+        /* push track — shared timing so text + image move as one */
+        .col-track {
+            transition: transform 850ms cubic-bezier(.22, 1, .36, 1);
+            will-change: transform;
+        }
+
+        /* used only when wrapping 05 → 01 so the track snaps instead of sweeping back */
+        .col-no-transition {
+            transition: none !important;
+        }
+
+        .col-text-slide,
+        .col-image-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .col-track {
+                transition-duration: 1ms;
+            }
+        }
+    </style>
+
+    <section id="collections" class="relative w-full overflow-hidden bg-espresso">
+
+        <!-- ambient washes -->
+        <div
+            class="pointer-events-none absolute -top-56 right-[-10%] h-[42rem] w-[42rem] rounded-full bg-bronze/[0.09] blur-[170px]">
+        </div>
+        <div
+            class="pointer-events-none absolute bottom-0 left-[-15%] h-[36rem] w-[36rem] rounded-full bg-bronze/[0.05] blur-[160px]">
+        </div>
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/60 to-transparent">
+        </div>
+
+        <div id="collections-switcher"
+            class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24">
+
+            <!-- ============ HEADER · compact ============ -->
+            <header class="mb-10 sm:mb-12 lg:mb-14">
+                <div class="flex items-center gap-5 mb-8">
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">03</span>
+                    <span class="h-px flex-1 bg-ivory/15"></span>
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-ivory/40 font-medium">The
+                        Collections</span>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-end">
+                    <div class="lg:col-span-7">
+                        <h2
+                            class="font-serif font-normal text-[clamp(2rem,4.8vw,3.6rem)] leading-[1] tracking-[-.035em] text-ivory">
+                            Five worlds, <em class="italic font-light text-bronze">one signature.</em>
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <p class="text-[.94rem] sm:text-[1rem] leading-[1.7] text-ivory/55 font-light max-w-[46ch]">
+                            From what you wear to what you carry, from the rooms you live in
+                            to the gifts you give — every collection tells the same story
+                            through a different form.
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ============ PUSH SWITCHER ============ -->
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+
+                <!-- ===== LEFT · TEXT SLIDER ===== -->
+                <div class="lg:col-span-5 order-2 lg:order-1 flex flex-col">
+
+                    <div class="relative overflow-hidden flex-1">
+                        <div id="col-text-track" class="col-track flex h-full">
+
+                            <!-- ——— 01 · WEAR ——— -->
+                            <article class="col-text-slide pr-0 lg:pr-2 flex flex-col justify-center">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span
+                                        class="font-serif text-[2.4rem] sm:text-[2.8rem] leading-none text-bronze">01</span>
+                                    <span class="h-px w-10 bg-bronze/50"></span>
+                                    <span
+                                        class="text-[.56rem] tracking-[.32em] uppercase text-ivory/50 font-semibold">Wear</span>
+                                </div>
+
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Contemporary African Apparel
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.02] tracking-[-.03em] text-ivory mb-6">
+                                    The Wear<br>Collection
+                                </h3>
+
+                                <p class="text-[.96rem] leading-[1.75] text-ivory/60 font-light max-w-[46ch] mb-8">
+                                    Contemporary African apparel designed for modern everyday
+                                    living. Kitenge and Batiki cut into dresses, shirts, co-ords,
+                                    kimonos and blazers — made for people who dress with intention.
+                                </p>
+
+                                <a href="/collections/wear"
+                                    class="group/btn inline-flex items-center gap-3 bg-bronze px-6 py-3 self-start transition-colors duration-500 hover:bg-ivory">
+                                    <span class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                        Explore Collection
+                                    </span>
+                                    <span
+                                        class="text-espresso transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </article>
+
+                            <!-- ——— 02 · CARRY ——— -->
+                            <article class="col-text-slide pr-0 lg:pr-2 flex flex-col justify-center">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span
+                                        class="font-serif text-[2.4rem] sm:text-[2.8rem] leading-none text-bronze">02</span>
+                                    <span class="h-px w-10 bg-bronze/50"></span>
+                                    <span
+                                        class="text-[.56rem] tracking-[.32em] uppercase text-ivory/50 font-semibold">Carry</span>
+                                </div>
+
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Bags &amp; Everyday Carry
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.02] tracking-[-.03em] text-ivory mb-6">
+                                    The Carry<br>Collection
+                                </h3>
+
+                                <p class="text-[.96rem] leading-[1.75] text-ivory/60 font-light max-w-[46ch] mb-8">
+                                    Functional bags shaped by African textiles and contemporary
+                                    form. Totes, handbags, laptop bags, crossbody slings,
+                                    backpacks and clutches — built to move with you, made to last.
+                                </p>
+
+                                <a href="/collections/carry"
+                                    class="group/btn inline-flex items-center gap-3 bg-bronze px-6 py-3 self-start transition-colors duration-500 hover:bg-ivory">
+                                    <span class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                        Explore Collection
+                                    </span>
+                                    <span
+                                        class="text-espresso transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </article>
+
+                            <!-- ——— 03 · HOME ——— -->
+                            <article class="col-text-slide pr-0 lg:pr-2 flex flex-col justify-center">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span
+                                        class="font-serif text-[2.4rem] sm:text-[2.8rem] leading-none text-bronze">03</span>
+                                    <span class="h-px w-10 bg-bronze/50"></span>
+                                    <span
+                                        class="text-[.56rem] tracking-[.32em] uppercase text-ivory/50 font-semibold">Home</span>
+                                </div>
+
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Home &amp; Interior
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.02] tracking-[-.03em] text-ivory mb-6">
+                                    The Home<br>Collection
+                                </h3>
+
+                                <p class="text-[.96rem] leading-[1.75] text-ivory/60 font-light max-w-[46ch] mb-8">
+                                    Natural textures, woven forms and cultural details for
+                                    considered spaces. Baskets, rugs, lampshades, cushions,
+                                    curtains and accent seating shaped by artisan hands.
+                                </p>
+
+                                <a href="/collections/home"
+                                    class="group/btn inline-flex items-center gap-3 bg-bronze px-6 py-3 self-start transition-colors duration-500 hover:bg-ivory">
+                                    <span class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                        Explore Collection
+                                    </span>
+                                    <span
+                                        class="text-espresso transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </article>
+
+                            <!-- ——— 04 · CRAFT ——— -->
+                            <article class="col-text-slide pr-0 lg:pr-2 flex flex-col justify-center">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span
+                                        class="font-serif text-[2.4rem] sm:text-[2.8rem] leading-none text-bronze">04</span>
+                                    <span class="h-px w-10 bg-bronze/50"></span>
+                                    <span
+                                        class="text-[.56rem] tracking-[.32em] uppercase text-ivory/50 font-semibold">Craft</span>
+                                </div>
+
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Handmade Objects
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.02] tracking-[-.03em] text-ivory mb-6">
+                                    The Craft<br>Collection
+                                </h3>
+
+                                <p class="text-[.96rem] leading-[1.75] text-ivory/60 font-light max-w-[46ch] mb-8">
+                                    Handmade objects celebrating traditional techniques and
+                                    materials. Every piece carries the marks of its maker —
+                                    woven, beaded, dyed and finished by hand in Tanzania.
+                                </p>
+
+                                <a href="/collections/craft"
+                                    class="group/btn inline-flex items-center gap-3 bg-bronze px-6 py-3 self-start transition-colors duration-500 hover:bg-ivory">
+                                    <span class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                        Explore Collection
+                                    </span>
+                                    <span
+                                        class="text-espresso transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </article>
+
+                            <!-- ——— 05 · GIFT ——— -->
+                            <article class="col-text-slide pr-0 lg:pr-2 flex flex-col justify-center">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span
+                                        class="font-serif text-[2.4rem] sm:text-[2.8rem] leading-none text-bronze">05</span>
+                                    <span class="h-px w-10 bg-bronze/50"></span>
+                                    <span
+                                        class="text-[.56rem] tracking-[.32em] uppercase text-ivory/50 font-semibold">Gift</span>
+                                </div>
+
+                                <p class="text-[.6rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                                    Objects with Meaning
+                                </p>
+
+                                <h3
+                                    class="font-serif font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.02] tracking-[-.03em] text-ivory mb-6">
+                                    The Gift<br>Collection
+                                </h3>
+
+                                <p class="text-[.96rem] leading-[1.75] text-ivory/60 font-light max-w-[46ch] mb-8">
+                                    Small meaningful pieces for personal moments and thoughtful
+                                    gifting. Notebooks, hand fans, key holders, keepsake baskets
+                                    and souvenirs — made to be given, kept and remembered.
+                                </p>
+
+                                <a href="/collections/gift"
+                                    class="group/btn inline-flex items-center gap-3 bg-bronze px-6 py-3 self-start transition-colors duration-500 hover:bg-ivory">
+                                    <span class="text-[.62rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                        Explore Collection
+                                    </span>
+                                    <span
+                                        class="text-espresso transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                                </a>
+                            </article>
+
+                        </div>
+                    </div>
+
+                    <!-- ===== NAVIGATION · below text ===== -->
+                    <div class="mt-8 pt-6 border-t border-ivory/15 flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+                            <button id="col-prev" type="button" aria-label="Previous collection"
+                                class="group h-11 w-11 flex items-center justify-center border border-ivory/20 text-ivory/80 transition-colors duration-500 hover:border-bronze hover:bg-bronze hover:text-espresso">
+                                <span class="transition-transform duration-300 group-hover:-translate-x-0.5">←</span>
+                            </button>
+                            <button id="col-next" type="button" aria-label="Next collection"
+                                class="group h-11 w-11 flex items-center justify-center border border-ivory/20 text-ivory/80 transition-colors duration-500 hover:border-bronze hover:bg-bronze hover:text-espresso">
+                                <span class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                            </button>
+                        </div>
+
+                        <div class="flex items-baseline gap-1.5">
+                            <span id="col-counter" class="font-serif text-[1.05rem] leading-none text-ivory">01</span>
+                            <span class="text-[.56rem] tracking-[.2em] text-ivory/40 font-medium">/ 05</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ===== RIGHT · IMAGE SLIDER ===== -->
+                <div class="lg:col-span-7 order-1 lg:order-2 w-full">
+
+                    <div class="relative aspect-[5/4] sm:aspect-[4/3] w-full overflow-hidden bg-linen">
+                        <div id="col-image-track" class="col-track flex h-full">
+
+                            <!-- 01 · WEAR -->
+                            <div class="col-image-slide relative h-full overflow-hidden">
+                                <img src="picha/7.jpg" alt="The Wear Collection" draggable="false"
+                                    class="h-full w-full object-cover object-center">
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute top-5 left-5 flex items-center gap-2.5">
+                                    <span class="h-px w-6 bg-bronze"></span>
+                                    <span
+                                        class="text-[.54rem] tracking-[.32em] uppercase text-ivory/90 font-semibold">01
+                                        · Wear</span>
+                                </div>
+                            </div>
+
+                            <!-- 02 · CARRY -->
+                            <div class="col-image-slide relative h-full overflow-hidden">
+                                <img src="picha/4.jpg" alt="The Carry Collection" draggable="false" loading="lazy"
+                                    class="h-full w-full object-cover object-center">
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute top-5 left-5 flex items-center gap-2.5">
+                                    <span class="h-px w-6 bg-bronze"></span>
+                                    <span
+                                        class="text-[.54rem] tracking-[.32em] uppercase text-ivory/90 font-semibold">02
+                                        · Carry</span>
+                                </div>
+                            </div>
+
+                            <!-- 03 · HOME -->
+                            <div class="col-image-slide relative h-full overflow-hidden">
+                                <img src="picha/3.jpg" alt="The Home Collection" draggable="false" loading="lazy"
+                                    class="h-full w-full object-cover object-center">
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute top-5 left-5 flex items-center gap-2.5">
+                                    <span class="h-px w-6 bg-bronze"></span>
+                                    <span
+                                        class="text-[.54rem] tracking-[.32em] uppercase text-ivory/90 font-semibold">03
+                                        · Home</span>
+                                </div>
+                            </div>
+
+                            <!-- 04 · CRAFT -->
+                            <div class="col-image-slide relative h-full overflow-hidden">
+                                <img src="picha/2.jpg" alt="The Craft Collection" draggable="false" loading="lazy"
+                                    class="h-full w-full object-cover object-center">
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute top-5 left-5 flex items-center gap-2.5">
+                                    <span class="h-px w-6 bg-bronze"></span>
+                                    <span
+                                        class="text-[.54rem] tracking-[.32em] uppercase text-ivory/90 font-semibold">04
+                                        · Craft</span>
+                                </div>
+                            </div>
+
+                            <!-- 05 · GIFT -->
+                            <div class="col-image-slide relative h-full overflow-hidden">
+                                <img src="picha/1.jpg" alt="The Gift Collection" draggable="false" loading="lazy"
+                                    class="h-full w-full object-cover object-center">
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent">
+                                </div>
+                                <div class="absolute top-5 left-5 flex items-center gap-2.5">
+                                    <span class="h-px w-6 bg-bronze"></span>
+                                    <span
+                                        class="text-[.54rem] tracking-[.32em] uppercase text-ivory/90 font-semibold">05
+                                        · Gift</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- progress bar · below image -->
+                    <div class="mt-6 flex items-center gap-2">
+                        <span data-col-bar="0" class="h-px flex-1 bg-bronze transition-colors duration-500"></span>
+                        <span data-col-bar="1" class="h-px flex-1 bg-ivory/15 transition-colors duration-500"></span>
+                        <span data-col-bar="2" class="h-px flex-1 bg-ivory/15 transition-colors duration-500"></span>
+                        <span data-col-bar="3" class="h-px flex-1 bg-ivory/15 transition-colors duration-500"></span>
+                        <span data-col-bar="4" class="h-px flex-1 bg-ivory/15 transition-colors duration-500"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="relative border-t border-ivory/12">
+            <div class="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-12">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+
+                    <p class="text-[.6rem] tracking-[.32em] uppercase text-ivory/40 font-medium">
+                        05 Collections · Full Arvo Stile Universe
+                    </p>
+
+                    <a href="/collections"
+                        class="group inline-flex items-center gap-3 text-[.68rem] tracking-[.3em] uppercase text-ivory font-semibold">
+                        <span class="h-px w-8 bg-bronze transition-all duration-500 group-hover:w-14"></span>
+                        View All Collections
+                        <span class="text-bronze transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                    </a>
+
+                </div>
+            </div>
+        </footer>
+
+    </section>
+
+
+    <script>
+        /* ============================================================
+           ARVO STILE · COLLECTIONS PUSH SWITCHER
+           - 8s autoplay, always forward (no rewind on wrap)
+           - Hover pauses and holds for up to 60s after cursor leaves
+           ============================================================ */
+        (function () {
+            'use strict';
+
+            var section = document.getElementById('collections-switcher');
+            var textTrack = document.getElementById('col-text-track');
+            var imageTrack = document.getElementById('col-image-track');
+            var prevBtn = document.getElementById('col-prev');
+            var nextBtn = document.getElementById('col-next');
+            var counterEl = document.getElementById('col-counter');
+            var bars = Array.prototype.slice.call(document.querySelectorAll('[data-col-bar]'));
+
+            if (!section || !textTrack || !imageTrack) return;
+
+            var total = textTrack.children.length;
+            var index = 0;
+
+            var INTERVAL = 5000;    // 8 seconds between auto-advances
+            var HOVER_COOLDOWN = 30000;   // 60 seconds pause after cursor leaves
+
+            var autoTimer = null;
+            var cooldownTimer = null;
+            var hovered = false;
+            var visible = false;
+            var animating = false;
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ------------------------------------------------------------
+               Rendering
+               ------------------------------------------------------------ */
+            function applyTransform() {
+                var offset = -index * 100;
+                textTrack.style.transform = 'translate3d(' + offset + '%, 0, 0)';
+                imageTrack.style.transform = 'translate3d(' + offset + '%, 0, 0)';
+            }
+
+            /* Snap without animation — used only for the 05 → 01 wrap
+               so the track never visually sweeps backward. */
+            function snapTo(i) {
+                textTrack.classList.add('col-no-transition');
+                imageTrack.classList.add('col-no-transition');
+                index = i;
+                applyTransform();
+                // force reflow so the "no transition" class takes effect
+                void textTrack.offsetWidth;
+                textTrack.classList.remove('col-no-transition');
+                imageTrack.classList.remove('col-no-transition');
+            }
+
+            function animateTo(i) {
+                index = i;
+                applyTransform();
+
+                // lock so rapid clicks / timer ticks can't stack transitions
+                animating = true;
+                setTimeout(function () { animating = false; }, 850);
+            }
+
+            function syncUI() {
+                if (counterEl) {
+                    counterEl.textContent = String(index + 1).padStart(2, '0');
+                }
+                bars.forEach(function (bar, k) {
+                    bar.classList.toggle('bg-bronze', k === index);
+                    bar.classList.toggle('bg-ivory/15', k !== index);
+                });
+            }
+
+            /* ------------------------------------------------------------
+               Navigation — always forward, wrap snaps (no rewind)
+               ------------------------------------------------------------ */
+            function goTo(target) {
+                if (animating) return;
+
+                var next = ((target % total) + total) % total;
+
+                if (next === index) {
+                    scheduleNext();
+                    return;
+                }
+
+                // wrap case: 05 → 01 (or 01 → 05 with prev) — snap, do not sweep
+                var isWrapForward = (index === total - 1 && next === 0);
+                var isWrapBack = (index === 0 && next === total - 1);
+
+                if (isWrapForward || isWrapBack) {
+                    snapTo(next);
+                    syncUI();
+                    scheduleNext();
+                    return;
+                }
+
+                animateTo(next);
+                syncUI();
+                scheduleNext();
+            }
+
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            /* ------------------------------------------------------------
+               Autoplay
+               ------------------------------------------------------------ */
+            function scheduleNext() {
+                clearInterval(autoTimer);
+                autoTimer = null;
+
+                if (reducedMotion) return;
+                if (!visible) return;
+                if (hovered) return;          // cursor is on section
+                if (cooldownTimer) return;    // still inside 60s post-hover cooldown
+
+                autoTimer = setInterval(next, INTERVAL);
+            }
+
+            function stopAuto() {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+
+            /* ------------------------------------------------------------
+               Hover pause with 60s cooldown
+               ------------------------------------------------------------ */
+            function startCooldown() {
+                clearTimeout(cooldownTimer);
+                cooldownTimer = setTimeout(function () {
+                    cooldownTimer = null;
+                    if (visible && !hovered) scheduleNext();
+                }, HOVER_COOLDOWN);
+            }
+
+            function cancelCooldown() {
+                clearTimeout(cooldownTimer);
+                cooldownTimer = null;
+            }
+
+            section.addEventListener('mouseenter', function () {
+                hovered = true;
+                cancelCooldown();
+                stopAuto();
+            });
+
+            section.addEventListener('mouseleave', function () {
+                hovered = false;
+                // hold the pause for up to 60 seconds before resuming
+                startCooldown();
+            });
+
+            /* touch devices — treat touchstart like hover pause briefly */
+            section.addEventListener('touchstart', function () {
+                hovered = true;
+                cancelCooldown();
+                stopAuto();
+            }, { passive: true });
+
+            section.addEventListener('touchend', function () {
+                hovered = false;
+                startCooldown();
+            }, { passive: true });
+
+            /* ------------------------------------------------------------
+               Buttons
+               ------------------------------------------------------------ */
+            if (prevBtn) prevBtn.addEventListener('click', function () { prev(); });
+            if (nextBtn) nextBtn.addEventListener('click', function () { next(); });
+
+            /* ------------------------------------------------------------
+               Keyboard
+               ------------------------------------------------------------ */
+            document.addEventListener('keydown', function (e) {
+                if (!visible) return;
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+            });
+
+            /* ------------------------------------------------------------
+               Only run while section is in view
+               ------------------------------------------------------------ */
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        visible = entry.isIntersecting;
+                        if (visible) scheduleNext();
+                        else stopAuto();
+                    });
+                }, { threshold: 0.2 }).observe(section);
+            } else {
+                visible = true;
+                scheduleNext();
+            }
+
+            /* ------------------------------------------------------------
+               Swipe / drag on the image
+               ------------------------------------------------------------ */
+            (function enableSwipe() {
+                var dragging = false;
+                var startX = 0;
+                var startY = 0;
+                var lockAxis = null;
+
+                imageTrack.addEventListener('pointerdown', function (e) {
+                    if (e.pointerType === 'mouse' && e.button !== 0) return;
+                    dragging = true;
+                    lockAxis = null;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    stopAuto();
+                });
+
+                imageTrack.addEventListener('pointermove', function (e) {
+                    if (!dragging) return;
+                    var dx = e.clientX - startX;
+                    var dy = e.clientY - startY;
+                    if (lockAxis === null) {
+                        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+                        lockAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+                    }
+                    if (lockAxis !== 'x') return;
+                    if (e.cancelable) e.preventDefault();
+                });
+
+                imageTrack.addEventListener('pointerup', function (e) {
+                    if (!dragging) return;
+                    dragging = false;
+                    if (lockAxis !== 'x') { scheduleNext(); return; }
+                    var dx = e.clientX - startX;
+                    if (dx <= -40) next();
+                    else if (dx >= 40) prev();
+                    else scheduleNext();
+                });
+
+                imageTrack.addEventListener('pointercancel', function () {
+                    dragging = false;
+                    scheduleNext();
+                });
+            })();
+
+            /* ------------------------------------------------------------
+               Init
+               ------------------------------------------------------------ */
+            applyTransform();
+            syncUI();
+        })();
+    </script>
+
+
+    <!-- ================= 04 · THE ARVO SIGNATURE ================= -->
+    <style>
+        .signature-img {
+            transition: transform 1400ms cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .signature-pillar:hover .signature-img {
+            transform: scale(1.05);
+        }
+
+        .signature-marker {
+            transform-origin: left center;
+            transform: scaleX(0);
+            transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .signature-pillar:hover .signature-marker {
+            transform: scaleX(1);
+        }
+
+        .signature-badge {
+            transition: background-color 500ms ease, color 500ms ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .signature-img,
+            .signature-marker {
+                transition-duration: 1ms !important;
+            }
+        }
+    </style>
+
+    <section id="signature" class="relative w-full overflow-hidden bg-white">
+
+        <!-- ambient washes · very subtle on white -->
+        <div
+            class="pointer-events-none absolute -top-56 right-[-10%] h-[46rem] w-[46rem] rounded-full bg-bronze/[0.05] blur-[170px]">
+        </div>
+        <div
+            class="pointer-events-none absolute bottom-0 left-[-15%] h-[40rem] w-[40rem] rounded-full bg-bronze/[0.03] blur-[160px]">
+        </div>
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/40 to-transparent">
+        </div>
+
+        <!-- ============ HEADER ============ -->
+        <header
+            class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-20 sm:pt-28 lg:pt-36 pb-14 sm:pb-16 lg:pb-20">
+
+            <div class="flex items-center gap-5 mb-10">
+                <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">04</span>
+                <span class="h-px flex-1 bg-espresso/15"></span>
+                <span class="text-[.6rem] tracking-[.34em] uppercase text-espresso/40 font-medium">The Arvo
+                    Signature</span>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+
+                <div class="lg:col-span-7">
+                    <h2
+                        class="font-serif font-normal text-[clamp(2.2rem,5.4vw,4.6rem)] leading-[1] tracking-[-.035em] text-espresso">
+                        What makes an ARVO piece,<br>
+                        <em class="italic font-light text-bronze">an ARVO piece.</em>
+                    </h2>
+                </div>
+
+                <div class="lg:col-span-5 lg:pb-3">
+                    <p class="text-[1rem] sm:text-[1.06rem] leading-[1.75] text-espresso/60 font-light max-w-[46ch]">
+                        A signature is not a logo. It is a standard — the set of decisions
+                        that stay constant no matter what we make. Five principles define
+                        every piece that carries our name.
+                    </p>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ============ THE FIVE PILLARS · alternating spread ============ -->
+        <div class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pb-20 sm:pb-24 lg:pb-28">
+
+            <div class="space-y-20 sm:space-y-24 lg:space-y-28">
+
+                <!-- ——————————————————————— -->
+                <!-- 01 · TEXTILE · image left -->
+                <!-- ——————————————————————— -->
+                <article class="signature-pillar group grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-5 order-1">
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+                            <img src="https://loremflickr.com/1000/1250/kitenge,textile,fabric,weave,detail/all?lock=1001"
+                                alt="Textile detail — Kitenge and handwoven fabric" loading="lazy" draggable="false"
+                                class="signature-img h-full w-full object-cover object-center">
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="signature-badge absolute top-5 left-5 bg-espresso/70 backdrop-blur-sm px-4 py-2.5 transition-colors duration-500 group-hover:bg-bronze">
+                                <span
+                                    class="font-serif text-[.95rem] leading-none text-ivory transition-colors duration-500 group-hover:text-espresso">01</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-2">
+                        <div class="lg:pl-4">
+
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="h-px w-10 bg-bronze"></span>
+                                <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold">
+                                    Textile · The Material
+                                </p>
+                            </div>
+
+                            <div class="h-px w-full bg-espresso/15 mb-7 overflow-hidden">
+                                <div class="signature-marker h-px w-full bg-bronze"></div>
+                            </div>
+
+                            <h3
+                                class="font-serif font-normal text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.08] tracking-[-.03em] text-espresso mb-6">
+                                Chosen by hand, before anything else is designed.
+                            </h3>
+
+                            <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[54ch] mb-7">
+                                Every ARVO piece begins with the textile. We work with kitenge,
+                                batiki, kanga and a small library of natural fibres — seagrass,
+                                sisal, water hyacinth and raffia — selected for hand-feel, colour
+                                depth and how they age with use. Nothing is ordered from a
+                                catalogue. Everything is chosen in person, in the studio, by the
+                                people who will make it.
+                            </p>
+
+                            <ul
+                                class="flex flex-wrap items-center gap-y-2 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Kitenge</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Batiki</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Kanga</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Seagrass</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Sisal</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Water Hyacinth</li>
+                                <li class="pr-0 mr-0">Raffia</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </article>
+
+                <!-- ——————————————————————— -->
+                <!-- 02 · CRAFT · image right -->
+                <!-- ——————————————————————— -->
+                <article class="signature-pillar group grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <div class="lg:pr-4">
+
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="h-px w-10 bg-bronze"></span>
+                                <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold">
+                                    Craft · The Hand
+                                </p>
+                            </div>
+
+                            <div class="h-px w-full bg-espresso/15 mb-7 overflow-hidden">
+                                <div class="signature-marker h-px w-full bg-bronze"></div>
+                            </div>
+
+                            <h3
+                                class="font-serif font-normal text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.08] tracking-[-.03em] text-espresso mb-6">
+                                Made by named artisans, not anonymous factories.
+                            </h3>
+
+                            <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[54ch] mb-7">
+                                Our pieces are woven, dyed, cut and finished by hand in Tanzania.
+                                We work with weavers, tailors and beadworkers whose techniques
+                                have been passed down for generations — and we credit them by
+                                name. No piece leaves the studio without a maker's mark and a
+                                final inspection.
+                            </p>
+
+                            <ul
+                                class="flex flex-wrap items-center gap-y-2 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Handwoven</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Hand-dyed</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Hand-finished</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Named Artisans</li>
+                                <li class="pr-0 mr-0">Small Batch</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+                            <img src="https://loremflickr.com/1000/1250/artisan,hands,weaving,loom,craft/all?lock=1002"
+                                alt="Artisan hands at the loom" loading="lazy" draggable="false"
+                                class="signature-img h-full w-full object-cover object-center">
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="signature-badge absolute top-5 left-5 bg-espresso/70 backdrop-blur-sm px-4 py-2.5 transition-colors duration-500 group-hover:bg-bronze">
+                                <span
+                                    class="font-serif text-[.95rem] leading-none text-ivory transition-colors duration-500 group-hover:text-espresso">02</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+
+                <!-- ——————————————————————— -->
+                <!-- 03 · FORM · image left -->
+                <!-- ——————————————————————— -->
+                <article class="signature-pillar group grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-5 order-1">
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+                            <img src="https://loremflickr.com/1000/1250/fashion,silhouette,editorial,minimal,modern/all?lock=1003"
+                                alt="Contemporary silhouette" loading="lazy" draggable="false"
+                                class="signature-img h-full w-full object-cover object-center">
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="signature-badge absolute top-5 left-5 bg-espresso/70 backdrop-blur-sm px-4 py-2.5 transition-colors duration-500 group-hover:bg-bronze">
+                                <span
+                                    class="font-serif text-[.95rem] leading-none text-ivory transition-colors duration-500 group-hover:text-espresso">03</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-2">
+                        <div class="lg:pl-4">
+
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="h-px w-10 bg-bronze"></span>
+                                <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold">
+                                    Form · The Shape
+                                </p>
+                            </div>
+
+                            <div class="h-px w-full bg-espresso/15 mb-7 overflow-hidden">
+                                <div class="signature-marker h-px w-full bg-bronze"></div>
+                            </div>
+
+                            <h3
+                                class="font-serif font-normal text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.08] tracking-[-.03em] text-espresso mb-6">
+                                Heritage soul. Contemporary cut.
+                            </h3>
+
+                            <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[54ch] mb-7">
+                                We do not reproduce traditional forms — we reinterpret them.
+                                Every silhouette is developed for how people actually dress and
+                                live today: structured blazers, relaxed co-ords, clean-lined
+                                baskets, functional bags. The heritage lives in the material and
+                                the making. The form is entirely of the present.
+                            </p>
+
+                            <ul
+                                class="flex flex-wrap items-center gap-y-2 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Modern Tailoring</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Functional Shapes</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Structured Cuts</li>
+                                <li class="pr-0 mr-0">Contemporary Lines</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </article>
+
+                <!-- ——————————————————————— -->
+                <!-- 04 · DETAIL · image right -->
+                <!-- ——————————————————————— -->
+                <article class="signature-pillar group grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <div class="lg:pr-4">
+
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="h-px w-10 bg-bronze"></span>
+                                <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold">
+                                    Detail · The Decision
+                                </p>
+                            </div>
+
+                            <div class="h-px w-full bg-espresso/15 mb-7 overflow-hidden">
+                                <div class="signature-marker h-px w-full bg-bronze"></div>
+                            </div>
+
+                            <h3
+                                class="font-serif font-normal text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.08] tracking-[-.03em] text-espresso mb-6">
+                                The difference lives in the smallest choices.
+                            </h3>
+
+                            <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[54ch] mb-7">
+                                A contrasting Ankara lining inside a seagrass basket. A reinforced
+                                strap where the bag carries weight. A hand-rolled edge on a
+                                cushion. These are the decisions that separate a considered piece
+                                from a manufactured one — and they are the ones you only notice
+                                when you live with the piece.
+                            </p>
+
+                            <ul
+                                class="flex flex-wrap items-center gap-y-2 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Contrast Lining</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Hand-rolled Edges</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Reinforced Stitching</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Beadwork</li>
+                                <li class="pr-0 mr-0">Finished Seams</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 order-1 lg:order-2">
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+                            <img src="https://loremflickr.com/1000/1250/stitching,thread,detail,texture,closeup/all?lock=1004"
+                                alt="Stitching and finish detail" loading="lazy" draggable="false"
+                                class="signature-img h-full w-full object-cover object-center">
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="signature-badge absolute top-5 left-5 bg-espresso/70 backdrop-blur-sm px-4 py-2.5 transition-colors duration-500 group-hover:bg-bronze">
+                                <span
+                                    class="font-serif text-[.95rem] leading-none text-ivory transition-colors duration-500 group-hover:text-espresso">04</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+
+                <!-- ——————————————————————— -->
+                <!-- 05 · PURPOSE · image left -->
+                <!-- ——————————————————————— -->
+                <article class="signature-pillar group grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+
+                    <div class="lg:col-span-5 order-1">
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-linen">
+                            <img src="https://loremflickr.com/1000/1250/lifestyle,everyday,used,worn,home/all?lock=1005"
+                                alt="Lived-in lifestyle scene" loading="lazy" draggable="false"
+                                class="signature-img h-full w-full object-cover object-center">
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="signature-badge absolute top-5 left-5 bg-espresso/70 backdrop-blur-sm px-4 py-2.5 transition-colors duration-500 group-hover:bg-bronze">
+                                <span
+                                    class="font-serif text-[.95rem] leading-none text-ivory transition-colors duration-500 group-hover:text-espresso">05</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-2">
+                        <div class="lg:pl-4">
+
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="h-px w-10 bg-bronze"></span>
+                                <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold">
+                                    Purpose · The Life
+                                </p>
+                            </div>
+
+                            <div class="h-px w-full bg-espresso/15 mb-7 overflow-hidden">
+                                <div class="signature-marker h-px w-full bg-bronze"></div>
+                            </div>
+
+                            <h3
+                                class="font-serif font-normal text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.08] tracking-[-.03em] text-espresso mb-6">
+                                Designed to be used, worn, and lived with.
+                            </h3>
+
+                            <p class="text-[.98rem] leading-[1.75] text-espresso/60 font-light max-w-[54ch] mb-7">
+                                An ARVO piece is not an ornament. It is made to be carried every
+                                day, worn through seasons, filled and emptied, gifted and
+                                re-gifted. We design for longevity — in construction, in materials
+                                and in style — so that what you buy today is still what you reach
+                                for in ten years.
+                            </p>
+
+                            <ul
+                                class="flex flex-wrap items-center gap-y-2 text-[.66rem] tracking-[.24em] uppercase text-espresso/50 font-medium">
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Built for Daily Use</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Made to Last</li>
+                                <li class="pr-4 mr-4 border-r border-espresso/15">Timeless by Design</li>
+                                <li class="pr-0 mr-0">Repairable</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+
+    <!-- ================= 05 · MATERIALS & TEXTILES ================= -->
+    <section id="materials" class="relative w-full overflow-hidden bg-ivory">
+
+        <!-- top hairline -->
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/40 to-transparent">
+        </div>
+        <!-- subtle ambient -->
+        <div
+            class="pointer-events-none absolute -top-40 right-[-15%] h-[38rem] w-[38rem] rounded-full bg-bronze/[0.05] blur-[150px]">
+        </div>
+
+        <div class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-28 lg:py-32">
+
+            <!-- ============ HEADER ============ -->
+            <header class="mb-14 sm:mb-16 lg:mb-20">
+
+                <div class="flex items-center gap-5 mb-10">
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">05</span>
+                    <span class="h-px flex-1 bg-espresso/15"></span>
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-espresso/40 font-medium">Materials &amp;
+                        Textiles</span>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+
+                    <div class="lg:col-span-7">
+                        <h2
+                            class="font-serif font-normal text-[clamp(2.2rem,5.4vw,4.4rem)] leading-[1] tracking-[-.035em] text-espresso">
+                            The materials<br>
+                            <em class="italic font-light text-bronze">behind every piece.</em>
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-5 lg:pb-3">
+                        <p
+                            class="text-[1rem] sm:text-[1.06rem] leading-[1.75] text-espresso/60 font-light max-w-[48ch]">
+                            What a piece is made from matters more than what it looks like.
+                            Here is the honest reference — where each material comes from,
+                            how we use it, and how to care for it so it lasts.
+                        </p>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- ============ MATERIAL LIBRARY GRID ============ -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-10 gap-y-14">
+
+                <!-- ——— 01 · KITENGE ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Printed Cotton
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Kitenge
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A vibrant East African wax-print cotton, worn for celebration and
+                        daily life alike. Bold pattern, saturated colour, and a hand-feel
+                        that softens with every wear.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">East &amp; Central Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Apparel, linings, cushions, gift items</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Hand wash cold · dry in shade</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 02 · BATIKI ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Hand-Dyed Textile
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Batiki
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        Hand-dyed viscose-cotton with soft, contemporary patterns. Each
+                        length is unique — the dye never lands exactly the same way twice,
+                        which is what makes it unmistakable.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Tanzania &amp; East Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Dresses, shirts, co-ords, blazers</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Hand wash cold · iron inside out</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 03 · ANKARA ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Wax Print Cotton
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Ankara
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A bold West African wax print, known for graphic patterns and strong
+                        colour. We use Ankara most often as a lining or accent — the surprise
+                        detail inside a piece.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">West Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Lining, trim, statement details</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Hand wash cold · colour-safe detergent</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 04 · KANGA ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Printed Wrap Cloth
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Kanga
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A lightweight printed cloth woven with a Swahili proverb along its
+                        border. Traditionally worn and gifted across East Africa — every
+                        Kanga carries a message.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Tanzania &amp; Kenya</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Pillowcases, wraps, gift pieces</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Hand wash cold · dry in shade</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 05 · VISCOSE COTTON ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Soft Blend Fabric
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Viscose Cotton
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A soft, breathable blend of viscose and cotton. It drapes beautifully,
+                        holds colour deeply, and stays comfortable in warm climates — the
+                        base fabric for most of our bespoke wear.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Blended · dyed in East Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Dresses, blouses, co-ords, kimonos</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Hand wash cold · hang dry</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 06 · COTTON ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Natural Fibre
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Cotton
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        The foundation fibre of most of our fabric. Breathable, durable,
+                        and forgiving — cotton takes dye beautifully and softens with age,
+                        which is why we trust it for everyday pieces.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Regionally sourced</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Everyday wear, linings, all fabric blends</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Machine wash cool · iron warm</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 07 · SEAGRASS ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Woven Fibre
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Seagrass
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A natural, renewable fibre harvested and dried by hand, then woven
+                        into baskets and rugs. Seagrass is strong, subtly fragrant when new,
+                        and ages into a warm, lived-in tone.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Coastal Tanzania</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Baskets, hampers, rugs, storage</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Dust dry · keep away from damp</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 08 · SISAL ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Agave Fibre
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Sisal
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A strong, durable fibre extracted from the agave plant. Sisal is
+                        coarse, hard-wearing and naturally resistant — the fibre we choose
+                        when a piece needs to hold its shape for years.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">East Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Rugs, mats, sturdy baskets</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Vacuum gently · spot clean</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 09 · WATER HYACINTH ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Aquatic Fibre
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Water Hyacinth
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A fast-growing aquatic plant, harvested and dried into a soft, pliable
+                        fibre. Working with it keeps waterways clear — a material that is
+                        both beautiful and restorative to its source.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Lake regions of East Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Storage boxes, organisers, decor</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Dust dry · keep away from moisture</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 10 · RAFFIA ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Palm Fibre
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Raffia
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        A flexible, lightweight fibre stripped from the raffia palm. Soft
+                        to the touch, strong under tension, and naturally pale — the fibre
+                        behind our Kapu baskets and hand fans.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Madagascar &amp; East Africa</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Baskets, fans, decorative accents</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Dust dry · reshape by hand</span>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ——— 11 · BEADS ——— -->
+                <article class="border-t border-espresso/15 pt-7">
+                    <p class="text-[.56rem] tracking-[.3em] uppercase text-bronze font-semibold mb-4">
+                        Embellishment
+                    </p>
+                    <h3 class="font-serif font-normal text-[1.6rem] leading-none tracking-[-.02em] text-espresso mb-4">
+                        Beads
+                    </h3>
+                    <p class="text-[.9rem] leading-[1.7] text-espresso/60 font-light mb-6">
+                        Glass and Maasai beadwork, threaded by hand one bead at a time.
+                        Beads add colour, texture and meaning — often carrying symbolic
+                        patterns specific to the artisan who made them.
+                    </p>
+                    <div class="space-y-2 pt-5 border-t border-espresso/12">
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Origin</span>
+                            <span class="text-espresso/75">Tanzania &amp; Kenya</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Best
+                                for</span>
+                            <span class="text-espresso/75">Accents, organisers, keepsakes</span>
+                        </p>
+                        <p class="text-[.72rem] leading-[1.5]">
+                            <span
+                                class="text-espresso/40 tracking-[.2em] uppercase text-[.58rem] font-medium mr-3">Care</span>
+                            <span class="text-bronze font-medium">Dust with soft cloth · avoid impact</span>
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ============ CLOSING NOTE ============ -->
+            <div class="mt-20 sm:mt-24 pt-12 border-t border-espresso/15">
+
+                <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                    <div class="lg:col-span-8">
+                        <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold mb-5">
+                            A note on materials
+                        </p>
+                        <p
+                            class="font-serif font-normal text-[clamp(1.4rem,2.8vw,2.2rem)] leading-[1.2] tracking-[-.025em] text-espresso max-w-[36ch]">
+                            Every material we use is chosen for how it wears, not just how it looks — and every piece
+                            comes with a care note.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-4 flex lg:justify-end">
+                        <a href="/collections"
+                            class="group inline-flex items-center gap-4 bg-espresso px-8 py-4 transition-colors duration-500 hover:bg-bronze">
+                            <span
+                                class="text-[.68rem] tracking-[.3em] uppercase font-semibold text-ivory transition-colors duration-500 group-hover:text-espresso">
+                                Explore the Collection
+                            </span>
+                            <span
+                                class="text-ivory transition-all duration-300 group-hover:text-espresso group-hover:translate-x-1.5">→</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= 06 · THE ART OF MAKING ================= -->
+    <section id="making" class="relative w-full overflow-hidden bg-espresso mb-16">
+
+        <!-- ambient washes -->
+        <div
+            class="pointer-events-none absolute -top-56 right-[-10%] h-[46rem] w-[46rem] rounded-full bg-bronze/[0.09] blur-[170px]">
+        </div>
+        <div
+            class="pointer-events-none absolute bottom-0 left-[-15%] h-[40rem] w-[40rem] rounded-full bg-bronze/[0.05] blur-[160px]">
+        </div>
+        <div
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze/60 to-transparent">
+        </div>
+
+        <div class="relative max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-20 sm:py-24 lg:py-28">
+
+            <!-- ============ HEADER ============ -->
+            <header class="mb-14 sm:mb-16 lg:mb-20">
+
+                <div class="flex items-center gap-5 mb-8">
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-bronze font-semibold">06</span>
+                    <span class="h-px flex-1 bg-ivory/15"></span>
+                    <span class="text-[.6rem] tracking-[.34em] uppercase text-ivory/40 font-medium">The Art of
+                        Making</span>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+
+                    <div class="lg:col-span-7">
+                        <h2
+                            class="font-serif font-normal text-[clamp(2rem,4.8vw,3.6rem)] leading-[1.02] tracking-[-.035em] text-ivory">
+                            From material, to<br>
+                            <em class="italic font-light text-bronze">meaningful object.</em>
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-5 lg:pb-2">
+                        <p class="text-[.96rem] sm:text-[1.02rem] leading-[1.7] text-ivory/60 font-light max-w-[46ch]">
+                            Every ARVO piece moves through the same eight steps, in the same
+                            order — from the moment a textile is chosen, to the final inspection
+                            before it is wrapped.
+                        </p>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- ============ THE FIVE PHASES ============ -->
+            <div class="border-y border-ivory/12 py-6 sm:py-7 mb-14 sm:mb-16">
+
+                <div class="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="font-serif text-[1.35rem] sm:text-[1.6rem] leading-none text-bronze">01</span>
+                        <p class="font-serif text-[.95rem] sm:text-[1.1rem] leading-none text-ivory whitespace-nowrap">
+                            Material</p>
+                    </div>
+
+                    <span class="hidden sm:block h-px w-6 bg-bronze/40 shrink-0"></span>
+                    <span class="sm:hidden text-bronze/50 shrink-0">→</span>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="font-serif text-[1.35rem] sm:text-[1.6rem] leading-none text-bronze">02</span>
+                        <p class="font-serif text-[.95rem] sm:text-[1.1rem] leading-none text-ivory whitespace-nowrap">
+                            Craft</p>
+                    </div>
+
+                    <span class="hidden sm:block h-px w-6 bg-bronze/40 shrink-0"></span>
+                    <span class="sm:hidden text-bronze/50 shrink-0">→</span>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="font-serif text-[1.35rem] sm:text-[1.6rem] leading-none text-bronze">03</span>
+                        <p class="font-serif text-[.95rem] sm:text-[1.1rem] leading-none text-ivory whitespace-nowrap">
+                            Design</p>
+                    </div>
+
+                    <span class="hidden sm:block h-px w-6 bg-bronze/40 shrink-0"></span>
+                    <span class="sm:hidden text-bronze/50 shrink-0">→</span>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="font-serif text-[1.35rem] sm:text-[1.6rem] leading-none text-bronze">04</span>
+                        <p class="font-serif text-[.95rem] sm:text-[1.1rem] leading-none text-ivory whitespace-nowrap">
+                            Finishing</p>
+                    </div>
+
+                    <span class="hidden sm:block h-px w-6 bg-bronze/40 shrink-0"></span>
+                    <span class="sm:hidden text-bronze/50 shrink-0">→</span>
+
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="font-serif text-[1.35rem] sm:text-[1.6rem] leading-none text-bronze">05</span>
+                        <p class="font-serif text-[.95rem] sm:text-[1.1rem] leading-none text-ivory whitespace-nowrap">
+                            Arvo Piece</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ============ THE EIGHT STEPS · 4 × 2 GRID ============ -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 lg:gap-x-10 gap-y-12 sm:gap-y-14">
+
+                <!-- ——— 01 · FABRIC SELECTION ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">01</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Material</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Fabric Selection
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Kitenge, batiki and natural fibres chosen by hand for feel, colour and how they age.
+                    </p>
+                </article>
+
+                <!-- ——— 02 · WEAVING ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">02</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Material</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Weaving
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Woven by hand on traditional looms — thread by thread, weaver by weaver.
+                    </p>
+                </article>
+
+                <!-- ——— 03 · CUTTING ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">03</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Craft</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Cutting
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Cut by hand against paper patterns, prints positioned deliberately.
+                    </p>
+                </article>
+
+                <!-- ——— 04 · SEWING ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">04</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Craft</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Sewing
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Stitched by hand or machine, reinforced where weight is carried.
+                    </p>
+                </article>
+
+                <!-- ——— 05 · SHAPING ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">05</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Design</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Shaping
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Fitted and structured into form — where a piece finds its final line.
+                    </p>
+                </article>
+
+                <!-- ——— 06 · FINISHING ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">06</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Finishing</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Finishing
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Hand-rolled edges, hidden linings, and small polished details.
+                    </p>
+                </article>
+
+                <!-- ——— 07 · QUALITY INSPECTION ——— -->
+                <article class="border-t border-ivory/15 pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze/60">07</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Finishing</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        Quality Inspection
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/55 font-light">
+                        Every seam, edge and detail checked by hand before approval.
+                    </p>
+                </article>
+
+                <!-- ——— 08 · THE ARVO PIECE ——— -->
+                <article class="border-t border-bronze pt-6">
+                    <div class="flex items-baseline justify-between mb-5">
+                        <span class="font-serif text-[2.2rem] leading-none text-bronze">08</span>
+                        <span class="text-[.54rem] tracking-[.3em] uppercase text-bronze font-semibold">Arvo
+                            Piece</span>
+                    </div>
+                    <h3 class="font-serif font-normal text-[1.25rem] leading-[1.15] tracking-[-.02em] text-ivory mb-3">
+                        The Arvo Piece
+                    </h3>
+                    <p class="text-[.86rem] leading-[1.7] text-ivory/80 font-light">
+                        Wrapped, tagged by its maker — a material, made meaningful.
+                    </p>
+                </article>
+
+            </div>
+
+            <!-- ============ CLOSING ============ -->
+            <div class="mt-20 sm:mt-24 pt-12 border-t border-ivory/12">
+
+                <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                    <div class="lg:col-span-7">
+                        <p class="text-[.58rem] tracking-[.32em] uppercase text-bronze font-semibold mb-4">
+                            Eight steps · Five phases · One standard
+                        </p>
+                        <p
+                            class="font-serif text-[clamp(1.4rem,2.6vw,2rem)] leading-[1.15] tracking-[-.025em] text-ivory max-w-[24ch]">
+                            Every ARVO piece has passed through the same eight hands.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-5 flex lg:justify-end">
+                        <a href="/collections"
+                            class="group inline-flex items-center gap-4 bg-bronze px-8 py-4 transition-colors duration-500 hover:bg-ivory">
+                            <span class="text-[.68rem] tracking-[.3em] uppercase font-semibold text-espresso">
+                                Explore the Collection
+                            </span>
+                            <span
+                                class="text-espresso transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Link to your JavaScript file -->
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

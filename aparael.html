@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kitenge &amp; Batiki Bespoke — Apparel &amp; Bespoke Wear</title>
+
+    <!--
+═══════════════════════════════════════════════════════════════════
+  🔌 BACKEND DEVELOPER QUICK MAP
+═══════════════════════════════════════════════════════════════════
+  PAGE: 5 — "Kitenge & Batiki — Apparel & Bespoke Wear"
+  PURPOSE: Luxury tailoring, made-to-measure, structured garments.
+
+  DISTINCT FROM PAGE 4 (Heritage Souvenirs) which is:
+    • gift-focused, casual, souvenir-shop feel
+    • key holders, hand fans, notebooks
+    • price point $12–$78
+    • brand: "Heritage Souvenirs"
+
+  THIS PAGE IS:
+    • luxury bespoke tailoring
+    • blazers, dresses, co-ords, kimonos
+    • price point $38–$265
+    • brand: "Kitenge & Batiki"
+    • offers "Book Bespoke Fitting" service
+
+  Connect to Django exactly like Page 4 — same ProductImage model.
+═══════════════════════════════════════════════════════════════════
+-->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.55;
+        }
+
+        .be-note {
+            display: none;
+        }
+
+        body.show-markers .be-note {
+            display: block;
+            background: #e11d48;
+            color: #fff;
+            font: 700 11px/1.4 ui-monospace, monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            width: fit-content;
+            letter-spacing: .03em;
+        }
+
+        body.show-markers [data-be] {
+            outline: 2px dashed #e11d48 !important;
+            outline-offset: 3px !important;
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+
+    <div id="header-root"></div>
+
+    <!-- HERO — LUXURY TAILORING -->
+    <section class="h-[60vh] min-h-[480px] py-5" data-be="Hero">
+        <div class="be-note mx-auto mb-2 w-[min(100%-40px,1240px)]">🔌 EDIT: hero.eyebrow, hero.title, hero.subtitle,
+            hero.image, hero CTAs, hero stats, hero.float_card_*</div>
+        <div class="w-[min(100%-40px,1240px)] mx-auto h-full">
+            <div
+                class="relative overflow-hidden rounded-[28px] bg-espresso text-ivory h-full grid grid-cols-1 md:grid-cols-[1.05fr_.95fr] shadow-2xl isolate">
+                <div class="absolute inset-0 z-[1] pointer-events-none"
+                    style="background:radial-gradient(60% 70% at 8% 10%,rgba(169,138,99,.38),transparent 60%),radial-gradient(50% 60% at 92% 90%,rgba(207,195,179,.18),transparent 60%)">
+                </div>
+                <div class="absolute inset-0 z-[2] pointer-events-none"
+                    style="background:linear-gradient(180deg,rgba(0,0,0,.34) 0%,transparent 18%,transparent 74%,rgba(0,0,0,.52) 100%)">
+                </div>
+
+                <div class="relative z-[3] flex flex-col justify-center gap-3 px-6 md:px-12 py-7 md:py-10">
+                    <span
+                        class="inline-flex items-center gap-2 self-start text-[.68rem] font-bold tracking-[.16em] uppercase px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15">
+                        <i class="w-1.5 h-1.5 rounded-full bg-bronze"></i>
+                        New Collection · 2026
+                    </span>
+
+                    <h1 class="font-serif font-semibold leading-[1.1] text-[clamp(1.8rem,3.6vw,2.9rem)]">
+                        Tailored Heritage.<br>
+                        Modern <em class="not-italic text-bronze">Bespoke</em>.
+                    </h1>
+
+                    <p class="max-w-[46ch] text-ivory/70 text-[.94rem]">
+                        Structured blazers, flowing dresses, co-ords and layering pieces — cut from premium kitenge and
+                        batiki fabrics.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2.5 mt-0.5">
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold hover:-translate-y-0.5 transition">
+                            Shop the Collection
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a href="#catalog"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ivory/30 text-ivory text-[.86rem] font-semibold hover:bg-ivory/10 transition">
+                            Book Bespoke Fitting
+                        </a>
+                    </div>
+
+                    <!-- Tailoring-focused stats (clearly different from Souvenirs page) -->
+                    <div class="hidden sm:flex gap-7 mt-2 pt-3.5 border-t border-ivory/15">
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">Bespoke</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Made to Measure</span>
+                        </div>
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">100%</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Handmade</span>
+                        </div>
+                        <div><b class="block font-serif font-semibold text-[1.2rem]">14d</b>
+                            <span class="text-[.66rem] tracking-[.1em] uppercase text-ivory/55">Custom Lead Time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="relative overflow-hidden order-first md:order-last h-[38vh] min-h-[220px] md:h-auto md:min-h-0">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80"
+                        alt="" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#211C18]/85 md:hidden"></div>
+                    <div class="absolute inset-0 hidden md:block"
+                        style="background:linear-gradient(100deg,#211C18 0%,rgba(33,28,24,.55) 30%,transparent 66%)">
+                    </div>
+
+                    <div
+                        class="absolute z-[4] left-5 bottom-5 bg-ivory/95 text-espresso rounded-[18px] px-4 py-3 flex items-center gap-3 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=200&q=80"
+                            alt="" class="w-[42px] h-[42px] rounded-[10px] object-cover" />
+                        <div>
+                            <small
+                                class="block text-[.66rem] tracking-[.09em] uppercase text-bronze font-semibold">Featured</small>
+                            <strong class="text-[.9rem] font-serif font-semibold">Kitenge Peplum Blouse</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST MARQUEE — BESPOKE SERVICES -->
+    <div class="border-y border-sand bg-linen overflow-hidden py-4" data-be="Trust items">
+        <div class="be-note mx-auto mb-2 w-[min(100%-40px,1240px)]">🔌 LOOP: trust_items (text, order)</div>
+        <div
+            class="flex gap-14 px-6 text-[.76rem] font-semibold tracking-[.14em] uppercase text-espresso/60 whitespace-nowrap">
+            <span>◆ Made to Measure Available</span>
+            <span>◆ Premium Viscose Cotton Batiki</span>
+            <span>◆ 30-Day Returns</span>
+            <span>◆ Free Style Consultation</span>
+            <span>◆ Worldwide Shipping</span>
+        </div>
+    </div>
+
+    <!-- CATALOG — BESPOKE HEADING -->
+    <section id="catalog" class="w-[min(100%-40px,1240px)] mx-auto pt-16 pb-16" data-be="Catalog">
+        <div class="be-note">🔌 EDIT: catalog.title, catalog.subtitle &nbsp;|&nbsp; LOOP: categories</div>
+
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-7">
+            <div>
+                <h2 class="font-serif font-semibold text-[clamp(1.8rem,3.4vw,2.6rem)]">The Bespoke Edit</h2>
+                <p class="mt-2 text-espresso/60 text-[.95rem] max-w-[52ch]">
+                    Tailored silhouettes and layering pieces cut from premium kitenge and batiki — wear culture with
+                    confidence.
+                </p>
+            </div>
+
+            <!-- 6 Bespoke categories matching section 5 -->
+            <div class="flex flex-wrap gap-2.5" id="filters">
+                <button type="button" data-cat="all"
+                    class="cat-chip px-4 py-2 rounded-full border bg-espresso border-espresso text-ivory text-[.82rem] font-semibold transition">All
+                    Pieces</button>
+                <button type="button" data-cat="tops"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Blouses
+                    &amp; Shirts</button>
+                <button type="button" data-cat="dresses"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Dresses</button>
+                <button type="button" data-cat="coords"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Co-ords
+                    &amp; Sets</button>
+                <button type="button" data-cat="shorts"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Shorts</button>
+                <button type="button" data-cat="kimonos"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Kimonos</button>
+                <button type="button" data-cat="blazers"
+                    class="cat-chip px-4 py-2 rounded-full border bg-ivory border-sand text-espresso/70 text-[.82rem] font-semibold transition hover:border-espresso">Blazers</button>
+            </div>
+        </div>
+
+        <div class="be-note">🔌 LOOP: products — wrap each &lt;article&gt; in {% for product in products %} … {% endfor
+            %}</div>
+
+        <div id="productGrid" class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(258px,1fr))]">
+
+            <!-- 1. Kitenge Peplum Blouse -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_001" data-cat="tops">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Best
+                        Seller</span>
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+                        alt="Kitenge Peplum Blouse"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Blouses &amp;
+                        Shirts</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_001">Kitenge Peplum Blouse</h3>
+                    <p class="text-[.82rem] text-espresso/60">Structured peplum top in vibrant kitenge print — a
+                        desk-to-dinner statement piece.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$65.00 – $95.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_001"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_001"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. Batiki Button-Down Shirt -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_002" data-cat="tops">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-espresso">New</span>
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"
+                        alt="Batiki Button-Down Shirt"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Blouses &amp;
+                        Shirts</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_002">Batiki Button-Down Shirt</h3>
+                    <p class="text-[.82rem] text-espresso/60">Relaxed-fit button-down in viscose batiki — tailored for
+                        workdays and weekends.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$55.00 – $85.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_002"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_002"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 3. Kitenge Midi Wrap Dress -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_003" data-cat="dresses">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Editor's
+                        Pick</span>
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"
+                        alt="Kitenge Midi Wrap Dress"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Bespoke Dresses</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_003">Kitenge Midi Wrap Dress</h3>
+                    <p class="text-[.82rem] text-espresso/60">Structured midi wrap dress in kitenge print — elegant,
+                        comfortable, and endlessly flattering.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$125.00 – $185.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_003"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_003"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 4. Batiki Flowy Maxi Dress -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_004" data-cat="dresses">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
+                        alt="Batiki Flowy Maxi Dress"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Bespoke Dresses</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_004">Batiki Flowy Maxi Dress</h3>
+                    <p class="text-[.82rem] text-espresso/60">Floor-length maxi dress in rich batiki — breezy, elegant,
+                        and ideal for warm evenings.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$145.00 – $215.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_004"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_004"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 5. Kitenge Co-ord Set -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_005" data-cat="coords">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Trending</span>
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80"
+                        alt="Kitenge Co-ord Set"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Matching Two-Piece
+                        Sets</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_005">Kitenge Co-ord Set</h3>
+                    <p class="text-[.82rem] text-espresso/60">Shirt-and-trouser co-ord in premium kitenge — bold,
+                        cohesive, effortless.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$135.00 – $195.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_005"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_005"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 6. Batiki Shirt & Short Set -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_006" data-cat="coords">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80"
+                        alt="Batiki Shirt & Short Set"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Matching Two-Piece
+                        Sets</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_006">Batiki Shirt &amp; Short Set</h3>
+                    <p class="text-[.82rem] text-espresso/60">Relaxed shirt-and-short co-ord in batiki — your
+                        vacation-ready staple.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$115.00 – $165.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_006"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_006"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 7. High-Waisted Kitenge Shorts -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_007" data-cat="shorts">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=80"
+                        alt="High-Waisted Kitenge Shorts"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Batiki &amp; Kitenge
+                        Shorts</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_007">High-Waisted Kitenge Shorts</h3>
+                    <p class="text-[.82rem] text-espresso/60">Tailored high-waisted shorts in kitenge print — chic,
+                        warm-weather ease.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$45.00 – $75.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_007"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_007"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 8. Relaxed Batiki Vacation Shorts -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_008" data-cat="shorts">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=800&q=80"
+                        alt="Relaxed Batiki Vacation Shorts"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Batiki &amp; Kitenge
+                        Shorts</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_008">Relaxed Batiki Vacation Shorts</h3>
+                    <p class="text-[.82rem] text-espresso/60">Drawstring relaxed-fit shorts in soft batiki — lounge in
+                        style, travel light.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$38.00 – $58.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_008"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_008"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 9. Kitenge Statement Kimono -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_009" data-cat="kimonos">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Statement</span>
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
+                        alt="Kitenge Statement Kimono"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Kimonos &amp;
+                        Dusters</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_009">Kitenge Statement Kimono</h3>
+                    <p class="text-[.82rem] text-espresso/60">Lightweight open-front kimono in bold kitenge — instant
+                        drama over any basic outfit.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$95.00 – $145.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_009"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_009"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 10. Batiki Longline Duster -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_010" data-cat="kimonos">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=800&q=80"
+                        alt="Batiki Longline Duster"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Kimonos &amp;
+                        Dusters</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_010">Batiki Longline Duster</h3>
+                    <p class="text-[.82rem] text-espresso/60">Longline duster coat in airy batiki — luxurious layering
+                        for any season.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$115.00 – $175.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_010"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_010"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 11. Kitenge Lapel Blazer -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_011" data-cat="blazers">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <span
+                        class="absolute top-3 left-3 z-10 text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full text-ivory bg-bronze">Executive</span>
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+                        alt="Kitenge Lapel Blazer"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Executive Blazers</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_011">Kitenge Lapel Blazer</h3>
+                    <p class="text-[.82rem] text-espresso/60">Structured blazer with kitenge-print lapels — modern
+                        executive presence with cultural edge.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$185.00 – $265.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_011"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_011"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 12. Batiki Pocket Jacket -->
+            <article
+                class="product-card bg-ivory border border-sand rounded-[18px] overflow-hidden flex flex-col hover:-translate-y-1.5 hover:shadow-xl transition"
+                data-id="p_012" data-cat="blazers">
+                <div class="relative aspect-[4/5] overflow-hidden bg-linen group">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80"
+                        alt="Batiki Pocket Jacket"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                </div>
+                <div class="p-4 flex flex-col gap-2.5 flex-1">
+                    <span class="text-[.66rem] font-bold tracking-wider uppercase text-bronze">Executive Blazers</span>
+                    <h3 class="font-serif font-semibold text-[1.08rem] view-btn cursor-pointer hover:text-bronze transition"
+                        data-id="p_012">Batiki Pocket Jacket</h3>
+                    <p class="text-[.82rem] text-espresso/60">Clean-cut jacket with contrast batiki-print pockets —
+                        boardroom-ready, culturally rooted.</p>
+                    <div class="mt-auto pt-3 border-t border-dashed border-sand flex flex-col gap-3">
+                        <b class="font-serif font-semibold text-base text-espresso">$165.00 – $235.00</b>
+                        <div class="flex items-center gap-2">
+                            <button type="button" data-id="p_012"
+                                class="view-btn flex-1 inline-flex items-center justify-center gap-1.5 h-[42px] px-4 rounded-full border border-espresso/30 bg-ivory text-espresso text-[.78rem] font-semibold tracking-wide transition hover:border-espresso hover:bg-espresso hover:text-ivory active:scale-[.97]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" class="shrink-0">
+                                    <path
+                                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <span>View</span>
+                            </button>
+                            <button type="button" data-id="p_012"
+                                class="add-btn w-[42px] h-[42px] rounded-full bg-espresso text-ivory hover:bg-bronze hover:scale-105 active:scale-95 transition"
+                                aria-label="Add to cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+
+    <!-- PRODUCT VIEWER -->
+    <div id="viewer" role="dialog" aria-modal="true"
+        class="fixed inset-0 z-[110] bg-espresso/60 backdrop-blur p-0 md:p-6 hidden place-items-center">
+        <div
+            class="relative bg-ivory w-full h-[100svh] md:h-[min(860px,92svh)] md:w-[min(1160px,100%)] md:rounded-[28px] overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-[1.04fr_.96fr] overflow-y-auto md:overflow-hidden">
+            <button type="button" id="viewerClose" aria-label="Close"
+                class="absolute top-3 right-3 md:top-4 md:right-4 z-20 w-10 h-10 rounded-full border-2 border-espresso/25 bg-ivory grid place-items-center hover:bg-espresso hover:text-ivory transition">✕</button>
+
+            <div class="md:bg-linen md:p-6 flex flex-col gap-3.5">
+                <div
+                    class="relative bg-ivory md:rounded-[18px] md:overflow-hidden h-[30svh] min-h-[190px] md:h-auto md:aspect-square shrink-0">
+                    <img id="galleryMain" src="" alt="" class="w-full h-full object-cover" />
+                    <span id="galleryCount"
+                        class="absolute top-3 left-3 z-10 bg-espresso/75 text-ivory text-[.7rem] font-semibold px-3 py-1 rounded-full">1
+                        / 10</span>
+                    <button type="button" id="galleryPrev"
+                        class="absolute top-1/2 -translate-y-1/2 left-2.5 z-10 w-10 h-10 rounded-full bg-ivory/90 grid place-items-center hover:bg-espresso hover:text-ivory transition">‹</button>
+                    <button type="button" id="galleryNext"
+                        class="absolute top-1/2 -translate-y-1/2 right-2.5 z-10 w-10 h-10 rounded-full bg-ivory/90 grid place-items-center hover:bg-espresso hover:text-ivory transition">›</button>
+                </div>
+                <div id="galleryThumbs" class="flex md:grid md:grid-cols-5 gap-2 px-3 md:px-0 overflow-x-auto shrink-0">
+                </div>
+            </div>
+
+            <div id="viewerInfo" class="p-4 md:p-8 md:overflow-y-auto flex flex-col gap-3"></div>
+        </div>
+    </div>
+
+    <div id="toast"
+        class="fixed left-1/2 bottom-7 -translate-x-1/2 translate-y-[140%] bg-espresso text-ivory px-6 py-3 rounded-full text-[.85rem] font-medium z-[120] transition-transform duration-400">
+    </div>
+
+    <script type="application/json" id="products-json">
+[
+  {
+    "id": "p_001", "name": "Kitenge Peplum Blouse", "category": "Blouses & Shirts",
+    "priceMin": 65.00, "priceMax": 95.00,
+    "description": "Structured peplum top in vibrant kitenge print — a desk-to-dinner statement piece with a flattering nipped waist.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485968579169-a04c6be0c7f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton kitenge", "Fit": "Tailored, true to size", "Care": "Hand wash cold, line dry", "Origin": "Made in Tanzania", "Closure": "Concealed back zip", "Warranty": "6-month stitch warranty" },
+    "features": ["Hand-cut and stitched", "Nipped peplum silhouette", "Vibrant kitenge print", "Concealed back zip", "Available in 5 prints"]
+  },
+  {
+    "id": "p_002", "name": "Batiki Button-Down Shirt", "category": "Blouses & Shirts",
+    "priceMin": 55.00, "priceMax": 85.00,
+    "description": "Relaxed-fit button-down in viscose batiki with a subtle sheen — as comfortable in the office as it is on weekends.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618453292459-53424b66bb6a?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Viscose cotton batiki", "Fit": "Relaxed, true to size", "Care": "Machine wash cold, gentle", "Origin": "Made in Tanzania", "Closure": "Corozo buttons", "Warranty": "6-month stitch warranty" },
+    "features": ["Hand-cut and stitched", "Corozo nut buttons", "Soft viscose batiki", "Classic collar", "Curved hem"]
+  },
+  {
+    "id": "p_003", "name": "Kitenge Midi Wrap Dress", "category": "Bespoke Dresses",
+    "priceMin": 125.00, "priceMax": 185.00,
+    "description": "Structured midi wrap dress in kitenge print — elegant, comfortable, and endlessly flattering for any occasion.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton kitenge", "Length": "Midi — 115 cm", "Care": "Hand wash cold, line dry", "Origin": "Made in Tanzania", "Closure": "Wrap with side tie", "Warranty": "6-month stitch warranty" },
+    "features": ["Structured midi cut", "Wrap silhouette with side tie", "Fully lined bodice", "Side pockets", "Available in 4 prints"]
+  },
+  {
+    "id": "p_004", "name": "Batiki Flowy Maxi Dress", "category": "Bespoke Dresses",
+    "priceMin": 145.00, "priceMax": 215.00,
+    "description": "Floor-length maxi dress in rich batiki — breezy, elegant, and ideal for warm evenings and special occasions.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Viscose cotton batiki", "Length": "Maxi — 145 cm", "Care": "Dry clean recommended", "Origin": "Made in Tanzania", "Closure": "Back zip", "Warranty": "6-month stitch warranty" },
+    "features": ["Floor-length silhouette", "Flowing A-line skirt", "Fitted bodice", "Fully lined", "Available in 3 batiki tones"]
+  },
+  {
+    "id": "p_005", "name": "Kitenge Co-ord Set", "category": "Matching Two-Piece Sets",
+    "priceMin": 135.00, "priceMax": 195.00,
+    "description": "Shirt-and-trouser co-ord in premium kitenge — bold, cohesive, and effortlessly put together.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485968579169-a04c6be0c7f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton kitenge", "Includes": "Shirt + trouser set", "Care": "Hand wash cold", "Origin": "Made in Tanzania", "Closure": "Buttons + elasticated waist", "Warranty": "6-month stitch warranty" },
+    "features": ["Shirt + trouser set", "Coordinated print placement", "Relaxed through the hip", "Functional side pockets", "Available in 4 prints"]
+  },
+  {
+    "id": "p_006", "name": "Batiki Shirt & Short Set", "category": "Matching Two-Piece Sets",
+    "priceMin": 115.00, "priceMax": 165.00,
+    "description": "Relaxed shirt-and-short co-ord in soft batiki — your go-to vacation-ready staple.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618453292459-53424b66bb6a?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Viscose cotton batiki", "Includes": "Shirt + short set", "Care": "Machine wash cold, gentle", "Origin": "Made in Tanzania", "Closure": "Corozo buttons + drawstring", "Warranty": "6-month stitch warranty" },
+    "features": ["Relaxed shirt and short set", "Coordinated batiki print", "Drawstring shorts", "Side seam pockets", "Available in 3 colourways"]
+  },
+  {
+    "id": "p_007", "name": "High-Waisted Kitenge Shorts", "category": "Batiki & Kitenge Shorts",
+    "priceMin": 45.00, "priceMax": 75.00,
+    "description": "Tailored high-waisted shorts in kitenge print — chic, warm-weather ease with just the right amount of polish.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "100% cotton kitenge", "Fit": "High-waisted, tailored", "Care": "Hand wash cold", "Origin": "Made in Tanzania", "Closure": "Side zip", "Warranty": "6-month stitch warranty" },
+    "features": ["High-waisted fit", "Tailored through the hip", "Belt loops", "Functional side pockets", "Available in 4 prints"]
+  },
+  {
+    "id": "p_008", "name": "Relaxed Batiki Vacation Shorts", "category": "Batiki & Kitenge Shorts",
+    "priceMin": 38.00, "priceMax": 58.00,
+    "description": "Drawstring relaxed-fit shorts in soft batiki — lounge in style, travel light, stay cool.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618453292459-53424b66bb6a?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618932260643-eee4a2f652a6?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Viscose cotton batiki", "Fit": "Relaxed, drawstring", "Care": "Machine wash cold, gentle", "Origin": "Made in Tanzania", "Closure": "Elastic + drawstring", "Warranty": "6-month stitch warranty" },
+    "features": ["Relaxed drawstring fit", "Side seam pockets", "Soft viscose batiki", "Mid-thigh length", "Available in 3 colourways"]
+  },
+  {
+    "id": "p_009", "name": "Kitenge Statement Kimono", "category": "Kimonos & Dusters",
+    "priceMin": 95.00, "priceMax": 145.00,
+    "description": "Lightweight open-front kimono in bold kitenge — instant drama and luxury over any basic outfit.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485968579169-a04c6be0c7f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Lightweight cotton kitenge", "Length": "Hip-length", "Care": "Hand wash cold, line dry", "Origin": "Made in Tanzania", "Closure": "Open front, no closure", "Warranty": "6-month stitch warranty" },
+    "features": ["Open-front, no closure", "Dropped shoulder", "Wide kimono sleeves", "Versatile layering piece", "Available in 4 prints"]
+  },
+  {
+    "id": "p_010", "name": "Batiki Longline Duster", "category": "Kimonos & Dusters",
+    "priceMin": 115.00, "priceMax": 175.00,
+    "description": "Longline duster coat in airy batiki — luxurious layering for any season, from beach to evening.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Viscose cotton batiki", "Length": "Longline — 120 cm", "Care": "Dry clean recommended", "Origin": "Made in Tanzania", "Closure": "Open front with belt", "Warranty": "6-month stitch warranty" },
+    "features": ["Longline silhouette", "Open front with belt tie", "Side pockets", "Flowing drape", "Available in 3 batiki tones"]
+  },
+  {
+    "id": "p_011", "name": "Kitenge Lapel Blazer", "category": "Executive Blazers",
+    "priceMin": 185.00, "priceMax": 265.00,
+    "description": "Structured blazer with kitenge-print lapels — modern executive presence with a distinctive cultural edge.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Wool blend + kitenge lapels", "Fit": "Tailored, structured", "Care": "Dry clean only", "Origin": "Tailored in Tanzania", "Closure": "Single-breasted, 2 buttons", "Warranty": "1-year stitch warranty" },
+    "features": ["Kitenge-print lapels", "Structured shoulder", "Single-breasted cut", "Fully lined", "Available in 3 colourways"]
+  },
+  {
+    "id": "p_012", "name": "Batiki Pocket Jacket", "category": "Executive Blazers",
+    "priceMin": 165.00, "priceMax": 235.00,
+    "description": "Clean-cut jacket with contrast batiki-print pockets — boardroom-ready yet culturally rooted.",
+    "gallery": [
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1100&q=80"
+    ],
+    "specs": { "Material": "Cotton blend + batiki pockets", "Fit": "Modern slim", "Care": "Dry clean only", "Origin": "Tailored in Tanzania", "Closure": "Single-breasted, 2 buttons", "Warranty": "1-year stitch warranty" },
+    "features": ["Contrast batiki-print pockets", "Modern slim cut", "Fully lined", "Two interior pockets", "Available in 3 colourways"]
+  }
+]
+</script>
+
+    <script>
+        const PRODUCTS = JSON.parse(document.getElementById("products-json").textContent);
+        let cart = 0, currentProductId = null, currentImageIndex = 0;
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+        const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        const usd = n => "$" + Number(n).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const priceRange = p => `${usd(p.priceMin)} – ${usd(p.priceMax)}`;
+        function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.remove("translate-y-[140%]"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.add("translate-y-[140%]"), 2200); }
+
+        $$(".cat-chip").forEach(chip => {
+            chip.addEventListener("click", () => {
+                const cat = chip.dataset.cat;
+                $$(".cat-chip").forEach(c => {
+                    const on = c === chip;
+                    c.classList.toggle("bg-espresso", on); c.classList.toggle("border-espresso", on); c.classList.toggle("text-ivory", on);
+                    c.classList.toggle("bg-ivory", !on); c.classList.toggle("border-sand", !on); c.classList.toggle("text-espresso/70", !on);
+                });
+                $$(".product-card").forEach(card => { card.style.display = (cat === "all" || card.dataset.cat === cat) ? "" : "none"; });
+            });
+        });
+
+        document.addEventListener("click", e => {
+            const add = e.target.closest(".add-btn");
+            if (add) { cart++; $("#cartCount").textContent = cart; toast("Added to cart ✓"); return; }
+            const view = e.target.closest(".view-btn");
+            if (view) { openViewer(view.dataset.id); }
+        });
+
+        function openViewer(id) {
+            const p = PRODUCTS.find(x => String(x.id) === String(id));
+            if (!p) return;
+            currentProductId = id; currentImageIndex = 0;
+            renderViewer(p);
+            const v = $("#viewer");
+            v.classList.remove("hidden"); v.classList.add("grid");
+            document.body.style.overflow = "hidden";
+        }
+        function closeViewer() {
+            $("#viewer").classList.add("hidden"); $("#viewer").classList.remove("grid");
+            document.body.style.overflow = ""; currentProductId = null;
+        }
+        function renderViewer(p) {
+            const g = (p.gallery && p.gallery.length) ? p.gallery : [];
+            $("#galleryThumbs").innerHTML = g.map((u, i) => `
+    <img src="${u}" data-thumb="${i}" alt="" loading="lazy"
+      class="w-14 h-14 md:w-full md:h-auto md:aspect-square object-cover rounded-lg cursor-pointer border-2 transition shrink-0
+             ${i === 0 ? "border-bronze opacity-100" : "border-transparent opacity-70 hover:opacity-100"}" />
+  `).join("");
+            const specRows = Object.entries(p.specs || {}).filter(([, v]) => v)
+                .map(([k, v]) => `<div class="bg-ivory px-3 py-2.5"><span class="block text-[.6rem] tracking-wider uppercase text-espresso/50 mb-0.5">${esc(k)}</span><b class="text-[.82rem] font-semibold text-espresso">${esc(v)}</b></div>`).join("");
+            $("#viewerInfo").innerHTML = `
+    <span class="text-[.66rem] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-full bg-linen text-bronze self-start">${esc(p.category)}</span>
+    <h2 class="font-serif font-semibold text-[clamp(1.25rem,2.5vw,2rem)] pr-10">${esc(p.name)}</h2>
+    <div class="px-4 py-3 rounded-[14px] bg-linen border border-sand"><b class="font-serif font-semibold text-[1.3rem] text-espresso">${priceRange(p)}</b></div>
+    <p class="text-[.9rem] text-espresso/70 leading-relaxed">${esc(p.description)}</p>
+    ${specRows ? `<div><div class="text-[.68rem] tracking-wider uppercase text-espresso/50 mb-2 font-semibold">Specifications</div><div class="grid grid-cols-2 gap-px bg-sand border border-sand rounded-[14px] overflow-hidden">${specRows}</div></div>` : ""}
+    ${p.features?.length ? `<div><div class="text-[.68rem] tracking-wider uppercase text-espresso/50 mb-2 font-semibold">Highlights</div><ul class="grid gap-2">${p.features.map(f => `<li class="flex gap-2.5 text-[.84rem] text-espresso/80"><span class="shrink-0 w-[18px] h-[18px] rounded-full bg-linen text-bronze text-[.66rem] font-extrabold grid place-items-center mt-0.5">✓</span>${esc(f)}</li>`).join("")}</ul></div>` : ""}
+    <div class="flex flex-wrap gap-3 mt-auto pt-2">
+      <button type="button" id="viewerAddBtn" class="flex-1 min-w-[140px] px-5 py-3 rounded-full bg-bronze text-ivory text-[.86rem] font-semibold hover:bg-espresso transition">Add to Cart</button>
+      <button type="button" id="viewerCloseBtn" class="flex-1 min-w-[140px] px-5 py-3 rounded-full border-2 border-espresso text-espresso text-[.86rem] font-semibold hover:bg-espresso hover:text-ivory transition">Close</button>
+    </div>
+  `;
+            setImage(0);
+            $("#viewerAddBtn").onclick = ev => { ev.stopPropagation(); cart++; $("#cartCount").textContent = cart; toast("Added to cart ✓"); };
+            $("#viewerCloseBtn").onclick = ev => { ev.stopPropagation(); closeViewer(); };
+        }
+        function setImage(i) {
+            const p = PRODUCTS.find(x => String(x.id) === String(currentProductId));
+            if (!p) return;
+            const g = p.gallery || []; if (!g.length) return;
+            currentImageIndex = (i + g.length) % g.length;
+            $("#galleryMain").src = g[currentImageIndex];
+            $("#galleryCount").textContent = `${currentImageIndex + 1} / ${g.length}`;
+            $$("#galleryThumbs img").forEach((t, idx) => {
+                const on = idx === currentImageIndex;
+                t.classList.toggle("border-bronze", on); t.classList.toggle("border-transparent", !on);
+                t.classList.toggle("opacity-100", on); t.classList.toggle("opacity-70", !on);
+            });
+        }
+        $("#viewerClose").addEventListener("click", closeViewer);
+        $("#galleryPrev").addEventListener("click", () => setImage(currentImageIndex - 1));
+        $("#galleryNext").addEventListener("click", () => setImage(currentImageIndex + 1));
+        $("#galleryThumbs").addEventListener("click", e => { const t = e.target.closest("[data-thumb]"); if (t) setImage(Number(t.dataset.thumb)); });
+        $("#viewer").addEventListener("click", e => { if (e.target.id === "viewer") closeViewer(); });
+        document.addEventListener("keydown", e => {
+            if ($("#viewer").classList.contains("hidden")) return;
+            if (e.key === "Escape") closeViewer();
+            if (e.key === "ArrowRight") setImage(currentImageIndex + 1);
+            if (e.key === "ArrowLeft") setImage(currentImageIndex - 1);
+        });
+        $("#markerToggle").addEventListener("click", () => {
+            document.body.classList.toggle("show-markers");
+            const on = document.body.classList.contains("show-markers");
+            $("#markerToggleText").textContent = on ? "Hide Backend Markers" : "Show Backend Markers";
+        });
+    </script>
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

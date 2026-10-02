@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog — Arvo Styles | Stories from the Workshop</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #A98A63;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1.5px;
+            background: #A98A63;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeUp {
+            animation: fadeUp .8s cubic-bezier(.22, .61, .36, 1) backwards;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1.02)
+            }
+
+            100% {
+                transform: scale(1.14) translate(-1.5%, -1%)
+            }
+        }
+
+        .animate-kenburns {
+            animation: kenburns 26s ease-in-out infinite alternate;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .animate-fadeUp,
+            .animate-kenburns {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+    <div id="header-root"></div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-[72px] bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1920&q=80"
+                alt="" class="w-full h-full object-cover animate-kenburns will-change-transform" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black"></div>
+            <div class="absolute inset-0"
+                style="background: radial-gradient(circle at 20% 40%, rgba(169,138,99,.20), transparent 55%), radial-gradient(circle at 85% 70%, rgba(169,138,99,.12), transparent 55%);">
+            </div>
+        </div>
+        <div class="relative z-10 w-full max-w-[1000px] mx-auto px-6 md:px-10 text-center py-16">
+            <span class="section-eyebrow mb-6 justify-center animate-fadeUp" style="animation-delay:.05s">The Arvo
+                Journal</span>
+            <h1 class="font-serif font-bold text-ivory leading-[1.05] tracking-[-.02em] mb-6 animate-fadeUp text-[clamp(2.4rem,5.5vw,4.4rem)]"
+                style="animation-delay:.15s">
+                Stories from the <em class="not-italic text-bronze">Workshop.</em>
+            </h1>
+            <p class="text-ivory/70 text-base md:text-lg leading-relaxed max-w-[58ch] mx-auto mb-10 animate-fadeUp"
+                style="animation-delay:.3s">
+                Behind every piece is a story — of heritage, of hands, of materials, and of the people
+                who bring them to life. Read our latest.
+            </p>
+        </div>
+    </section>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="relative py-20 md:py-24 bg-ivory">
+        <div class="w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div class="relative overflow-hidden rounded-[28px] aspect-[5/4] shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80"
+                        alt="" class="w-full h-full object-cover hover:scale-105 transition duration-700" />
+                    <span
+                        class="absolute top-5 left-5 px-3 py-1.5 rounded-full bg-bronze text-white text-[10px] font-bold tracking-[.15em] uppercase">Featured</span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 text-[12px] text-espresso/50 mb-4">
+                        <span class="font-semibold tracking-[.15em] uppercase text-bronze">Craftsmanship</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h2
+                        class="font-serif font-semibold text-espresso leading-[1.15] tracking-[-.02em] mb-5 text-[clamp(1.6rem,3vw,2.4rem)]">
+                        The Art of Batiki: Behind the Fabric That Tells a Thousand Stories
+                    </h2>
+                    <p class="text-espresso/65 leading-relaxed text-[15.5px] mb-6">
+                        Batiki is more than a textile — it's a language. Each crackle of wax, each dip in dye,
+                        is an act of intention. We spent a week with three generations of batiki makers in
+                        Tanzania to understand why this craft refuses to die.
+                    </p>
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=100&q=80"
+                            alt="" class="w-10 h-10 rounded-full object-cover border-2 border-bronze" />
+                        <div>
+                            <p class="text-sm font-semibold text-espresso">Amani Njoroge</p>
+                            <p class="text-[12px] text-espresso/50">March 12, 2026</p>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-espresso text-ivory text-sm font-semibold hover:bg-black hover:-translate-y-0.5 transition">
+                        Read the Story
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY + GRID -->
+    <section class="relative py-16 md:py-20 bg-ivory">
+        <div class="w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20">
+
+            <!-- Header + filters -->
+            <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="section-eyebrow mb-3">Latest Stories</span>
+                    <h2
+                        class="font-serif font-semibold text-espresso leading-[1.15] tracking-[-.02em] text-[clamp(1.5rem,2.8vw,2.2rem)]">
+                        Fresh from the journal
+                    </h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button
+                        class="px-4 py-2 rounded-full bg-espresso text-ivory text-[12.5px] font-semibold transition">All</button>
+                    <button
+                        class="px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Craftsmanship</button>
+                    <button
+                        class="px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Style</button>
+                    <button
+                        class="px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Artisans</button>
+                    <button
+                        class="px-4 py-2 rounded-full bg-white border border-espresso/10 text-espresso/70 text-[12.5px] font-semibold hover:border-espresso hover:text-espresso transition">Sustainability</button>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Artisans</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Mar 10, 2026</span><span>•</span><span>6 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        Meet the Leatherworkers of Moshi: A Day in the Workshop
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        Six artisans. One workshop. Over 20 years of combined craft. This is how our best-selling
+                        weekender tote comes to life.
+                    </p>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Style</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Mar 6, 2026</span><span>•</span><span>5 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        5 Ways to Style Kitenge for the Modern Wardrobe
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        Kitenge isn't just for special occasions anymore. Here's how the modern professional
+                        wears heritage print to the office, on weekends, and everywhere in between.
+                    </p>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Sustainability</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Mar 2, 2026</span><span>•</span><span>7 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        Why We Pay Our Artisans 50% Upfront — Every Single Order
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        Most brands pay 30 days after delivery. We do it differently. Here's the reasoning
+                        behind our 50/50 payment model — and why it changes everything.
+                    </p>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Craftsmanship</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Feb 26, 2026</span><span>•</span><span>4 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        The Sisal Story: How a Humble Plant Becomes a Rug
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        From a farm outside Tanga to the floor of a New York apartment — tracing the journey
+                        of our best-selling handwoven sisal rug.
+                    </p>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5e8a?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Craftsmanship</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Feb 20, 2026</span><span>•</span><span>5 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        A Beginner's Guide to Caring for Handwoven Textiles
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        Your sisal rug, kanga pillowcase, or woven placemat will last for years — if you
+                        treat it right. Here's how.
+                    </p>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="#" class="group">
+                    <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] mb-5 bg-linen">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
+                            alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+                        <span
+                            class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur text-white text-[10px] font-bold tracking-[.15em] uppercase">Style</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-[11.5px] text-espresso/50 mb-2.5">
+                        <span>Feb 14, 2026</span><span>•</span><span>6 min read</span>
+                    </div>
+                    <h3
+                        class="font-serif font-semibold text-espresso text-lg leading-snug mb-2 group-hover:text-bronze transition line-clamp-2">
+                        Behind the Bespoke: What Really Happens at a Fitting
+                    </h3>
+                    <p class="text-espresso/55 text-[14px] line-clamp-3">
+                        Think a bespoke fitting is just measurements? Think again. It's a conversation,
+                        a collaboration, and a ceremony all at once.
+                    </p>
+                </a>
+
+            </div>
+
+            <!-- Load more -->
+            <div class="flex justify-center mt-14">
+                <button
+                    class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-espresso/20 text-espresso text-sm font-semibold hover:bg-espresso hover:text-ivory transition">
+                    Load More Stories
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="relative py-24 md:py-28 bg-black border-y border-white/10 overflow-hidden">
+        <div class="pointer-events-none absolute inset-0"
+            style="background: radial-gradient(ellipse at center, rgba(169,138,99,.14), transparent 60%);"></div>
+        <div class="relative w-full max-w-[900px] mx-auto px-6 md:px-10 text-center">
+            <span class="section-eyebrow mb-6 justify-center">Never Miss a Story</span>
+            <h2
+                class="font-serif font-bold text-ivory leading-[1.1] tracking-[-.02em] mb-6 text-[clamp(1.8rem,4vw,2.8rem)]">
+                Get the journal,<br><em class="not-italic text-bronze">once a month.</em>
+            </h2>
+            <p class="text-ivory/60 text-base leading-relaxed max-w-[52ch] mx-auto mb-8">
+                New drops, artisan stories and members-only offers. No spam — just good stuff, once a month.
+            </p>
+            <form
+                class="flex items-center gap-2 max-w-[480px] mx-auto bg-white/[.04] border border-white/15 rounded-full p-1.5 focus-within:border-bronze focus-within:ring-4 focus-within:ring-bronze/15 transition"
+                onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓';this.querySelector('button').classList.add('!bg-green-600');">
+                <input type="email" required placeholder="you@example.com"
+                    class="flex-1 min-w-0 bg-transparent border-0 outline-none text-ivory text-sm px-4 py-3 placeholder:text-ivory/30" />
+                <button type="submit"
+                    class="shrink-0 px-6 py-3 rounded-full bg-bronze text-white text-[13px] font-semibold hover:bg-[#977B54] transition">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Legal — Arvo Styles | Refund, Terms &amp; Privacy</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { ivory: '#F6F1E8', espresso: '#211C18', sand: '#CFC3B3', bronze: '#A98A63', linen: '#E9E1D5' },
+                    fontFamily: { logo: ['"Great Vibes"', 'cursive'], sans: ['Poppins', 'sans-serif'], serif: ['"Playfair Display"', 'serif'] }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #A98A63;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1.5px;
+            background: #A98A63;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeUp {
+            animation: fadeUp .8s cubic-bezier(.22, .61, .36, 1) backwards;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1.02)
+            }
+
+            100% {
+                transform: scale(1.14) translate(-1.5%, -1%)
+            }
+        }
+
+        .animate-kenburns {
+            animation: kenburns 26s ease-in-out infinite alternate;
+        }
+
+        .legal-view {
+            display: none;
+        }
+
+        .legal-view.active {
+            display: block;
+        }
+
+        .legal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #211C18;
+            font-size: 1.35rem;
+            margin: 2rem 0 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .legal-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .legal-content h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #211C18;
+            font-size: 1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .legal-content p {
+            color: rgba(33, 28, 24, .75);
+            font-size: 0.94rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .legal-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: rgba(33, 28, 24, .75);
+            font-size: 0.94rem;
+            line-height: 1.75;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #A98A63;
+        }
+
+        .legal-content a {
+            color: #A98A63;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .legal-content a:hover {
+            color: #977B54;
+        }
+
+        .legal-content strong {
+            color: #211C18;
+            font-weight: 600;
+        }
+
+        .legal-content .updated {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            background: rgba(169, 138, 99, .12);
+            color: #A98A63;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .animate-fadeUp,
+            .animate-kenburns {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-espresso font-sans">
+
+    <div id="header-root"></div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-[72px] bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80"
+                alt="" class="w-full h-full object-cover animate-kenburns will-change-transform" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black"></div>
+            <div class="absolute inset-0"
+                style="background: radial-gradient(circle at 30% 40%, rgba(169,138,99,.18), transparent 55%);"></div>
+        </div>
+        <div class="relative z-10 w-full max-w-[900px] mx-auto px-6 md:px-10 text-center py-16">
+            <span class="section-eyebrow mb-5 justify-center animate-fadeUp" style="animation-delay:.05s">Legal &amp;
+                Policies</span>
+            <h1 class="font-serif font-bold text-ivory leading-[1.05] tracking-[-.02em] mb-5 animate-fadeUp text-[clamp(2rem,4.5vw,3.4rem)]"
+                style="animation-delay:.15s">
+                The Fine Print, <em class="not-italic text-bronze">Made Simple.</em>
+            </h1>
+            <p class="text-ivory/65 text-base leading-relaxed max-w-[58ch] mx-auto animate-fadeUp"
+                style="animation-delay:.3s">
+                Clear, honest, and written in plain language. If you ever have questions about what's below,
+                just reach out — we're happy to explain.
+            </p>
+        </div>
+    </section>
+
+    <!-- TABS -->
+    <section
+        class="relative py-6 bg-black border-b border-white/10 sticky top-[72px] z-30 backdrop-blur-xl bg-black/80">
+        <div class="w-full max-w-[1200px] mx-auto px-5 sm:px-8">
+            <div class="flex flex-wrap justify-center gap-2">
+                <a href="#refund" data-legal="refund"
+                    class="legal-tab px-5 py-2.5 rounded-full text-[13px] font-semibold transition">Refund Policy</a>
+                <a href="#terms" data-legal="terms"
+                    class="legal-tab px-5 py-2.5 rounded-full text-[13px] font-semibold transition">Terms &amp;
+                    Conditions</a>
+                <a href="#privacy" data-legal="privacy"
+                    class="legal-tab px-5 py-2.5 rounded-full text-[13px] font-semibold transition">Privacy Policy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="relative py-16 md:py-20 bg-ivory">
+        <div class="w-full max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-14">
+            <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-14">
+
+                <!-- SIDEBAR -->
+                <aside class="hidden lg:block lg:sticky lg:top-[160px] self-start">
+                    <p class="text-[11px] font-bold tracking-[.2em] uppercase text-espresso/40 mb-4">On this page</p>
+                    <nav class="grid gap-2" id="legal-sidebar">
+                        <!-- dynamic per view -->
+                    </nav>
+                </aside>
+
+                <!-- MAIN -->
+                <div class="min-w-0">
+                    <!-- REFUND -->
+                    <div class="legal-view legal-content active" data-view="refund">
+                        <span class="updated">Last updated · March 2026</span>
+                        <h2 class="font-serif font-semibold text-espresso text-2xl md:text-3xl tracking-[-.02em] mb-6">
+                            Refund &amp; Returns Policy
+                        </h2>
+                        <p>
+                            We want you to love what you buy from Arvo Styles. If something isn't right, we'll do our
+                            best to make it right. This policy explains how refunds, returns, and exchanges work.
+                        </p>
+
+                        <h3 id="refund-1">1. Return Window</h3>
+                        <p>You may return most stock items within <strong>30 days</strong> of receiving your order,
+                            provided they are:</p>
+                        <ul>
+                            <li>Unused and in the same condition you received them</li>
+                            <li>In their original packaging with tags attached</li>
+                            <li>Accompanied by proof of purchase</li>
+                        </ul>
+
+                        <h3 id="refund-2">2. Non-Returnable Items</h3>
+                        <p>The following items cannot be returned or refunded:</p>
+                        <ul>
+                            <li>Bespoke and custom-made pieces</li>
+                            <li>Personalised or monogrammed items</li>
+                            <li>Intimate apparel and used personal items</li>
+                            <li>Items marked "Final Sale" at checkout</li>
+                        </ul>
+
+                        <h3 id="refund-3">3. How to Start a Return</h3>
+                        <p>Email <a href="mailto:support@arvostyles.com">support@arvostyles.com</a> with:</p>
+                        <ul>
+                            <li>Your order number</li>
+                            <li>The item(s) you wish to return</li>
+                            <li>The reason for return</li>
+                        </ul>
+                        <p>We'll respond within 24 hours with a prepaid return label and clear instructions.</p>
+
+                        <h3 id="refund-4">4. Refund Timeline</h3>
+                        <p>
+                            Once we receive and inspect your return, we'll process the refund within
+                            <strong>5–7 business days</strong>. Refunds are issued to the original payment method.
+                            Depending on your bank, it may take an additional 3–5 days to appear.
+                        </p>
+
+                        <h3 id="refund-5">5. Damaged or Incorrect Items</h3>
+                        <p>
+                            If your order arrives damaged, defective, or incorrect, contact us within
+                            <strong>48 hours of delivery</strong>. We'll arrange a replacement or full refund at no cost
+                            to you — including return shipping.
+                        </p>
+
+                        <h3 id="refund-6">6. Exchanges</h3>
+                        <p>
+                            We're happy to exchange items for a different size or colour, subject to availability.
+                            Exchanges follow the same 30-day window and process as returns.
+                        </p>
+
+                        <h3 id="refund-7">7. Bespoke Orders</h3>
+                        <p>
+                            Because bespoke pieces are made specifically for you, they're non-refundable once
+                            production has started. However, we'll always work with you on fit adjustments after
+                            delivery within reasonable means.
+                        </p>
+
+                        <h3 id="refund-8">8. Questions?</h3>
+                        <p>
+                            Not sure if your item qualifies? Just ask. Email <a
+                                href="mailto:support@arvostyles.com">support@arvostyles.com</a>
+                            and we'll help you figure it out.
+                        </p>
+                    </div>
+
+                    <!-- TERMS -->
+                    <div class="legal-view legal-content" data-view="terms">
+                        <span class="updated">Last updated · March 2026</span>
+                        <h2 class="font-serif font-semibold text-espresso text-2xl md:text-3xl tracking-[-.02em] mb-6">
+                            Terms &amp; Conditions
+                        </h2>
+                        <p>
+                            Welcome to Arvo Styles. By accessing our website and purchasing from us, you agree to
+                            the following terms. Please read them carefully.
+                        </p>
+
+                        <h3 id="terms-1">1. About Us</h3>
+                        <p>
+                            Arvo Styles is a handcrafted goods brand based in Dar es Salaam, Tanzania, offering bags,
+                            home décor, apparel and bespoke pieces. All products are designed in-house and made by
+                            artisan partners across East Africa.
+                        </p>
+
+                        <h3 id="terms-2">2. Eligibility</h3>
+                        <p>
+                            By placing an order, you confirm that you are at least 18 years old (or have parental
+                            consent) and that all information you provide is accurate and complete.
+                        </p>
+
+                        <h3 id="terms-3">3. Pricing &amp; Payment</h3>
+                        <ul>
+                            <li>All prices are displayed in USD and include applicable taxes where required</li>
+                            <li>We reserve the right to change prices at any time without prior notice</li>
+                            <li>Payment must be completed before an order is processed</li>
+                            <li>Accepted methods: Visa, Mastercard, Amex, PayPal, Apple Pay, M-Pesa</li>
+                        </ul>
+
+                        <h3 id="terms-4">4. Order Acceptance</h3>
+                        <p>
+                            Your order is an offer to purchase. We reserve the right to refuse or cancel any order —
+                            for example, if an item is out of stock, if pricing was displayed incorrectly, or if we
+                            suspect fraudulent activity.
+                        </p>
+
+                        <h3 id="terms-5">5. Product Descriptions</h3>
+                        <p>
+                            Because our products are handcrafted, slight variations in colour, texture, and dimensions
+                            are natural and expected. These variations are not defects — they're proof of the human
+                            hand behind each piece.
+                        </p>
+
+                        <h3 id="terms-6">6. Intellectual Property</h3>
+                        <p>
+                            All content on this website — including text, images, logos, product designs and
+                            photography — is owned by Arvo Styles or its licensors and protected by copyright.
+                            You may not reproduce or use any content without prior written permission.
+                        </p>
+
+                        <h3 id="terms-7">7. User Accounts</h3>
+                        <p>
+                            If you create an account, you're responsible for keeping your login details secure and
+                            for all activity on your account. Notify us immediately if you suspect unauthorised use.
+                        </p>
+
+                        <h3 id="terms-8">8. Limitation of Liability</h3>
+                        <p>
+                            To the fullest extent permitted by law, Arvo Styles is not liable for any indirect,
+                            incidental, or consequential damages arising from your use of our site or products.
+                            Our total liability is limited to the amount you paid for the product in question.
+                        </p>
+
+                        <h3 id="terms-9">9. Governing Law</h3>
+                        <p>
+                            These terms are governed by the laws of Tanzania. Any dispute will be handled in the
+                            courts of Dar es Salaam, unless otherwise required by consumer protection law in your
+                            jurisdiction.
+                        </p>
+
+                        <h3 id="terms-10">10. Changes to These Terms</h3>
+                        <p>
+                            We may update these terms from time to time. The latest version always applies to new
+                            orders, and material changes will be communicated by email.
+                        </p>
+
+                        <h3 id="terms-11">11. Contact</h3>
+                        <p>
+                            Questions about these terms? Email <a
+                                href="mailto:legal@arvostyles.com">legal@arvostyles.com</a>.
+                        </p>
+                    </div>
+
+                    <!-- PRIVACY -->
+                    <div class="legal-view legal-content" data-view="privacy">
+                        <span class="updated">Last updated · March 2026</span>
+                        <h2 class="font-serif font-semibold text-espresso text-2xl md:text-3xl tracking-[-.02em] mb-6">
+                            Privacy Policy
+                        </h2>
+                        <p>
+                            Your privacy matters. This policy explains what information we collect, why we collect
+                            it, and how we protect it. We never sell your data — full stop.
+                        </p>
+
+                        <h3 id="privacy-1">1. Information We Collect</h3>
+                        <p>We collect the following types of information:</p>
+                        <ul>
+                            <li><strong>Order information:</strong> name, email, phone, shipping address, order details
+                            </li>
+                            <li><strong>Payment information:</strong> processed securely by our PCI-compliant providers
+                                — we never see or store your full card details</li>
+                            <li><strong>Account information:</strong> login credentials, order history, saved addresses
+                            </li>
+                            <li><strong>Usage data:</strong> pages viewed, items added to cart, IP address, device type
+                            </li>
+                            <li><strong>Communication data:</strong> messages you send us through forms, chat or email
+                            </li>
+                        </ul>
+
+                        <h3 id="privacy-2">2. How We Use Your Information</h3>
+                        <ul>
+                            <li>To process and deliver your orders</li>
+                            <li>To send order confirmations, shipping updates, and receipts</li>
+                            <li>To respond to your questions and provide customer support</li>
+                            <li>To improve our products, site, and shopping experience</li>
+                            <li>To send marketing emails (only if you opt in — unsubscribe anytime)</li>
+                            <li>To comply with legal and tax obligations</li>
+                        </ul>
+
+                        <h3 id="privacy-3">3. Cookies &amp; Tracking</h3>
+                        <p>
+                            We use cookies to remember your cart, keep you logged in, and understand how people
+                            navigate the site. You can disable cookies in your browser settings, though some
+                            features may not work as intended.
+                        </p>
+
+                        <h3 id="privacy-4">4. Sharing Your Information</h3>
+                        <p>We share your data only with trusted partners who help us run the store:</p>
+                        <ul>
+                            <li>Payment processors (Stripe, PayPal, mobile money providers)</li>
+                            <li>Shipping and logistics partners</li>
+                            <li>Email and marketing platforms (only for opted-in subscribers)</li>
+                            <li>Analytics providers (anonymised data)</li>
+                        </ul>
+                        <p>We never sell your personal data to third parties.</p>
+
+                        <h3 id="privacy-5">5. Data Retention</h3>
+                        <p>
+                            We keep order records for 7 years to comply with tax and accounting law. Account data is
+                            retained as long as your account is active. Marketing data is retained until you
+                            unsubscribe.
+                        </p>
+
+                        <h3 id="privacy-6">6. Your Rights</h3>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Access the personal data we hold about you</li>
+                            <li>Request correction of inaccurate data</li>
+                            <li>Request deletion of your data (subject to legal retention requirements)</li>
+                            <li>Opt out of marketing communications at any time</li>
+                            <li>Object to certain types of processing</li>
+                        </ul>
+                        <p>To exercise any of these rights, email <a
+                                href="mailto:privacy@arvostyles.com">privacy@arvostyles.com</a>.</p>
+
+                        <h3 id="privacy-7">7. Security</h3>
+                        <p>
+                            We use industry-standard security measures including SSL encryption, secure servers,
+                            and restricted staff access. However, no method of transmission over the internet is
+                            100% secure — we encourage you to use strong, unique passwords.
+                        </p>
+
+                        <h3 id="privacy-8">8. Children's Privacy</h3>
+                        <p>
+                            Our services are not intended for children under 13. We do not knowingly collect
+                            personal information from children. If you believe we have, contact us and we'll
+                            delete it promptly.
+                        </p>
+
+                        <h3 id="privacy-9">9. International Transfers</h3>
+                        <p>
+                            Our servers are located in the EU and Africa. By using our site, you consent to your
+                            data being transferred to and processed in these regions.
+                        </p>
+
+                        <h3 id="privacy-10">10. Changes to This Policy</h3>
+                        <p>
+                            We may update this policy from time to time. When we do, we'll update the "last updated"
+                            date and, for material changes, notify you by email or on-site notice.
+                        </p>
+
+                        <h3 id="privacy-11">11. Contact</h3>
+                        <p>
+                            Questions about your privacy? Email <a
+                                href="mailto:privacy@arvostyles.com">privacy@arvostyles.com</a>
+                            — we'll respond within 5 business days.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-20 md:py-24 bg-black border-y border-white/10 overflow-hidden">
+        <div class="pointer-events-none absolute inset-0"
+            style="background: radial-gradient(ellipse at center, rgba(169,138,99,.14), transparent 60%);"></div>
+        <div class="relative w-full max-w-[900px] mx-auto px-6 md:px-10 text-center">
+            <span class="section-eyebrow mb-5 justify-center">Still Have Questions?</span>
+            <h2
+                class="font-serif font-bold text-ivory leading-[1.1] tracking-[-.02em] mb-6 text-[clamp(1.6rem,3.5vw,2.4rem)]">
+                We're happy to <em class="not-italic text-bronze">explain.</em>
+            </h2>
+            <p class="text-ivory/60 text-base leading-relaxed max-w-[52ch] mx-auto mb-8">
+                Legal policies can be confusing. If anything here isn't clear, just reach out —
+                our team responds within 24 hours.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="contact.html"
+                    class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-bronze text-white text-sm font-semibold shadow-[0_12px_32px_-10px_rgba(169,138,99,.7)] hover:bg-[#977B54] hover:-translate-y-0.5 transition">
+                    Contact Us
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+                <a href="faq.html"
+                    class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/25 text-ivory text-sm font-semibold hover:bg-white/5 hover:border-white/50 transition">
+                    Browse FAQ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="arvo-footer"></div>
+    <script src="script.js"></script>
+
+    <!-- LEGAL TAB SWITCHER -->
+    <script>
+        (function () {
+            const tabs = document.querySelectorAll('.legal-tab');
+            const views = document.querySelectorAll('.legal-view');
+            const sidebar = document.getElementById('legal-sidebar');
+
+            const headings = {
+                refund: [
+                    ['refund-1', 'Return Window'],
+                    ['refund-2', 'Non-Returnable Items'],
+                    ['refund-3', 'How to Start a Return'],
+                    ['refund-4', 'Refund Timeline'],
+                    ['refund-5', 'Damaged Items'],
+                    ['refund-6', 'Exchanges'],
+                    ['refund-7', 'Bespoke Orders'],
+                    ['refund-8', 'Questions?']
+                ],
+                terms: [
+                    ['terms-1', 'About Us'],
+                    ['terms-2', 'Eligibility'],
+                    ['terms-3', 'Pricing & Payment'],
+                    ['terms-4', 'Order Acceptance'],
+                    ['terms-5', 'Product Descriptions'],
+                    ['terms-6', 'Intellectual Property'],
+                    ['terms-7', 'User Accounts'],
+                    ['terms-8', 'Liability'],
+                    ['terms-9', 'Governing Law'],
+                    ['terms-10', 'Changes'],
+                    ['terms-11', 'Contact']
+                ],
+                privacy: [
+                    ['privacy-1', 'Information We Collect'],
+                    ['privacy-2', 'How We Use It'],
+                    ['privacy-3', 'Cookies'],
+                    ['privacy-4', 'Sharing'],
+                    ['privacy-5', 'Data Retention'],
+                    ['privacy-6', 'Your Rights'],
+                    ['privacy-7', 'Security'],
+                    ['privacy-8', 'Children'],
+                    ['privacy-9', 'International Transfers'],
+                    ['privacy-10', 'Changes'],
+                    ['privacy-11', 'Contact']
+                ]
+            };
+
+            function buildSidebar(view) {
+                sidebar.innerHTML = headings[view].map(([id, label]) => `
+      <a href="#${id}" class="text-[13px] text-espresso/55 hover:text-bronze transition py-1">${label}</a>
+    `).join('');
+            }
+
+            function activate(view) {
+                // tabs
+                tabs.forEach(t => {
+                    const on = t.dataset.legal === view;
+                    t.classList.toggle('bg-bronze', on);
+                    t.classList.toggle('text-white', on);
+                    t.classList.toggle('text-ivory/60', !on);
+                    t.classList.toggle('hover:bg-white/10', !on);
+                });
+                // views
+                views.forEach(v => {
+                    v.classList.toggle('active', v.dataset.view === view);
+                });
+                buildSidebar(view);
+            }
+
+            tabs.forEach(t => {
+                t.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const view = t.dataset.legal;
+                    activate(view);
+                    // update hash without scroll jump
+                    history.replaceState(null, '', `#${view}`);
+                    // smooth scroll to top of content
+                    window.scrollTo({ top: document.querySelector('section.py-16').offsetTop - 140, behavior: 'smooth' });
+                });
+            });
+
+            // init from hash
+            const initial = (location.hash || '#refund').replace('#', '');
+            activate(['refund', 'terms', 'privacy'].includes(initial) ? initial : 'refund');
+        })();
+    </script>
+
+</body>
+
+</html>
